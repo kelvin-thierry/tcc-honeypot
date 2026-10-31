@@ -1,0 +1,8 @@
+.env
+env_gemini.sh
+__pycache__/
+*.pyc
+logs/cowrie/cowrie.json*
+tty/*
+etc/ipsum_blocklist.txt
+*.docx
