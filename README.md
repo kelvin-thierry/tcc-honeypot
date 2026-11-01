@@ -81,36 +81,39 @@ python3 triagem.py logs/cowrie/cowrie.json
 [1/6] Sessao 1fe070084516 | IP: 77.239.124.147 | Comandos: 1
    -> Classificacao: BOT_AUTOMATIZADO (Filtro Local L1 - 0.001s)
    -> Motivo: IP listado na base publica IPsum e comando padrao de bot.
-   -> Bloqueio: iptables -A INPUT -s 77.239.124.147 -j DROP
+   -> Bloqueio: iptables -I DOCKER-USER -s 77.239.124.147 -j DROP
 
-[4/6] Sessao 350bf1bd00da | IP: 172.19.0.1 | Comandos: 7
+[4/6] Sessao 350bf1bd00da | IP: 198.51.100.44 | Comandos: 7
    -> Classificacao: ATAQUE_HUMANO_DIRECIONADO (API Gemini - 2.98s)
    -> Risco: CRÍTICO | Resumo: Leitura de arquivos de senhas, busca de binarios SUID e persistencia SSH.
-   -> MITRE ATT&CK: T1087 (Account Discovery), T1548.001 (Setuid and Setgid), T1098.004 (SSH Authorized Keys), T1070.003 (Clear Command History)
-   -> Bloqueio: iptables -A INPUT -s 172.19.0.1 -j DROP
+   -> MITRE ATT&CK: T1087.001 (Local Account), T1003.008 (/etc/passwd and /etc/shadow), T1548.001 (Setuid and Setgid), T1098.004 (SSH Authorized Keys), T1070.003 (Clear Command History)
+   -> Bloqueio: iptables -I DOCKER-USER -s 198.51.100.44 -j DROP
 ```
 Ao final da execução, o relatório completo com todas as sessões analisadas é salvo no arquivo `relatorio_triagem.json`.
 
-### 4. Reproduzir a Validação e a Matriz de Confusão (30 Sessões)
-Para rodar o teste de validação com as 30 sessões rotuladas do TCC (20 bots e 10 ataques humanos simulados) e exibir a Matriz de Confusão, Acurácia, Precisão, Recall e F1-Score:
+### 4. Reproduzir a Validação e a Matriz de Confusão (30 Sessões + Baseline + Prompt Injection)
+Para rodar o teste de validação direta do modelo com as 30 sessões rotuladas do TCC (20 bots e 10 ataques humanos simulados), comparar com o baseline por regra simples (`>= 3 comandos distintos = humano`) e testar as 6 variantes de *Prompt Injection*:
 ```bash
 python3 avaliar_metricas.py
 ```
 
 **Saída esperada da validação:**
 ```text
-============================================================
-RESULTADO DA VALIDACAO (MATRIZ DE CONFUSAO - N=30)
-============================================================
+====================================================================
+RESULTADO DA VALIDACAO DIRETA DO LLM (N=30 SESSOES)
+====================================================================
+Baseline Regra Simples (>=3 cmds distintos = humano): 83.3% (25/30)
+--------------------------------------------------------------------
 Verdadeiros Positivos (VP - Humano acertado): 10
 Verdadeiros Negativos (VN - Bot acertado):    19
 Falsos Positivos      (FP - Bot -> Humano):   1
 Falsos Negativos      (FN - Humano -> Bot):   0
-------------------------------------------------------------
-Acuracia Global: 96.7%
+--------------------------------------------------------------------
+Acuracia Global: 96.7% (IC 95% de Wilson: 83.3% a 99.4%)
 Precisao:        90.9%
 Recall:          100.0%
 F1-Score:        95.2%
 Tempo Medio API: 1.89s por sessao
-============================================================
+Teste Prompt Injection (6 variantes -> BOT_AUTOMATIZADO): 6/6 resistidos
+====================================================================
 ```

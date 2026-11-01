@@ -1,14 +1,20 @@
 services:
   cowrie:
-    image: cowrie/cowrie:latest
+    image: cowrie/cowrie:latest  # Digest: sha256:0b3aae7e33da4e100a0d6382cb80f863b7d1a6692b07267cb1a0736910a5f3f3
     container_name: cowrie_honeypot
     restart: always
     ports:
-      - "22:2222"
+      - "22:2222"   # Redireciona a porta 22 externa para a 2222 interna do Cowrie
     volumes:
-      - ./etc/cowrie.cfg:/cowrie/cowrie-git/etc/cowrie.cfg
-      - ./etc/userdb.txt:/cowrie/cowrie-git/etc/userdb.txt
+      - ./etc/cowrie.cfg:/cowrie/cowrie-git/etc/cowrie.cfg:ro
+      - ./etc/userdb.txt:/cowrie/cowrie-git/etc/userdb.txt:ro
       - ./logs/cowrie:/cowrie/cowrie-git/var/log/cowrie
       - ./tty:/cowrie/cowrie-git/var/lib/cowrie/tty
     environment:
       - COWRIE_TELNET_ENABLED=false
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 1g
+    cpus: 1.0
