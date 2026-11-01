@@ -1,0 +1,35 @@
+{
+  "periodo_coleta": "2026-09-26 a 2026-10-26 (30 dias corridos / 720 horas)",
+  "arquivos_analisados": "30 arquivos (29 rotacionados diarios cowrie.json.AAAA-MM-DD + 1 arquivo ativo cowrie.json)",
+  "tamanho_total_logs_mb": 683.0,
+  "total_eventos_brutos_json": 1381038,
+  "total_tentativas_login": 165406,
+  "total_logins_sucesso": 165215,
+  "total_eventos_comando": 192730,
+  "ips_unicos_origem": 2211,
+  "funil_sessoes_ssh": {
+    "total_sessoes_abertas": 170891,
+    "media_sessoes_por_dia": 5696.4,
+    "etapa_0_sessoes_vazias_sem_comandos": {
+      "quantidade": 5676,
+      "percentual": 3.32,
+      "acao": "Descartadas localmente (handshake encerrado ou login sem comandos)"
+    },
+    "etapa_1_retidas_filtro_local_l1": {
+      "quantidade_total": 165183,
+      "percentual_total": 96.66,
+      "por_ip_listado_base_ipsum": 160979,
+      "por_assinatura_comando_unico_scanner": 4204,
+      "acao": "Classificadas localmente como BOT_AUTOMATIZADO a custo zero (0 chamadas API)"
+    },
+    "etapa_2_enviadas_api_gemini_l2": {
+      "quantidade_total": 32,
+      "percentual_total": 0.02,
+      "media_chamadas_api_por_dia": 1.07,
+      "classificadas_como_bot_pelo_llm": 31,
+      "classificadas_como_humano_falso_positivo": 1,
+      "sessao_falso_positivo_sobreposta_na_validacao": "l2_real_01_f91d83b42a11 (mesma sessao bot_20_f91d83b42a11 no conjunto N=30)",
+      "arquivo_detalhado": "resultados_validacao/coleta_30_dias_32_sessoes_l2_raw.json"
+    }
+  }
+}

