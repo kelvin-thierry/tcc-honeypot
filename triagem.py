@@ -134,7 +134,6 @@ def filtrar_ruido_l1(sessao, ips_ipsum):
 
 
 def analisar_com_gemini(sessao, chave_api):
-    inicio = time.time()
     ip = sessao["src_ip"]
     cmds = sessao["comandos"]
     cmds_tempo = sessao.get("comandos_com_tempo") or [f"[{i+1}] {c}" for i, c in enumerate(cmds)]
@@ -170,8 +169,9 @@ def analisar_com_gemini(sessao, chave_api):
         "generationConfig": {"temperature": 0.1, "responseMimeType": "application/json"}
     }
 
-    for tentativa in range(3):
+    for tentativa in range(5):
         try:
+            inicio = time.time()
             req = urllib.request.Request(
                 url,
                 data=json.dumps(payload).encode("utf-8"),
@@ -184,8 +184,8 @@ def analisar_com_gemini(sessao, chave_api):
                 resultado = json.loads(texto_json)
                 break
         except urllib.error.HTTPError as e:
-            if e.code == 429 and tentativa < 2:
-                time.sleep(5)
+            if e.code in (429, 500, 502, 503, 504) and tentativa < 4:
+                time.sleep(4 * (tentativa + 1))
                 continue
             raise
 

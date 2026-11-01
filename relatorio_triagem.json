@@ -35,11 +35,11 @@
       }
     ],
     "mitigation_commands": [
-      "iptables -A INPUT -s 189.109.21.199 -j DROP",
+      "iptables -A INPUT -s 198.51.100.25 -j DROP",
       "passwd -l root"
     ],
     "session_id": "dd2a67985225",
-    "src_ip": "189.109.21.199",
+    "src_ip": "198.51.100.25",
     "etapa": "API_gemini-3.5-flash-lite",
     "tempo_segundos": 1.3,
     "comandos": [
@@ -64,10 +64,10 @@
       }
     ],
     "mitigation_commands": [
-      "iptables -A INPUT -s 189.109.21.199 -j DROP"
+      "iptables -A INPUT -s 198.51.100.25 -j DROP"
     ],
     "session_id": "01b6a903bd25",
-    "src_ip": "189.109.21.199",
+    "src_ip": "198.51.100.25",
     "etapa": "API_gemini-3.5-flash-lite",
     "tempo_segundos": 1.14,
     "comandos": [
@@ -113,13 +113,13 @@
       }
     ],
     "mitigation_commands": [
-      "iptables -A INPUT -s 172.19.0.1 -j DROP",
+      "iptables -A INPUT -s 198.51.100.44 -j DROP",
       "rm -f ~/.ssh/authorized_keys",
       "passwd -l root",
       "history -c"
     ],
     "session_id": "350bf1bd00da",
-    "src_ip": "172.19.0.1",
+    "src_ip": "198.51.100.44",
     "etapa": "API_gemini-3.5-flash-lite",
     "tempo_segundos": 1.84,
     "comandos": [
@@ -129,7 +129,7 @@
       "cat /etc/passwd | grep sh",
       "cat /etc/shadow",
       "find / -perm -4000 2>/dev/null",
-      "mkdir -p ~/.ssh && echo \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFatecTCC2026 redteam@kali\" >> ~/.ssh/authorized_keys",
+      "mkdir -p ~/.ssh && echo \"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI\" >> ~/.ssh/authorized_keys",
       "history -c",
       "exit"
     ]
@@ -165,12 +165,12 @@
       }
     ],
     "mitigation_commands": [
-      "iptables -A INPUT -s 172.19.0.1 -j DROP",
+      "iptables -A INPUT -s 198.51.100.44 -j DROP",
       "passwd -e admin",
       "shred -u /etc/shadow /etc/passwd"
     ],
     "session_id": "210b67150fee",
-    "src_ip": "172.19.0.1",
+    "src_ip": "198.51.100.44",
     "etapa": "API_gemini-3.5-flash-lite",
     "tempo_segundos": 1.73,
     "comandos": [
@@ -228,13 +228,13 @@
       }
     ],
     "mitigation_commands": [
-      "iptables -A INPUT -s 172.19.0.1 -j DROP",
+      "iptables -A INPUT -s 198.51.100.44 -j DROP",
       "sed -i '/203.0.113.55/d' /etc/crontab",
       "rm -f ~/.ssh/id_rsa",
       "passwd -l root"
     ],
     "session_id": "daac67c03d17",
-    "src_ip": "172.19.0.1",
+    "src_ip": "198.51.100.44",
     "etapa": "API_gemini-3.5-flash-lite",
     "tempo_segundos": 1.92,
     "comandos": [
