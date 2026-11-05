@@ -136,7 +136,8 @@ def baseline_pausa_3s(sessao):
 
 def auditar_mitre(session_id, mitre_list):
     """
-    Registra e aplica as decisoes da auditoria manual (2 revisores independentes, MITRE ATT&CK v20, out. 2026),
+    Registra e aplica as decisões da auditoria manual conduzida por dois dos autores deste trabalho
+    (Kelvin Miranda e Gabriel Saranço) com base no MITRE ATT&CK v20 (out. 2026),
     consolidada na planilha 'resultados_validacao/auditoria_detalhada_30_sessoes.csv'.
     """
     planilha_json = "resultados_validacao/auditoria_detalhada_30_sessoes.json"

@@ -32,6 +32,7 @@ Este projeto integra o honeypot SSH **Cowrie** (rodando em contêiner Docker) a 
 │   ├── cowrie.cfg          # Configuração principal do honeypot (SSH ativo e saída em JSON)
 │   └── userdb.txt          # Regra de autenticação do honeypot para observar ações pós-login
 ├── triagem.py              # Script principal: agrupamento, filtro IPsum, PROMPT_COM_REGRAS e PROMPT_NEUTRO
+├── calcular_metricas.py    # Script independente (offline, sem API): imprime Matriz 2x2, IC 95%, McNemar e auditorias
 ├── avaliar_metricas.py     # Script de reprodução das 30 sessões, 2 baselines, ablações, generalização e auditorias
 ├── resultados_validacao/   # Saídas cruas da API, funil de 30 dias, auditoria MITRE v20 e mitigação (JSON/CSV)
 │   ├── resumo_funil_30_dias.json                    # Contagens exatas dos 30 dias (1.381.038 eventos / 170.891 sessões)
@@ -104,7 +105,11 @@ python3 triagem.py logs/cowrie/cowrie.json
 Ao final da execução, o relatório completo com todas as sessões analisadas é salvo no arquivo `relatorio_triagem.json`.
 
 ### 4. Reproduzir a Validação e a Matriz de Confusão (30 Sessões + 2 Baselines + Auditoria MITRE v20)
-Para calcular e imprimir no terminal todas as métricas da Seção 4.3 (Matriz de Confusão 2x2, Acurácia, IC 95% de Wilson, Precisão, Recall, F1-Score do LLM e dos dois baselines, teste exato de McNemar, cenário operacional Nível 2 e auditorias de MITRE ATT&CK v20 e mitigação):
+Para calcular e imprimir no terminal todas as métricas da Seção 4.3 (Matriz de Confusão 2x2, Acurácia, IC 95% de Wilson, Precisão, Recall, F1-Score do LLM e dos dois baselines, teste exato de McNemar, cenário operacional Nível 2 e auditorias de MITRE ATT&CK v20 e mitigação) de forma 100% offline e sem necessidade de chaves:
+```bash
+python3 calcular_metricas.py
+```
+Também é possível utilizar o script de avaliação com a flag `--resumo`:
 ```bash
 python3 avaliar_metricas.py --resumo
 ```
