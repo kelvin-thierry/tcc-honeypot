@@ -92,7 +92,7 @@ def main():
 
     print("=" * 80)
     print(" REPRODUÇÃO CIENTÍFICA DE MÉTRICAS DO TCC - HONEYPOT SSH & IA")
-    print(" Repositório: https://github.com/GabrielSaranco/tcc-honeypot")
+    print(" Repositório: https://github.com/kelvin-thierry/tcc-honeypot")
     print(f" Diretório base dos dados: {base_dir}")
     print("=" * 80)
 
