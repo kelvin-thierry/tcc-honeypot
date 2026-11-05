@@ -1,6 +1,6 @@
 services:
   cowrie:
-    image: cowrie/cowrie:latest  # Digest: sha256:0b3aae7e33da4e100a0d6382cb80f863b7d1a6692b07267cb1a0736910a5f3f3
+    image: cowrie/cowrie@sha256:0b3aae7e33da4e100a0d6382cb80f863b7d1a6692b07267cb1a0736910a5f3f3
     container_name: cowrie_honeypot
     restart: always
     ports:

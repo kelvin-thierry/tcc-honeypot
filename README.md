@@ -33,15 +33,18 @@ Este projeto integra o honeypot SSH **Cowrie** (rodando em contêiner Docker) a 
 │   └── userdb.txt          # Regra de autenticação do honeypot para observar ações pós-login
 ├── triagem.py              # Script principal: agrupamento, filtro IPsum, PROMPT_COM_REGRAS e PROMPT_NEUTRO
 ├── avaliar_metricas.py     # Script de reprodução das 30 sessões, 2 baselines, ablações, generalização e auditorias
-├── resultados_validacao/   # Saídas cruas da API, funil de 30 dias, auditoria MITRE e mitigação (JSON)
+├── resultados_validacao/   # Saídas cruas da API, funil de 30 dias, auditoria MITRE v20 e mitigação (JSON/CSV)
 │   ├── resumo_funil_30_dias.json                    # Contagens exatas dos 30 dias (1.381.038 eventos / 170.891 sessões)
 │   ├── coleta_30_dias_32_sessoes_l2_raw.json        # Saída crua das 32 sessões reais que avançaram ao Nível 2 (31 VN, 1 FP)
-│   ├── validacao_30_sessoes_raw.json                # 30 sessões (com pausas_segundos, 2 baselines, com/sem +Ns, MITRE e mitigação)
+│   ├── amostra_auditoria_nivel1_100_sessoes.json    # Auditoria manual (2 revisores) de 100 sessões retidas no Nível 1 (50 multi-cmd + 50 1-cmd)
+│   ├── validacao_30_sessoes_raw.json                # 30 sessões (com pausas_segundos, 2 baselines, 2 execuções com +Ns, MITRE v20 e mitigação)
+│   ├── auditoria_detalhada_30_sessoes.csv           # Planilha auditada técnica por técnica (MITRE ATT&CK v20) e comando por comando
+│   ├── auditoria_detalhada_30_sessoes.json          # Versão JSON da planilha de auditoria detalhada das 30 sessões
 │   ├── ablacao_prompt_neutro_30_sessoes_raw.json    # Ablação exploratória post-hoc nas 30 sessões com prompt neutro (com/sem +Ns)
 │   ├── ablacao_sem_tempos_30_sessoes_raw.json       # Comparativo das 30 sessões com e sem as anotações de pausa (+Ns)
 │   ├── generalizacao_10_cenarios_raw.json           # Teste de generalização em 10 cenários sintéticos (com e sem +Ns)
 │   ├── adversarial_temporizacao_6_sessoes_raw.json  # Teste adversarial de tempo (3 humanos em rajada <=1s e 3 bots com sleep 5–7s)
-│   └── prompt_injection_6_variantes_raw.json        # Saída crua das 6 variantes de Prompt Injection (6/6 resistidas)
+│   └── prompt_injection_6_variantes_raw.json        # Saída crua das 6 variantes de Prompt Injection (6/6 não obedecidas)
 ├── amostra_logs.json       # Amostra de logs com sessões de bots reais e ataques humanos simulados
 ├── relatorio_triagem.json  # Exemplo de relatório JSON gerado após rodar o triagem.py
 └── .env.example            # Exemplo de configuração da variável GEMINI_API_KEY
@@ -100,27 +103,32 @@ python3 triagem.py logs/cowrie/cowrie.json
 ```
 Ao final da execução, o relatório completo com todas as sessões analisadas é salvo no arquivo `relatorio_triagem.json`.
 
-### 4. Reproduzir a Validação e a Matriz de Confusão (30 Sessões + Baseline + Prompt Injection)
-Para rodar o teste de validação direta do modelo com as 30 sessões rotuladas do TCC (20 bots e 10 ataques humanos simulados), comparar com o baseline por regra simples (`>= 3 comandos distintos = humano`) e testar as 6 variantes de *Prompt Injection* (salvando as saídas cruas na pasta `resultados_validacao/`):
+### 4. Reproduzir a Validação e a Matriz de Confusão (30 Sessões + 2 Baselines + Auditoria MITRE v20)
+Para calcular e imprimir no terminal todas as métricas da Seção 4.3 (Matriz de Confusão 2x2, Acurácia, IC 95% de Wilson, Precisão, Recall, F1-Score do LLM e dos dois baselines, teste exato de McNemar, cenário operacional Nível 2 e auditorias de MITRE ATT&CK v20 e mitigação):
+```bash
+python3 avaliar_metricas.py --resumo
+```
+Ou para reexecutar todas as chamadas na API Gemini (requer `GEMINI_API_KEY`):
 ```bash
 python3 avaliar_metricas.py
 ```
 
 **Saída esperada da validação:**
 ```text
-=== RESULTADO DA MATRIZ DE CONFUSAO (N = 30 DIRETAS NO LLM) ===
-Bots retidos pelo Filtro L1 (se ativo): 19/20
-Verdadeiros Positivos (VP): 10
-Verdadeiros Negativos (VN): 19
-Falsos Positivos (FP):      1
-Falsos Negativos (FN):      0
-Baseline Heuristico (>=3):  83.3% (25/30) [IC 95% Wilson: 66.4% - 92.7%]
-Acuracia Gemini (IC 95%):   96.7% (29/30) [IC 95% Wilson: 83.3% - 99.4%]
-Precisao:                   90.9%
-Recall (Sensibilidade):     100.0%
-F1-Score:                   95.2%
-Resistencia Prompt Inject.: 6/6 (100.0%)
-Tempo medio na API Gemini:  1.33s
+=== 1. MATRIZ DE CONFUSAO 2x2 (CONFIGURACAO PRINCIPAL N = 30 DIRETAS NO LLM) ===
+VP = 10 | VN = 19 | FP = 1 | FN = 0
+Cenario Operacional Nivel 2 (32 reais L2 + 10 humanas = 42): VP=10, VN=31, FP=1, FN=0 (Acuracia=97.6%, F1=95.2%)
+
+=== 2. COMPARATIVO LLM vs. BASELINES HEURISTICOS (N = 30) ===
+LLM (Regras +Ns)      : Acc=96.7% (29/30, IC95% 83.3%-99.4%) | P=90.9% | R=100.0% | F1=95.2%
+Baseline 1 (>=3 cmds) : Acc=83.3% (25/30, IC95% 66.4%-92.7%) | P=69.2% | R=90.0% | F1=78.3% | McNemar p=0.125
+Baseline 2 (Pausa >3s): Acc=96.7% (29/30, IC95% 83.3%-99.4%) | P=90.9% | R=100.0% | F1=95.2%
+
+=== 3. AUDITORIA MITRE ATT&CK v20, MITIGACAO E TEMPO (N = 30) ===
+Acerto estrito MITRE ATT&CK v20 : 23/30 (76.7%) exatos e 7/30 parciais
+Regra primaria iptables + IP ok : 30/30 (100.0%)
+Ressalvas em comandos de host   : 9/30 no total (8/10 humanos e 1/20 bots)
+Tempo medio de resposta da API  : 1.33s (min=0.97s, max=3.03s, retentativas=0)
 ```
 
 ---
@@ -128,6 +136,6 @@ Tempo medio na API Gemini:  1.33s
 ## Notas Metodológicas e Rastreabilidade dos Dados (`resultados_validacao/`)
 
 1. **Anonimização Pré-Execução (RFC 5737) e Ausência de Senhas no Prompt:** O script `triagem.py` não envia o campo `password` dos logs para a API externa. Além disso, para evitar a exposição de IPs residenciais dos autores, do host da infraestrutura ou de terceiros fora de listas públicas de ameaça, os endereços IP das sessões simuladas (`hum_01` a `hum_10`, incluindo `203.0.113.19` em `hum_07`), das 32 sessões inéditas que avançaram ao Nível 2 e do robô `bot_20_f91d83b42a11` (`198.51.100.200`) foram substituídos **antes** da chamada à API por faixas reservadas de documentação da **RFC 5737** (`192.0.2.0/24`, `198.51.100.0/24` e `203.0.113.0/24`). Assim, as saídas JSON salvas em `resultados_validacao/` correspondem exatamente ao texto retornado pela API.
-2. **Baseline de Temporização (`> 3 s`), Teste Adversarial de Tempo (`N = 6`), Ablação sem `(+Ns)` e Ablação Exploratória Post-hoc (`PROMPT_NEUTRO`):** O arquivo `validacao_30_sessoes_raw.json` publica os intervalos em segundos entre comandos (`pausas_segundos`) de todas as 30 sessões. Um baseline simples de temporização (`pausa máxima entre comandos > 3 s = humano`, implementado em `avaliar_metricas.py`) atinge **96,7% (29/30)** nas 30 sessões (errando apenas na mesma sessão `bot_20_f91d83b42a11`, cujas pausas chegam a `4s`) e **100,0% (10/10)** nos 10 cenários sintéticos do teste de generalização (onde a separação por pausa é construída). Já no teste adversarial de temporização (`adversarial_temporizacao_6_sessoes_raw.json`, com 3 humanos colando comandos em rajada `<= 1s` e 3 bots com `sleep` de `5–7s`), o baseline de pausa cai para **0/6 (0,0%)** e o de contagem faz **4/6 (66,7%)**, enquanto os prompts do LLM mantêm **6/6 (100,0%)**. Na ablação sem os tempos `(+Ns)` nos 10 cenários sintéticos de generalização, o acerto do prompt com regras cai de **90,0% (9/10) para 70,0% (7/10)** (errando 3 bots sintéticos multi-comandos sem `wget`), enquanto o prompt neutro mantém **100,0% (10/10)**.
-3. **Auditoria Uniforme do MITRE ATT&CK (`conferencia_mitre`):** Cada sessão de `validacao_30_sessoes_raw.json` contém o objeto `conferencia_mitre` (`status` e `justificativa`). Aplicando o mesmo critério estrito às 3 sessões de teste de banner `echo xsec` (`bot_04` -> `T1595`, `bot_05` -> `T1592`, `bot_12` -> `T1082`) e às 2 sessões humanas de descoberta de privilégio (`hum_06` `find -perm -4000` -> `T1548.001` e `hum_07` `sudo -l` -> `T1548`), obtêm-se **25/30 (83,3%)** mapeamentos estritamente exatos e **5/30 (16,7%)** parciais.
-4. **Auditoria dos Comandos de Mitigação (`auditoria_mitigacao`):** A validade sintática de **100,0% (30/30)** na configuração principal refere-se exclusivamente à regra primária `iptables -A INPUT -s <IP> -j DROP` (guiada pelo template do prompt e que requer adaptação manual para `DOCKER-USER` em contêineres Docker). Nos comandos secundários de host gerados livremente para as 10 sessões humanas da configuração principal, **5 de 10 sessões (50,0%)** apresentaram ressalvas operacionais (flag inexistente `passwd -a root` em `hum_04`, contas inferidas diretamente do campo `Usuário:` ou do comando digitado como `admin_ti`/`sysadmin`/`backdoor` em `hum_06`/`hum_07`, e comandos destrutivos como `rm -f ~/.ssh/id_rsa`, `shred -u` ou `userdel -r` em `hum_04`, `hum_05`, `hum_06`, `hum_10` e `inj_03`). Já no `PROMPT_NEUTRO` exploratório (cujo template não fixava `iptables`), a mitigação não foi auditada e gerou volume ainda maior de comandos de host (`25 passwd -l`, `21 sed -i`, `14 systemctl restart` e `7 rm -f`), reforçando a obrigatoriedade de revisão humana.
+2. **Baseline de Temporização (`> 3 s`), Teste Adversarial de Tempo (`N = 6`), Ablação sem `(+Ns)` e Ablação Exploratória Post-hoc (`PROMPT_NEUTRO`):** O arquivo `validacao_30_sessoes_raw.json` publica os intervalos em segundos entre comandos (`pausas_segundos`) de todas as 30 sessões, além de duas execuções independentes da configuração principal (`resposta_crua_llm` e `resposta_crua_llm_com_tempos`, com 100% de concordância na classificação binária `29/30 = 96,7%`). Um baseline simples de temporização (`pausa máxima entre comandos > 3 s = humano`, avaliado post-hoc em `avaliar_metricas.py`) atinge **96,7% (29/30, P=90,9%, R=100,0%, F1=95,2%)** nas 30 sessões (errando apenas na mesma sessão `bot_20_f91d83b42a11`, cujas pausas chegam a `4s`), enquanto o baseline de contagem (`>= 3 comandos distintos = humano`) obtém **83,3% (25/30, P=69,2%, R=90,0%, F1=78,3%; p = 0,125 no teste exato de McNemar)**. Já no teste adversarial de temporização (`adversarial_temporizacao_6_sessoes_raw.json`, com 3 humanos colando comandos em rajada `<= 1s` e 3 bots com `sleep` de `5–7s`), o baseline de pausa cai para **0/6 (0,0%)** e o de contagem faz **4/6 (66,7%)**, enquanto os prompts do LLM mantêm **6/6 (100,0%)**.
+3. **Auditoria Uniforme do MITRE ATT&CK v20 (`conferencia_mitre` e `auditoria_detalhada_30_sessoes.csv`):** A conferência manual foi realizada por dois revisores independentes sobre a versão **v20 (outubro de 2026)** do catálogo MITRE ATT&CK e registrada técnica por técnica em `auditoria_detalhada_30_sessoes.csv`. Aplicando o mesmo critério estrito a todas as 30 sessões — rebaixando a parcial as 3 sessões de teste de eco `echo xsec` (`bot_04` -> `T1595`, `bot_05` -> `T1592`, `bot_12` -> `T1082`), o comando de listagem `crontab -l` em `bot_20` (`T1053.003`), o comando `unset HISTFILE` em `hum_05` (`T1070.003` em vez de `T1562.003`/`T1690`, além da omissão de `T1059.004` para o shell reverso) e os comandos de busca `find -perm -4000` em `hum_06` (`T1548.001`) e `sudo -l` em `hum_07` (`T1548`) —, obtêm-se **23/30 (76,7%)** sessões integralmente exatas e **7/30 (23,3%)** parciais (ou **55/62 = 88,7%** ao nível individual das técnicas geradas).
+4. **Auditoria Uniforme dos Comandos de Mitigação (`auditoria_mitigacao`):** Em **30/30 (100,0%)** das sessões, a regra primária `iptables -A INPUT -s <IP> -j DROP` teve sintaxe válida e o endereço IP exato da sessão (requerendo adaptação para a cadeia `DOCKER-USER` em ambientes com Docker NAT). Aplicando o critério uniforme de ressalvas aos comandos secundários de host em todas as 30 sessões (flags inválidas como `passwd -a`, bloqueio de conta administrativa `passwd -l root` ou contas inferidas `admin_ti`/`sysadmin`/`backdoor`, e remoção destrutiva de chaves/diretórios com `rm -f ~/.ssh/`, `shred -u` ou `userdel -r`), observaram-se ressalvas em **9 de 30 sessões (30,0%)**, sendo **8 de 10 sessões humanas (80,0%)** (`hum_03` a `hum_10`, das quais `6/10` envolvem comandos destrutivos, flags inválidas ou contas inferidas e `2/10` envolvem bloqueio de `root`) e **1 de 20 sessões de robôs (5,0%)** (`bot_20`, com `passwd -l root`).

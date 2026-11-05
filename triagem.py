@@ -116,18 +116,18 @@ def filtrar_ruido_l1(sessao, ips_ipsum):
     ip = sessao["src_ip"]
     cmds = sessao["comandos"]
     if ip in ips_ipsum or (len(cmds) == 1 and cmds[0] in COMANDOS_SCANNER):
+        motivo = "IP listado na base publica IPsum (levels/1.txt)" if ip in ips_ipsum else "Comando unico padrao de scanner"
         return {
             "session_id": sessao["session_id"],
             "src_ip": ip,
             "actor_type": "BOT_AUTOMATIZADO",
             "severity_level": "BAIXO",
-            "summary": f"Varredura automatizada identificada no filtro inicial ({ip}).",
-            "mitre_attack": [
-                {"tactic": "Reconnaissance", "technique_id": "T1595", "technique_name": "Active Scanning", "evidence": cmds[0]}
-            ],
-            "mitigation_commands": [f"iptables -A INPUT -s {ip} -j DROP"],
+            "summary": f"Sessao retida localmente no Filtro Nivel 1 ({motivo}).",
+            "mitre_attack": [],
+            "mitigation_commands": [],
             "etapa": "FILTRO_L1_IPSUM",
             "tempo_segundos": 0.001,
+            "retentativas_api": 0,
             "comandos": cmds
         }
     return None
@@ -191,9 +191,9 @@ def analisar_com_gemini(sessao, chave_api, usar_prompt_neutro=False, incluir_tem
         "generationConfig": {"temperature": 0.1, "responseMimeType": "application/json"}
     }
 
+    inicio_total = time.time()
     for tentativa in range(8):
         try:
-            inicio = time.time()
             req = urllib.request.Request(
                 url,
                 data=json.dumps(payload).encode("utf-8"),
@@ -214,7 +214,8 @@ def analisar_com_gemini(sessao, chave_api, usar_prompt_neutro=False, incluir_tem
     resultado["session_id"] = sessao["session_id"]
     resultado["src_ip"] = ip
     resultado["etapa"] = f"API_{MODELO_GEMINI}"
-    resultado["tempo_segundos"] = round(time.time() - inicio, 2)
+    resultado["tempo_segundos"] = round(time.time() - inicio_total, 2)
+    resultado["retentativas_api"] = tentativa
     resultado["comandos"] = cmds
     return resultado
 

